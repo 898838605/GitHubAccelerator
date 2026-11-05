@@ -1,0 +1,1420 @@
+2026-11-04 19:53:51,352 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-04 19:53:51,352 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmp9g9n3cq9\config.json
+2026-11-04 19:53:51,354 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-04 19:53:51,354 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmp9g9n3cq9\github_hosts.txt，自动生成模板文件
+2026-11-04 19:53:51,355 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmp9g9n3cq9\github_hosts.txt
+2026-11-04 19:53:51,370 [INFO] 已生成图标文件：D:\Desktop\github加速\GitHubAccelerator\icon.png
+2026-11-04 19:53:51,408 [INFO] 已生成图标文件：D:\Desktop\github加速\GitHubAccelerator\icon.ico
+2026-11-04 19:53:51,513 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-04 19:53:55,755 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-04 19:53:55,762 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpczpe7961\config.json
+2026-11-04 19:53:55,762 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-04 19:53:55,762 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpczpe7961\github_hosts.txt，自动生成模板文件
+2026-11-04 19:53:55,763 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpczpe7961\github_hosts.txt
+2026-11-04 19:53:55,864 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-04 19:54:11,626 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-04 19:54:11,627 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpbgv7zgou\config.json
+2026-11-04 19:54:11,628 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-04 19:54:11,628 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpbgv7zgou\github_hosts.txt，自动生成模板文件
+2026-11-04 19:54:11,629 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpbgv7zgou\github_hosts.txt
+2026-11-04 19:54:11,721 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-04 19:54:15,578 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-04 19:54:15,579 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpjadxr96h\config.json
+2026-11-04 19:54:15,580 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-04 19:54:15,580 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpjadxr96h\github_hosts.txt，自动生成模板文件
+2026-11-04 19:54:15,586 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpjadxr96h\github_hosts.txt
+2026-11-04 19:54:15,674 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-04 19:56:02,908 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-04 19:56:03,073 [INFO] 管理员实例已启动，当前进程退出
+2026-11-04 19:56:03,268 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-04 19:56:06,282 [WARNING] 互斥量等待超时，已有实例在运行
+2026-11-04 19:56:06,283 [ERROR] 检测到程序已在运行，本实例退出
+2026-11-05 12:50:35,461 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 12:50:35,462 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\config.json
+2026-11-05 12:50:35,463 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 12:50:35,463 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\github_hosts.txt，自动生成模板文件
+2026-11-05 12:50:35,463 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\github_hosts.txt
+2026-11-05 12:50:35,589 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 12:50:35,615 [INFO] 收到启用加速请求，开始处理
+2026-11-05 12:50:35,618 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 12:50:35,624 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\hosts.github_backup
+2026-11-05 12:50:35,626 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 12:50:35,626 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 12:50:35,626 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 12:50:35,626 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 12:50:35,626 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 12:50:35,627 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:35,627 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:35,627 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:35,628 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 12:50:35,628 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 12:50:35,628 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 12:50:35,628 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 12:50:35,629 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 12:50:35,629 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 12:50:35,629 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 12:50:35,629 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 12:50:35,633 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 12:50:35,670 [INFO] 收到退出请求
+2026-11-05 12:50:35,672 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmplmdukv9t\hosts
+2026-11-05 12:50:35,672 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 12:50:35,673 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 12:50:35,673 [INFO] ===== 程序退出 =====
+2026-11-05 12:50:39,383 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 12:50:39,384 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmppbsns758\config.json
+2026-11-05 12:50:39,384 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 12:50:39,385 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmppbsns758\github_hosts.txt，自动生成模板文件
+2026-11-05 12:50:39,385 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmppbsns758\github_hosts.txt
+2026-11-05 12:50:39,478 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 12:50:39,510 [INFO] 收到启用加速请求，开始处理
+2026-11-05 12:50:39,512 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 12:50:39,516 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmppbsns758\hosts.github_backup
+2026-11-05 12:50:39,516 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 12:50:39,516 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:39,518 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:39,519 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 12:50:39,520 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 12:50:39,520 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 12:50:39,520 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 12:50:39,520 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 12:50:39,520 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 12:50:39,521 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 12:50:39,521 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 12:50:39,524 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 12:50:39,570 [INFO] 收到退出请求
+2026-11-05 12:50:39,572 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmppbsns758\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmppbsns758\hosts
+2026-11-05 12:50:39,572 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 12:50:39,572 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 12:50:39,573 [INFO] ===== 程序退出 =====
+2026-11-05 12:50:54,749 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 12:50:54,749 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpgg79famz\config.json
+2026-11-05 12:50:54,750 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 12:50:54,750 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpgg79famz\github_hosts.txt，自动生成模板文件
+2026-11-05 12:50:54,751 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpgg79famz\github_hosts.txt
+2026-11-05 12:50:54,856 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 12:50:54,879 [INFO] 收到启用加速请求，开始处理
+2026-11-05 12:50:54,882 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 12:50:54,888 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmpgg79famz\hosts.github_backup
+2026-11-05 12:50:54,889 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:54,890 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:50:54,891 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 12:50:54,891 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 12:50:54,892 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 12:50:54,892 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 12:50:54,892 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 12:50:54,892 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 12:50:54,892 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 12:50:54,893 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 12:50:54,898 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 12:50:54,939 [INFO] 收到退出请求
+2026-11-05 12:50:54,940 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmpgg79famz\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmpgg79famz\hosts
+2026-11-05 12:50:54,944 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 12:50:54,945 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 12:50:54,945 [INFO] ===== 程序退出 =====
+2026-11-05 12:52:16,181 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 12:52:16,183 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\config.json
+2026-11-05 12:52:16,184 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 12:52:16,185 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\github_hosts.txt，自动生成模板文件
+2026-11-05 12:52:16,189 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\github_hosts.txt
+2026-11-05 12:52:16,459 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 12:52:16,522 [INFO] 收到启用加速请求，开始处理
+2026-11-05 12:52:16,525 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 12:52:16,530 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\hosts.github_backup
+2026-11-05 12:52:16,534 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 12:52:16,536 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 12:52:16,536 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 12:52:16,536 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 12:52:16,536 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 12:52:16,537 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:52:16,537 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:52:16,537 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 12:52:16,538 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 12:52:16,538 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 12:52:16,538 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 12:52:16,539 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 12:52:16,539 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 12:52:16,539 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 12:52:16,539 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 12:52:16,539 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 12:52:16,545 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 12:52:16,584 [INFO] 收到退出请求
+2026-11-05 12:52:16,588 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmpdzxnasdf\hosts
+2026-11-05 12:52:16,592 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 12:52:16,594 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 12:52:16,594 [INFO] ===== 程序退出 =====
+2026-11-05 12:56:32,407 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-05 12:56:32,579 [INFO] 管理员实例已启动，当前进程退出
+2026-11-05 12:56:32,802 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 12:56:32,803 [INFO] 配置加载完成：{'auto_update_on_enable': True, 'refresh_interval_hours': 6, 'window_width': 720, 'window_height': 560, 'window_x': 360, 'window_y': 113}
+2026-11-05 12:56:32,803 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 12:56:32,902 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 12:56:32,988 [INFO] 托盘图标已就绪
+2026-11-05 12:56:38,279 [INFO] 收到启用加速请求，开始处理
+2026-11-05 12:56:38,280 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 12:56:39,053 [INFO] 在线更新成功：解析 40 条，新增 31 条，合并后共 117 条候选
+2026-11-05 12:56:39,057 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 12:56:39,067 [INFO] 开始对 56 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 12:56:41,083 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 12:56:41,085 [INFO] 测速成功 13.107.42.16：94 ms
+2026-11-05 12:56:41,085 [INFO] 测速成功 140.248.129.194：252 ms
+2026-11-05 12:56:41,086 [INFO] 测速成功 140.82.112.10：281 ms
+2026-11-05 12:56:41,086 [INFO] 测速成功 140.82.112.21：228 ms
+2026-11-05 12:56:41,087 [INFO] 测速成功 140.82.112.22：250 ms
+2026-11-05 12:56:41,087 [INFO] 测速成功 140.82.112.25：273 ms
+2026-11-05 12:56:41,088 [INFO] 测速成功 140.82.112.26：250 ms
+2026-11-05 12:56:41,089 [INFO] 测速成功 140.82.112.3：272 ms
+2026-11-05 12:56:41,089 [INFO] 测速成功 140.82.112.6：262 ms
+2026-11-05 12:56:41,090 [INFO] 测速成功 140.82.112.9：277 ms
+2026-11-05 12:56:41,090 [INFO] 测速成功 140.82.113.10：246 ms
+2026-11-05 12:56:41,090 [INFO] 测速成功 140.82.113.17：247 ms
+2026-11-05 12:56:41,090 [INFO] 测速成功 140.82.113.21：292 ms
+2026-11-05 12:56:41,091 [INFO] 测速成功 140.82.113.22：246 ms
+2026-11-05 12:56:41,091 [INFO] 测速成功 140.82.113.25：244 ms
+2026-11-05 12:56:41,091 [INFO] 测速成功 140.82.113.26：230 ms
+2026-11-05 12:56:41,092 [INFO] 测速成功 140.82.113.3：255 ms
+2026-11-05 12:56:41,092 [INFO] 测速成功 140.82.113.6：264 ms
+2026-11-05 12:56:41,092 [INFO] 测速成功 140.82.114.18：294 ms
+2026-11-05 12:56:41,092 [INFO] 测速成功 140.82.114.21：278 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 140.82.114.22：263 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 140.82.114.26：263 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 140.82.114.3：245 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 150.171.110.104：121 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 150.171.110.70：127 ms
+2026-11-05 12:56:41,094 [INFO] 测速成功 151.101.1.194：74 ms
+2026-11-05 12:56:41,364 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 12:56:41,365 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 12:56:41,365 [INFO] 测速成功 16.15.173.240：263 ms
+2026-11-05 12:56:41,366 [INFO] 测速成功 16.15.183.65：278 ms
+2026-11-05 12:56:41,366 [INFO] 测速成功 16.15.199.6：266 ms
+2026-11-05 12:56:41,367 [INFO] 测速成功 16.15.207.216：287 ms
+2026-11-05 12:56:41,367 [INFO] 测速成功 16.15.212.211：1251 ms
+2026-11-05 12:56:41,369 [INFO] 测速成功 16.15.214.138：259 ms
+2026-11-05 12:56:41,566 [INFO] 测速失败 16.15.215.134：TimeoutError: timed out
+2026-11-05 12:56:41,567 [INFO] 测速成功 16.15.228.186：236 ms
+2026-11-05 12:56:41,567 [INFO] 测速成功 16.15.244.19：249 ms
+2026-11-05 12:56:41,567 [INFO] 测速成功 16.15.252.254：247 ms
+2026-11-05 12:56:41,569 [INFO] 测速成功 16.15.253.3：245 ms
+2026-11-05 12:56:41,569 [INFO] 测速成功 16.182.41.82：232 ms
+2026-11-05 12:56:41,570 [INFO] 测速成功 185.199.108.133：92 ms
+2026-11-05 12:56:41,570 [INFO] 测速成功 185.199.109.133：101 ms
+2026-11-05 12:56:41,570 [INFO] 测速成功 185.199.109.153：109 ms
+2026-11-05 12:56:41,570 [INFO] 测速成功 185.199.109.215：109 ms
+2026-11-05 12:56:41,572 [INFO] 测速成功 185.199.110.133：96 ms
+2026-11-05 12:56:41,572 [INFO] 测速成功 185.199.110.153：77 ms
+2026-11-05 12:56:41,573 [INFO] 测速成功 185.199.110.215：87 ms
+2026-11-05 12:56:41,737 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 12:56:41,738 [INFO] 测速成功 192.0.66.2：175 ms
+2026-11-05 12:56:41,739 [INFO] 测速成功 199.232.69.194：218 ms
+2026-11-05 12:56:41,739 [INFO] 测速成功 20.205.243.165：140 ms
+2026-11-05 12:56:41,740 [INFO] 测速成功 20.205.243.166：153 ms
+2026-11-05 12:56:41,740 [INFO] 测速成功 20.205.243.168：138 ms
+2026-11-05 12:56:41,815 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 12:56:41,816 [INFO] 测速成功 52.216.62.154：268 ms
+2026-11-05 12:56:41,818 [INFO] 优选结果：github.com -> 20.205.243.166（153 ms）
+2026-11-05 12:56:41,821 [INFO] 优选结果：api.github.com -> 20.205.243.168（138 ms）
+2026-11-05 12:56:41,822 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（140 ms）
+2026-11-05 12:56:41,823 [INFO] 优选结果：gist.github.com -> 20.205.243.166（153 ms）
+2026-11-05 12:56:41,823 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（74 ms）
+2026-11-05 12:56:41,823 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,824 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,824 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,824 [INFO] 优选结果：alive.github.com -> 140.82.113.26（230 ms）
+2026-11-05 12:56:41,824 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.112.22（250 ms）
+2026-11-05 12:56:41,824 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,825 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,825 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,825 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,826 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,826 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,826 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,826 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,826 [INFO] 优选结果：central.github.com -> 140.82.112.22（250 ms）
+2026-11-05 12:56:41,827 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,827 [INFO] 优选结果：collector.github.com -> 140.82.113.22（246 ms）
+2026-11-05 12:56:41,827 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,828 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,828 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.252.254（247 ms）
+2026-11-05 12:56:41,828 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.228.186（236 ms）
+2026-11-05 12:56:41,828 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.214.138（259 ms）
+2026-11-05 12:56:41,828 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 16.15.253.3（245 ms）
+2026-11-05 12:56:41,829 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.182.41.82（232 ms）
+2026-11-05 12:56:41,829 [INFO] 优选结果：github.blog -> 192.0.66.2（175 ms）
+2026-11-05 12:56:41,829 [INFO] 优选结果：github.community -> 140.82.113.17（247 ms）
+2026-11-05 12:56:41,830 [INFO] 优选结果：github.githubassets.com -> 185.199.110.215（87 ms）
+2026-11-05 12:56:41,830 [INFO] 优选结果：github.map.fastly.net -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,830 [INFO] 优选结果：live.github.com -> 140.82.113.25（244 ms）
+2026-11-05 12:56:41,830 [INFO] 优选结果：media.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,830 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（94 ms）
+2026-11-05 12:56:41,831 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,831 [INFO] 优选结果：vscode.dev -> 150.171.110.104（121 ms）
+2026-11-05 12:56:41,831 [INFO] 优选结果：education.github.com -> 140.82.112.21（228 ms）
+2026-11-05 12:56:41,831 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.108.133（92 ms）
+2026-11-05 12:56:41,832 [INFO] 优选结果：github.io -> 185.199.110.153（77 ms）
+2026-11-05 12:56:41,832 [INFO] 优选结果：githubstatus.com -> 185.199.110.153（77 ms）
+2026-11-05 12:56:41,836 [INFO] 写入 hosts 条目：20.205.243.166 github.com
+2026-11-05 12:56:41,837 [INFO] 写入 hosts 条目：20.205.243.168 api.github.com
+2026-11-05 12:56:41,837 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 12:56:41,837 [INFO] 写入 hosts 条目：20.205.243.166 gist.github.com
+2026-11-05 12:56:41,838 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 12:56:41,838 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 12:56:41,840 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 12:56:41,840 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 12:56:41,840 [INFO] 写入 hosts 条目：140.82.113.26 alive.github.com
+2026-11-05 12:56:41,841 [INFO] 写入 hosts 条目：140.82.112.22 api.individual.githubcopilot.com
+2026-11-05 12:56:41,841 [INFO] 写入 hosts 条目：185.199.108.133 avatars.githubusercontent.com
+2026-11-05 12:56:41,841 [INFO] 写入 hosts 条目：185.199.108.133 avatars0.githubusercontent.com
+2026-11-05 12:56:41,842 [INFO] 写入 hosts 条目：185.199.108.133 avatars1.githubusercontent.com
+2026-11-05 12:56:41,842 [INFO] 写入 hosts 条目：185.199.108.133 avatars2.githubusercontent.com
+2026-11-05 12:56:41,843 [INFO] 写入 hosts 条目：185.199.108.133 avatars3.githubusercontent.com
+2026-11-05 12:56:41,843 [INFO] 写入 hosts 条目：185.199.108.133 avatars4.githubusercontent.com
+2026-11-05 12:56:41,844 [INFO] 写入 hosts 条目：185.199.108.133 avatars5.githubusercontent.com
+2026-11-05 12:56:41,844 [INFO] 写入 hosts 条目：185.199.108.133 camo.githubusercontent.com
+2026-11-05 12:56:41,844 [INFO] 写入 hosts 条目：140.82.112.22 central.github.com
+2026-11-05 12:56:41,846 [INFO] 写入 hosts 条目：185.199.108.133 cloud.githubusercontent.com
+2026-11-05 12:56:41,846 [INFO] 写入 hosts 条目：140.82.113.22 collector.github.com
+2026-11-05 12:56:41,846 [INFO] 写入 hosts 条目：185.199.108.133 desktop.githubusercontent.com
+2026-11-05 12:56:41,847 [INFO] 写入 hosts 条目：185.199.108.133 favicons.githubusercontent.com
+2026-11-05 12:56:41,847 [INFO] 写入 hosts 条目：16.15.252.254 github-cloud.s3.amazonaws.com
+2026-11-05 12:56:41,847 [INFO] 写入 hosts 条目：16.15.228.186 github-com.s3.amazonaws.com
+2026-11-05 12:56:41,848 [INFO] 写入 hosts 条目：16.15.214.138 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 12:56:41,848 [INFO] 写入 hosts 条目：16.15.253.3 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 12:56:41,848 [INFO] 写入 hosts 条目：16.182.41.82 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 12:56:41,848 [INFO] 写入 hosts 条目：192.0.66.2 github.blog
+2026-11-05 12:56:41,848 [INFO] 写入 hosts 条目：140.82.113.17 github.community
+2026-11-05 12:56:41,849 [INFO] 写入 hosts 条目：185.199.110.215 github.githubassets.com
+2026-11-05 12:56:41,849 [INFO] 写入 hosts 条目：185.199.108.133 github.map.fastly.net
+2026-11-05 12:56:41,849 [INFO] 写入 hosts 条目：140.82.113.25 live.github.com
+2026-11-05 12:56:41,849 [INFO] 写入 hosts 条目：185.199.108.133 media.githubusercontent.com
+2026-11-05 12:56:41,850 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 12:56:41,850 [INFO] 写入 hosts 条目：185.199.108.133 user-images.githubusercontent.com
+2026-11-05 12:56:41,850 [INFO] 写入 hosts 条目：150.171.110.104 vscode.dev
+2026-11-05 12:56:41,850 [INFO] 写入 hosts 条目：140.82.112.21 education.github.com
+2026-11-05 12:56:41,851 [INFO] 写入 hosts 条目：185.199.108.133 private-user-images.githubusercontent.com
+2026-11-05 12:56:41,851 [INFO] 写入 hosts 条目：185.199.110.153 github.io
+2026-11-05 12:56:41,851 [INFO] 写入 hosts 条目：185.199.110.153 githubstatus.com
+2026-11-05 12:56:41,926 [INFO] DNS 缓存刷新成功
+2026-11-05 12:56:41,935 [INFO] 启用加速完成，共写入 41 个域名的优选映射
+2026-11-05 12:56:49,050 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 12:56:49,302 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 12:56:52,763 [INFO] 连通性测试 github.com（IP=20.205.243.166，来源=hosts）：151 ms
+2026-11-05 12:56:52,872 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.108.133，来源=hosts）：109 ms
+2026-11-05 12:56:53,028 [INFO] 连通性测试 github.com 端到端连接成功：154 ms
+2026-11-05 12:56:53,030 [INFO] 连通性测试结果：github.com: 151ms ✓ | raw: 109ms ✓ | 整体: 可达
+2026-11-05 12:59:55,611 [INFO] 收到停用加速请求
+2026-11-05 12:59:55,624 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 12:59:55,696 [INFO] DNS 缓存刷新成功
+2026-11-05 12:59:56,876 [INFO] 收到强制还原请求
+2026-11-05 12:59:56,890 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 12:59:56,957 [INFO] DNS 缓存刷新成功
+2026-11-05 12:59:58,428 [INFO] 收到强制还原请求
+2026-11-05 12:59:58,440 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 12:59:58,513 [INFO] DNS 缓存刷新成功
+2026-11-05 12:59:59,580 [INFO] 收到强制还原请求
+2026-11-05 12:59:59,593 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 12:59:59,661 [INFO] DNS 缓存刷新成功
+2026-11-05 13:00:00,228 [INFO] 收到强制还原请求
+2026-11-05 13:00:00,242 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 13:00:00,317 [INFO] DNS 缓存刷新成功
+2026-11-05 13:00:00,975 [INFO] 收到强制还原请求
+2026-11-05 13:00:00,987 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 13:00:01,057 [INFO] DNS 缓存刷新成功
+2026-11-05 13:02:08,390 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 13:02:08,655 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 13:02:15,635 [WARNING] 连通性测试 github.com（IP=20.205.243.166，来源=DNS）失败：TimeoutError: timed out
+2026-11-05 13:02:16,815 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.111.133，来源=DNS）：1139 ms
+2026-11-05 13:02:19,830 [WARNING] 连通性测试 github.com 端到端连接失败：TimeoutError: timed out
+2026-11-05 13:02:19,832 [INFO] 连通性测试结果：github.com: 超时 ✗ | raw: 1139ms ✓ | 整体: 不可达
+2026-11-05 13:02:27,080 [INFO] 收到启用加速请求，开始处理
+2026-11-05 13:02:27,080 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 13:02:27,564 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 13:02:27,566 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 13:02:27,575 [INFO] 开始对 56 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 13:02:29,583 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 13:02:29,584 [INFO] 测速成功 13.107.42.16：88 ms
+2026-11-05 13:02:29,585 [INFO] 测速成功 140.248.129.194：245 ms
+2026-11-05 13:02:29,585 [INFO] 测速成功 140.82.112.10：258 ms
+2026-11-05 13:02:29,586 [INFO] 测速成功 140.82.112.21：272 ms
+2026-11-05 13:02:29,586 [INFO] 测速成功 140.82.112.22：272 ms
+2026-11-05 13:02:29,586 [INFO] 测速成功 140.82.112.25：286 ms
+2026-11-05 13:02:29,587 [INFO] 测速成功 140.82.112.26：240 ms
+2026-11-05 13:02:29,587 [INFO] 测速成功 140.82.112.3：252 ms
+2026-11-05 13:02:29,587 [INFO] 测速成功 140.82.112.6：247 ms
+2026-11-05 13:02:29,587 [INFO] 测速成功 140.82.112.9：284 ms
+2026-11-05 13:02:29,588 [INFO] 测速成功 140.82.113.10：284 ms
+2026-11-05 13:02:29,588 [INFO] 测速成功 140.82.113.17：1328 ms
+2026-11-05 13:02:29,588 [INFO] 测速成功 140.82.113.21：268 ms
+2026-11-05 13:02:29,589 [INFO] 测速成功 140.82.113.22：1246 ms
+2026-11-05 13:02:29,589 [INFO] 测速成功 140.82.113.25：1311 ms
+2026-11-05 13:02:29,589 [INFO] 测速成功 140.82.113.26：267 ms
+2026-11-05 13:02:29,590 [INFO] 测速成功 140.82.113.3：249 ms
+2026-11-05 13:02:29,590 [INFO] 测速成功 140.82.113.6：1291 ms
+2026-11-05 13:02:29,590 [INFO] 测速成功 140.82.114.18：235 ms
+2026-11-05 13:02:29,590 [INFO] 测速成功 140.82.114.21：262 ms
+2026-11-05 13:02:29,591 [INFO] 测速成功 140.82.114.22：263 ms
+2026-11-05 13:02:29,591 [INFO] 测速成功 140.82.114.26：1261 ms
+2026-11-05 13:02:29,591 [INFO] 测速成功 140.82.114.3：1292 ms
+2026-11-05 13:02:29,591 [INFO] 测速成功 150.171.110.104：125 ms
+2026-11-05 13:02:29,592 [INFO] 测速成功 150.171.110.70：122 ms
+2026-11-05 13:02:29,592 [INFO] 测速成功 151.101.1.194：110 ms
+2026-11-05 13:02:29,879 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 13:02:29,943 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 13:02:29,944 [INFO] 测速成功 16.15.173.240：241 ms
+2026-11-05 13:02:29,944 [INFO] 测速成功 16.15.183.65：262 ms
+2026-11-05 13:02:29,944 [INFO] 测速成功 16.15.199.6：258 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.207.216：259 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.212.211：239 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.214.138：253 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.215.134：250 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.228.186：256 ms
+2026-11-05 13:02:29,945 [INFO] 测速成功 16.15.244.19：265 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 16.15.252.254：237 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 16.15.253.3：247 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 16.182.41.82：260 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 185.199.108.133：85 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 185.199.109.133：81 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 185.199.109.153：84 ms
+2026-11-05 13:02:29,946 [INFO] 测速成功 185.199.109.215：84 ms
+2026-11-05 13:02:29,947 [INFO] 测速成功 185.199.110.133：93 ms
+2026-11-05 13:02:29,947 [INFO] 测速成功 185.199.110.153：113 ms
+2026-11-05 13:02:29,947 [INFO] 测速成功 185.199.110.215：92 ms
+2026-11-05 13:02:30,523 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 13:02:30,524 [INFO] 测速成功 192.0.66.2：188 ms
+2026-11-05 13:02:30,525 [INFO] 测速成功 199.232.69.194：228 ms
+2026-11-05 13:02:30,525 [INFO] 测速成功 20.205.243.165：158 ms
+2026-11-05 13:02:30,601 [INFO] 测速失败 20.205.243.166：TimeoutError: timed out
+2026-11-05 13:02:30,602 [INFO] 测速成功 20.205.243.168：157 ms
+2026-11-05 13:02:30,616 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 13:02:30,616 [INFO] 测速成功 52.216.62.154：237 ms
+2026-11-05 13:02:30,619 [INFO] 优选结果：github.com -> 140.82.113.3（249 ms）
+2026-11-05 13:02:30,620 [INFO] 优选结果：api.github.com -> 20.205.243.168（157 ms）
+2026-11-05 13:02:30,621 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（158 ms）
+2026-11-05 13:02:30,622 [INFO] 优选结果：gist.github.com -> 140.82.112.9（284 ms）
+2026-11-05 13:02:30,622 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（110 ms）
+2026-11-05 13:02:30,623 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,623 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,623 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,623 [INFO] 优选结果：alive.github.com -> 140.82.112.26（240 ms）
+2026-11-05 13:02:30,624 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.114.21（262 ms）
+2026-11-05 13:02:30,624 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,624 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,624 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,625 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,625 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,625 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,625 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,626 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,626 [INFO] 优选结果：central.github.com -> 140.82.114.22（263 ms）
+2026-11-05 13:02:30,626 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,627 [INFO] 优选结果：collector.github.com -> 140.82.113.21（268 ms）
+2026-11-05 13:02:30,627 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,627 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,627 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.252.254（237 ms）
+2026-11-05 13:02:30,628 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.228.186（256 ms）
+2026-11-05 13:02:30,629 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.173.240（241 ms）
+2026-11-05 13:02:30,629 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 52.216.62.154（237 ms）
+2026-11-05 13:02:30,630 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.15.212.211（239 ms）
+2026-11-05 13:02:30,630 [INFO] 优选结果：github.blog -> 192.0.66.2（188 ms）
+2026-11-05 13:02:30,630 [INFO] 优选结果：github.community -> 140.82.114.18（235 ms）
+2026-11-05 13:02:30,630 [INFO] 优选结果：github.githubassets.com -> 185.199.109.215（84 ms）
+2026-11-05 13:02:30,631 [INFO] 优选结果：github.map.fastly.net -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,631 [INFO] 优选结果：live.github.com -> 140.82.112.25（286 ms）
+2026-11-05 13:02:30,632 [INFO] 优选结果：media.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,632 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（88 ms）
+2026-11-05 13:02:30,633 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,633 [INFO] 优选结果：vscode.dev -> 150.171.110.70（122 ms）
+2026-11-05 13:02:30,633 [INFO] 优选结果：education.github.com -> 140.82.113.21（268 ms）
+2026-11-05 13:02:30,634 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.109.133（81 ms）
+2026-11-05 13:02:30,634 [INFO] 优选结果：github.io -> 185.199.109.153（84 ms）
+2026-11-05 13:02:30,634 [INFO] 优选结果：githubstatus.com -> 185.199.109.153（84 ms）
+2026-11-05 13:02:30,638 [INFO] 写入 hosts 条目：140.82.113.3 github.com
+2026-11-05 13:02:30,639 [INFO] 写入 hosts 条目：20.205.243.168 api.github.com
+2026-11-05 13:02:30,639 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 13:02:30,639 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 13:02:30,641 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 13:02:30,641 [INFO] 写入 hosts 条目：185.199.109.133 raw.githubusercontent.com
+2026-11-05 13:02:30,641 [INFO] 写入 hosts 条目：185.199.109.133 gist.githubusercontent.com
+2026-11-05 13:02:30,642 [INFO] 写入 hosts 条目：185.199.109.133 objects.githubusercontent.com
+2026-11-05 13:02:30,642 [INFO] 写入 hosts 条目：140.82.112.26 alive.github.com
+2026-11-05 13:02:30,642 [INFO] 写入 hosts 条目：140.82.114.21 api.individual.githubcopilot.com
+2026-11-05 13:02:30,643 [INFO] 写入 hosts 条目：185.199.109.133 avatars.githubusercontent.com
+2026-11-05 13:02:30,643 [INFO] 写入 hosts 条目：185.199.109.133 avatars0.githubusercontent.com
+2026-11-05 13:02:30,643 [INFO] 写入 hosts 条目：185.199.109.133 avatars1.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：185.199.109.133 avatars2.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：185.199.109.133 avatars3.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：185.199.109.133 avatars4.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：185.199.109.133 avatars5.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：185.199.109.133 camo.githubusercontent.com
+2026-11-05 13:02:30,645 [INFO] 写入 hosts 条目：140.82.114.22 central.github.com
+2026-11-05 13:02:30,647 [INFO] 写入 hosts 条目：185.199.109.133 cloud.githubusercontent.com
+2026-11-05 13:02:30,647 [INFO] 写入 hosts 条目：140.82.113.21 collector.github.com
+2026-11-05 13:02:30,647 [INFO] 写入 hosts 条目：185.199.109.133 desktop.githubusercontent.com
+2026-11-05 13:02:30,647 [INFO] 写入 hosts 条目：185.199.109.133 favicons.githubusercontent.com
+2026-11-05 13:02:30,648 [INFO] 写入 hosts 条目：16.15.252.254 github-cloud.s3.amazonaws.com
+2026-11-05 13:02:30,648 [INFO] 写入 hosts 条目：16.15.228.186 github-com.s3.amazonaws.com
+2026-11-05 13:02:30,648 [INFO] 写入 hosts 条目：16.15.173.240 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 13:02:30,649 [INFO] 写入 hosts 条目：52.216.62.154 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 13:02:30,649 [INFO] 写入 hosts 条目：16.15.212.211 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 13:02:30,649 [INFO] 写入 hosts 条目：192.0.66.2 github.blog
+2026-11-05 13:02:30,649 [INFO] 写入 hosts 条目：140.82.114.18 github.community
+2026-11-05 13:02:30,649 [INFO] 写入 hosts 条目：185.199.109.215 github.githubassets.com
+2026-11-05 13:02:30,650 [INFO] 写入 hosts 条目：185.199.109.133 github.map.fastly.net
+2026-11-05 13:02:30,650 [INFO] 写入 hosts 条目：140.82.112.25 live.github.com
+2026-11-05 13:02:30,650 [INFO] 写入 hosts 条目：185.199.109.133 media.githubusercontent.com
+2026-11-05 13:02:30,650 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 13:02:30,651 [INFO] 写入 hosts 条目：185.199.109.133 user-images.githubusercontent.com
+2026-11-05 13:02:30,651 [INFO] 写入 hosts 条目：150.171.110.70 vscode.dev
+2026-11-05 13:02:30,651 [INFO] 写入 hosts 条目：140.82.113.21 education.github.com
+2026-11-05 13:02:30,651 [INFO] 写入 hosts 条目：185.199.109.133 private-user-images.githubusercontent.com
+2026-11-05 13:02:30,652 [INFO] 写入 hosts 条目：185.199.109.153 github.io
+2026-11-05 13:02:30,652 [INFO] 写入 hosts 条目：185.199.109.153 githubstatus.com
+2026-11-05 13:02:30,708 [INFO] DNS 缓存刷新成功
+2026-11-05 13:02:30,723 [INFO] 启用加速完成，共写入 41 个域名的优选映射
+2026-11-05 13:03:55,791 [WARNING] 连通性测试 github.com（IP=140.82.113.3，来源=hosts）失败：TimeoutError: timed out
+2026-11-05 13:03:55,915 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.109.133，来源=hosts）：122 ms
+2026-11-05 13:03:58,920 [WARNING] 连通性测试 github.com 端到端连接失败：TimeoutError: timed out
+2026-11-05 13:03:58,921 [INFO] 连通性测试结果：github.com: 超时 ✗ | raw: 122ms ✓ | 整体: 不可达
+2026-11-05 13:04:02,977 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 13:04:03,372 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 13:04:26,822 [WARNING] 连通性测试 github.com（IP=140.82.113.3，来源=hosts）失败：TimeoutError: timed out
+2026-11-05 13:04:26,923 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.109.133，来源=hosts）：98 ms
+2026-11-05 13:04:29,957 [WARNING] 连通性测试 github.com 端到端连接失败：TimeoutError: timed out
+2026-11-05 13:04:29,959 [INFO] 连通性测试结果：github.com: 超时 ✗ | raw: 98ms ✓ | 整体: 不可达
+2026-11-05 13:05:06,247 [INFO] 收到强制还原请求
+2026-11-05 13:05:06,257 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 13:05:06,329 [INFO] DNS 缓存刷新成功
+2026-11-05 13:05:09,440 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 13:05:09,690 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 13:05:16,942 [INFO] 连通性测试 github.com（IP=20.205.243.166，来源=DNS）：151 ms
+2026-11-05 13:05:18,083 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.109.133，来源=DNS）：1114 ms
+2026-11-05 13:05:18,268 [INFO] 连通性测试 github.com 端到端连接成功：184 ms
+2026-11-05 13:05:18,268 [INFO] 连通性测试结果：github.com: 151ms ✓ | raw: 1114ms ✓ | 整体: 可达
+2026-11-05 13:05:22,164 [INFO] 收到启用加速请求，开始处理
+2026-11-05 13:05:22,166 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 13:05:22,437 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 117 条候选
+2026-11-05 13:05:22,442 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 13:05:22,451 [INFO] 开始对 56 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 13:05:24,470 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 13:05:24,472 [INFO] 测速成功 13.107.42.16：99 ms
+2026-11-05 13:05:24,472 [INFO] 测速成功 140.248.129.194：259 ms
+2026-11-05 13:05:24,473 [INFO] 测速成功 140.82.112.10：261 ms
+2026-11-05 13:05:24,473 [INFO] 测速成功 140.82.112.21：243 ms
+2026-11-05 13:05:24,474 [INFO] 测速成功 140.82.112.22：241 ms
+2026-11-05 13:05:24,474 [INFO] 测速成功 140.82.112.25：260 ms
+2026-11-05 13:05:24,474 [INFO] 测速成功 140.82.112.26：272 ms
+2026-11-05 13:05:24,475 [INFO] 测速成功 140.82.112.3：241 ms
+2026-11-05 13:05:24,475 [INFO] 测速成功 140.82.112.6：256 ms
+2026-11-05 13:05:24,475 [INFO] 测速成功 140.82.112.9：1281 ms
+2026-11-05 13:05:24,476 [INFO] 测速成功 140.82.113.10：241 ms
+2026-11-05 13:05:24,476 [INFO] 测速成功 140.82.113.17：271 ms
+2026-11-05 13:05:24,476 [INFO] 测速成功 140.82.113.21：265 ms
+2026-11-05 13:05:24,476 [INFO] 测速成功 140.82.113.22：243 ms
+2026-11-05 13:05:24,477 [INFO] 测速成功 140.82.113.25：230 ms
+2026-11-05 13:05:24,477 [INFO] 测速成功 140.82.113.26：238 ms
+2026-11-05 13:05:24,704 [INFO] 测速失败 140.82.113.3：TimeoutError: timed out
+2026-11-05 13:05:24,706 [INFO] 测速成功 140.82.113.6：269 ms
+2026-11-05 13:05:24,707 [INFO] 测速成功 140.82.114.18：1259 ms
+2026-11-05 13:05:24,707 [INFO] 测速成功 140.82.114.21：294 ms
+2026-11-05 13:05:24,708 [INFO] 测速成功 140.82.114.22：1259 ms
+2026-11-05 13:05:24,708 [INFO] 测速成功 140.82.114.26：274 ms
+2026-11-05 13:05:24,708 [INFO] 测速成功 140.82.114.3：263 ms
+2026-11-05 13:05:24,709 [INFO] 测速成功 150.171.110.104：92 ms
+2026-11-05 13:05:24,709 [INFO] 测速成功 150.171.110.70：122 ms
+2026-11-05 13:05:24,709 [INFO] 测速成功 151.101.1.194：120 ms
+2026-11-05 13:05:24,736 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 13:05:24,737 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 13:05:24,737 [INFO] 测速成功 16.15.173.240：247 ms
+2026-11-05 13:05:24,738 [INFO] 测速成功 16.15.183.65：257 ms
+2026-11-05 13:05:24,738 [INFO] 测速成功 16.15.199.6：257 ms
+2026-11-05 13:05:24,738 [INFO] 测速成功 16.15.207.216：280 ms
+2026-11-05 13:05:24,739 [INFO] 测速成功 16.15.212.211：247 ms
+2026-11-05 13:05:24,739 [INFO] 测速成功 16.15.214.138：241 ms
+2026-11-05 13:05:24,739 [INFO] 测速成功 16.15.215.134：266 ms
+2026-11-05 13:05:24,740 [INFO] 测速成功 16.15.228.186：266 ms
+2026-11-05 13:05:24,740 [INFO] 测速成功 16.15.244.19：239 ms
+2026-11-05 13:05:24,740 [INFO] 测速成功 16.15.252.254：246 ms
+2026-11-05 13:05:24,740 [INFO] 测速成功 16.15.253.3：257 ms
+2026-11-05 13:05:24,741 [INFO] 测速成功 16.182.41.82：241 ms
+2026-11-05 13:05:24,741 [INFO] 测速成功 185.199.108.133：82 ms
+2026-11-05 13:05:24,741 [INFO] 测速成功 185.199.109.133：95 ms
+2026-11-05 13:05:24,741 [INFO] 测速成功 185.199.109.153：105 ms
+2026-11-05 13:05:24,742 [INFO] 测速成功 185.199.109.215：87 ms
+2026-11-05 13:05:24,742 [INFO] 测速成功 185.199.110.133：124 ms
+2026-11-05 13:05:24,742 [INFO] 测速成功 185.199.110.153：119 ms
+2026-11-05 13:05:24,742 [INFO] 测速成功 185.199.110.215：97 ms
+2026-11-05 13:05:25,251 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 13:05:25,252 [INFO] 测速成功 192.0.66.2：174 ms
+2026-11-05 13:05:25,253 [INFO] 测速成功 199.232.69.194：1396 ms
+2026-11-05 13:05:25,253 [INFO] 测速成功 20.205.243.165：164 ms
+2026-11-05 13:05:25,253 [INFO] 测速成功 20.205.243.166：140 ms
+2026-11-05 13:05:25,254 [INFO] 测速成功 20.205.243.168：128 ms
+2026-11-05 13:05:25,343 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 13:05:25,344 [INFO] 测速成功 52.216.62.154：263 ms
+2026-11-05 13:05:25,347 [INFO] 优选结果：github.com -> 20.205.243.166（140 ms）
+2026-11-05 13:05:25,347 [INFO] 优选结果：api.github.com -> 20.205.243.168（128 ms）
+2026-11-05 13:05:25,349 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（164 ms）
+2026-11-05 13:05:25,350 [INFO] 优选结果：gist.github.com -> 20.205.243.166（140 ms）
+2026-11-05 13:05:25,351 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（120 ms）
+2026-11-05 13:05:25,352 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,352 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,352 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,353 [INFO] 优选结果：alive.github.com -> 140.82.113.26（238 ms）
+2026-11-05 13:05:25,353 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.112.22（241 ms）
+2026-11-05 13:05:25,354 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,354 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,355 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,355 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,356 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,356 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,357 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,357 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,358 [INFO] 优选结果：central.github.com -> 140.82.112.22（241 ms）
+2026-11-05 13:05:25,358 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,358 [INFO] 优选结果：collector.github.com -> 140.82.113.22（243 ms）
+2026-11-05 13:05:25,358 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,359 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,359 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.252.254（246 ms）
+2026-11-05 13:05:25,359 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.244.19（239 ms）
+2026-11-05 13:05:25,359 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.214.138（241 ms）
+2026-11-05 13:05:25,359 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 16.15.183.65（257 ms）
+2026-11-05 13:05:25,360 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.182.41.82（241 ms）
+2026-11-05 13:05:25,360 [INFO] 优选结果：github.blog -> 192.0.66.2（174 ms）
+2026-11-05 13:05:25,360 [INFO] 优选结果：github.community -> 140.82.113.17（271 ms）
+2026-11-05 13:05:25,360 [INFO] 优选结果：github.githubassets.com -> 185.199.109.215（87 ms）
+2026-11-05 13:05:25,361 [INFO] 优选结果：github.map.fastly.net -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,361 [INFO] 优选结果：live.github.com -> 140.82.113.25（230 ms）
+2026-11-05 13:05:25,361 [INFO] 优选结果：media.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,362 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（99 ms）
+2026-11-05 13:05:25,362 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,362 [INFO] 优选结果：vscode.dev -> 150.171.110.104（92 ms）
+2026-11-05 13:05:25,362 [INFO] 优选结果：education.github.com -> 140.82.112.21（243 ms）
+2026-11-05 13:05:25,363 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.108.133（82 ms）
+2026-11-05 13:05:25,363 [INFO] 优选结果：github.io -> 185.199.109.153（105 ms）
+2026-11-05 13:05:25,363 [INFO] 优选结果：githubstatus.com -> 185.199.109.153（105 ms）
+2026-11-05 13:05:25,368 [INFO] 写入 hosts 条目：20.205.243.166 github.com
+2026-11-05 13:05:25,368 [INFO] 写入 hosts 条目：20.205.243.168 api.github.com
+2026-11-05 13:05:25,369 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 13:05:25,369 [INFO] 写入 hosts 条目：20.205.243.166 gist.github.com
+2026-11-05 13:05:25,369 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 13:05:25,371 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 13:05:25,371 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 13:05:25,371 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 13:05:25,372 [INFO] 写入 hosts 条目：140.82.113.26 alive.github.com
+2026-11-05 13:05:25,372 [INFO] 写入 hosts 条目：140.82.112.22 api.individual.githubcopilot.com
+2026-11-05 13:05:25,372 [INFO] 写入 hosts 条目：185.199.108.133 avatars.githubusercontent.com
+2026-11-05 13:05:25,373 [INFO] 写入 hosts 条目：185.199.108.133 avatars0.githubusercontent.com
+2026-11-05 13:05:25,373 [INFO] 写入 hosts 条目：185.199.108.133 avatars1.githubusercontent.com
+2026-11-05 13:05:25,374 [INFO] 写入 hosts 条目：185.199.108.133 avatars2.githubusercontent.com
+2026-11-05 13:05:25,374 [INFO] 写入 hosts 条目：185.199.108.133 avatars3.githubusercontent.com
+2026-11-05 13:05:25,375 [INFO] 写入 hosts 条目：185.199.108.133 avatars4.githubusercontent.com
+2026-11-05 13:05:25,375 [INFO] 写入 hosts 条目：185.199.108.133 avatars5.githubusercontent.com
+2026-11-05 13:05:25,375 [INFO] 写入 hosts 条目：185.199.108.133 camo.githubusercontent.com
+2026-11-05 13:05:25,375 [INFO] 写入 hosts 条目：140.82.112.22 central.github.com
+2026-11-05 13:05:25,376 [INFO] 写入 hosts 条目：185.199.108.133 cloud.githubusercontent.com
+2026-11-05 13:05:25,376 [INFO] 写入 hosts 条目：140.82.113.22 collector.github.com
+2026-11-05 13:05:25,376 [INFO] 写入 hosts 条目：185.199.108.133 desktop.githubusercontent.com
+2026-11-05 13:05:25,377 [INFO] 写入 hosts 条目：185.199.108.133 favicons.githubusercontent.com
+2026-11-05 13:05:25,377 [INFO] 写入 hosts 条目：16.15.252.254 github-cloud.s3.amazonaws.com
+2026-11-05 13:05:25,377 [INFO] 写入 hosts 条目：16.15.244.19 github-com.s3.amazonaws.com
+2026-11-05 13:05:25,377 [INFO] 写入 hosts 条目：16.15.214.138 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 13:05:25,378 [INFO] 写入 hosts 条目：16.15.183.65 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 13:05:25,378 [INFO] 写入 hosts 条目：16.182.41.82 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 13:05:25,378 [INFO] 写入 hosts 条目：192.0.66.2 github.blog
+2026-11-05 13:05:25,378 [INFO] 写入 hosts 条目：140.82.113.17 github.community
+2026-11-05 13:05:25,379 [INFO] 写入 hosts 条目：185.199.109.215 github.githubassets.com
+2026-11-05 13:05:25,379 [INFO] 写入 hosts 条目：185.199.108.133 github.map.fastly.net
+2026-11-05 13:05:25,379 [INFO] 写入 hosts 条目：140.82.113.25 live.github.com
+2026-11-05 13:05:25,379 [INFO] 写入 hosts 条目：185.199.108.133 media.githubusercontent.com
+2026-11-05 13:05:25,379 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 13:05:25,380 [INFO] 写入 hosts 条目：185.199.108.133 user-images.githubusercontent.com
+2026-11-05 13:05:25,380 [INFO] 写入 hosts 条目：150.171.110.104 vscode.dev
+2026-11-05 13:05:25,380 [INFO] 写入 hosts 条目：140.82.112.21 education.github.com
+2026-11-05 13:05:25,380 [INFO] 写入 hosts 条目：185.199.108.133 private-user-images.githubusercontent.com
+2026-11-05 13:05:25,381 [INFO] 写入 hosts 条目：185.199.109.153 github.io
+2026-11-05 13:05:25,381 [INFO] 写入 hosts 条目：185.199.109.153 githubstatus.com
+2026-11-05 13:05:25,452 [INFO] DNS 缓存刷新成功
+2026-11-05 13:05:25,461 [INFO] 启用加速完成，共写入 41 个域名的优选映射
+2026-11-05 13:06:15,825 [INFO] 收到停用加速请求
+2026-11-05 13:06:15,841 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 13:06:15,903 [INFO] DNS 缓存刷新成功
+2026-11-05 13:06:29,252 [INFO] 收到强制还原请求
+2026-11-05 13:06:29,266 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 13:06:29,334 [INFO] DNS 缓存刷新成功
+2026-11-05 13:08:41,025 [INFO] 主窗口已最小化到托盘
+2026-11-05 13:08:44,578 [INFO] 收到退出请求
+2026-11-05 13:08:44,581 [INFO] 已保存主窗口位置尺寸：{'window_width': 720, 'window_height': 560, 'window_x': 360, 'window_y': 113}
+2026-11-05 13:08:44,581 [INFO] ===== 程序退出 =====
+2026-11-05 13:14:40,658 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 13:14:40,659 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\config.json
+2026-11-05 13:14:40,659 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 13:14:40,660 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\github_hosts.txt，自动生成模板文件
+2026-11-05 13:14:40,660 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\github_hosts.txt
+2026-11-05 13:14:41,727 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 13:14:41,749 [INFO] 收到启用加速请求，开始处理
+2026-11-05 13:14:41,750 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 13:14:41,754 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\hosts.github_backup
+2026-11-05 13:14:41,755 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 13:14:41,756 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 13:14:41,756 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 13:14:41,756 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 13:14:41,757 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 13:14:41,757 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 13:14:41,757 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 13:14:41,757 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 13:14:41,758 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 13:14:41,762 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 13:14:41,810 [INFO] 收到退出请求
+2026-11-05 13:14:41,812 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmpj1avn1kt\hosts
+2026-11-05 13:14:41,814 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 13:14:41,815 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 13:14:41,816 [INFO] ===== 程序退出 =====
+2026-11-05 14:00:44,729 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-05 14:00:44,893 [INFO] 管理员实例已启动，当前进程退出
+2026-11-05 14:00:45,083 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 14:00:45,084 [INFO] 配置加载完成：{'auto_update_on_enable': True, 'refresh_interval_hours': 6, 'window_width': 720, 'window_height': 560, 'window_x': 360, 'window_y': 113}
+2026-11-05 14:00:45,084 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 14:00:45,501 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 14:00:45,574 [INFO] 托盘图标已就绪
+2026-11-05 14:00:48,915 [INFO] 打开下载加速链接生成器
+2026-11-05 14:01:49,387 [INFO] 打开下载加速链接生成器
+2026-11-05 14:02:14,067 [INFO] 打开下载加速链接生成器
+2026-11-05 14:02:17,806 [INFO] 生成下载加速链接：https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:02:20,495 [INFO] 已在浏览器中打开加速链接：https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:03:11,025 [INFO] 生成下载加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:03:13,098 [INFO] 已在浏览器中打开加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:03:23,721 [INFO] 生成下载加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:03:25,663 [INFO] 生成下载加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:03:27,230 [INFO] 已在浏览器中打开加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:08:11,360 [INFO] 已打开原理介绍页面：https://github.com/hunshcn/gh-proxy
+2026-11-05 14:08:43,489 [INFO] 生成下载加速链接：https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:08:46,825 [INFO] 生成下载加速链接：https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:08:49,794 [INFO] 生成下载加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:08:50,798 [INFO] 已打开原理介绍页面：https://github.com/hunshcn/gh-proxy
+2026-11-05 14:09:12,644 [INFO] 生成下载加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:09:13,699 [INFO] 生成下载加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:09:17,446 [INFO] 生成下载加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:09:25,126 [INFO] 已在浏览器中打开加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:16:10,301 [INFO] 生成下载加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:17:33,957 [INFO] 生成下载加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW.git
+2026-11-05 14:23:05,646 [INFO] 主窗口已最小化到托盘
+2026-11-05 14:25:37,896 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 14:25:37,897 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\config.json
+2026-11-05 14:25:37,897 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 14:25:37,897 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\github_hosts.txt，自动生成模板文件
+2026-11-05 14:25:37,898 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\github_hosts.txt
+2026-11-05 14:25:38,919 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 14:25:38,939 [INFO] 收到启用加速请求，开始处理
+2026-11-05 14:25:38,941 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 14:25:38,944 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\hosts.github_backup
+2026-11-05 14:25:38,945 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 14:25:38,946 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 14:25:38,946 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 14:25:38,946 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 14:25:38,946 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 14:25:38,947 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:25:38,947 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:25:38,947 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:25:38,948 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 14:25:38,948 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 14:25:38,948 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 14:25:38,949 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 14:25:38,949 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 14:25:38,949 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 14:25:38,949 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 14:25:38,949 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 14:25:38,954 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 14:25:38,999 [INFO] 收到退出请求
+2026-11-05 14:25:39,001 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmpcs3nj_zx\hosts
+2026-11-05 14:25:39,002 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 14:25:39,004 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 14:25:39,004 [INFO] ===== 程序退出 =====
+2026-11-05 14:26:06,238 [INFO] 收到退出请求
+2026-11-05 14:26:06,240 [INFO] 已保存主窗口位置尺寸：{'window_width': 720, 'window_height': 560, 'window_x': 360, 'window_y': 113}
+2026-11-05 14:26:06,241 [INFO] ===== 程序退出 =====
+2026-11-05 14:26:10,641 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-05 14:26:10,797 [INFO] 管理员实例已启动，当前进程退出
+2026-11-05 14:26:11,012 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 14:26:11,013 [INFO] 配置加载完成：{'auto_update_on_enable': True, 'refresh_interval_hours': 6, 'window_width': 720, 'window_height': 560, 'window_x': 360, 'window_y': 113}
+2026-11-05 14:26:11,014 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 14:26:11,368 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 14:26:11,445 [INFO] 托盘图标已就绪
+2026-11-05 14:26:20,341 [INFO] 打开下载加速链接生成器
+2026-11-05 14:27:00,294 [INFO] 生成下载加速链接：原始=https://github.com/898838605/STELLAR-DRAW.git，类型=clone，结果=https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:27:04,163 [INFO] 已在浏览器中打开加速链接：https://gh-proxy.com/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:27:24,619 [INFO] 生成下载加速链接：原始=https://github.com/898838605/STELLAR-DRAW.git，类型=clone，结果=https://ghfast.top/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:27:30,538 [INFO] 生成下载加速链接：原始=https://github.com/898838605/STELLAR-DRAW.git，类型=clone，结果=https://ghfast.top/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:27:32,312 [INFO] 已在浏览器中打开加速链接：https://ghfast.top/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:28:09,745 [INFO] 生成下载加速链接：原始=https://github.com/898838605/STELLAR-DRAW.git，类型=clone，结果=https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:28:11,959 [INFO] 生成下载加速链接：原始=https://github.com/898838605/STELLAR-DRAW.git，类型=clone，结果=https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:28:15,078 [INFO] 已在浏览器中打开加速链接：https://ghproxy.net/https://github.com/898838605/STELLAR-DRAW/archive/refs/heads/main.zip
+2026-11-05 14:28:27,119 [INFO] 打开下载加速链接生成器
+2026-11-05 14:29:44,023 [INFO] 打开下载加速链接生成器
+2026-11-05 14:33:48,181 [INFO] 收到启用加速请求，开始处理
+2026-11-05 14:33:48,183 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 14:33:48,778 [INFO] 在线更新成功：解析 40 条，新增 13 条，合并后共 130 条候选
+2026-11-05 14:33:48,780 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 14:33:48,791 [INFO] 开始对 66 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 14:33:50,805 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 14:33:50,805 [INFO] 测速成功 13.107.42.16：117 ms
+2026-11-05 14:33:50,806 [INFO] 测速成功 140.248.129.194：271 ms
+2026-11-05 14:33:50,806 [INFO] 测速成功 140.248.165.194：278 ms
+2026-11-05 14:33:50,806 [INFO] 测速成功 140.82.112.10：271 ms
+2026-11-05 14:33:50,806 [INFO] 测速成功 140.82.112.17：271 ms
+2026-11-05 14:33:50,806 [INFO] 测速成功 140.82.112.21：233 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.22：301 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.25：300 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.26：260 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.3：316 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.6：285 ms
+2026-11-05 14:33:50,807 [INFO] 测速成功 140.82.112.9：268 ms
+2026-11-05 14:33:50,808 [INFO] 测速成功 140.82.113.10：309 ms
+2026-11-05 14:33:50,808 [INFO] 测速成功 140.82.113.17：284 ms
+2026-11-05 14:33:50,808 [INFO] 测速成功 140.82.113.21：284 ms
+2026-11-05 14:33:50,808 [INFO] 测速成功 140.82.113.22：279 ms
+2026-11-05 14:33:50,809 [INFO] 测速成功 140.82.113.25：253 ms
+2026-11-05 14:33:50,809 [INFO] 测速成功 140.82.113.26：259 ms
+2026-11-05 14:33:50,809 [INFO] 测速成功 140.82.113.3：266 ms
+2026-11-05 14:33:50,810 [INFO] 测速成功 140.82.113.6：265 ms
+2026-11-05 14:33:50,810 [INFO] 测速成功 140.82.114.18：265 ms
+2026-11-05 14:33:50,810 [INFO] 测速成功 140.82.114.21：268 ms
+2026-11-05 14:33:50,811 [INFO] 测速成功 140.82.114.22：258 ms
+2026-11-05 14:33:50,811 [INFO] 测速成功 140.82.114.25：264 ms
+2026-11-05 14:33:50,811 [INFO] 测速成功 140.82.114.26：279 ms
+2026-11-05 14:33:50,811 [INFO] 测速成功 140.82.114.3：241 ms
+2026-11-05 14:33:50,811 [INFO] 测速成功 150.171.110.104：86 ms
+2026-11-05 14:33:50,812 [INFO] 测速成功 150.171.110.108：156 ms
+2026-11-05 14:33:50,812 [INFO] 测速成功 150.171.110.70：120 ms
+2026-11-05 14:33:50,812 [INFO] 测速成功 151.101.1.194：93 ms
+2026-11-05 14:33:51,196 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 14:33:51,197 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.162.104：240 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.173.240：237 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.183.65：279 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.199.6：256 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.207.216：254 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.212.146：271 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.212.211：278 ms
+2026-11-05 14:33:51,197 [INFO] 测速成功 16.15.214.138：262 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.215.134：263 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.215.149：1288 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.228.186：260 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.244.19：238 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.252.198：264 ms
+2026-11-05 14:33:51,198 [INFO] 测速成功 16.15.252.254：257 ms
+2026-11-05 14:33:51,199 [INFO] 测速成功 16.15.253.29：270 ms
+2026-11-05 14:33:51,199 [INFO] 测速成功 16.15.253.3：264 ms
+2026-11-05 14:33:51,542 [INFO] 测速失败 16.182.41.82：TimeoutError: timed out
+2026-11-05 14:33:51,574 [INFO] 测速失败 185.199.108.133：TimeoutError: timed out
+2026-11-05 14:33:51,590 [INFO] 测速失败 185.199.109.133：TimeoutError: timed out
+2026-11-05 14:33:51,591 [INFO] 测速成功 185.199.109.153：108 ms
+2026-11-05 14:33:51,591 [INFO] 测速成功 185.199.109.215：108 ms
+2026-11-05 14:33:51,591 [INFO] 测速成功 185.199.110.133：1118 ms
+2026-11-05 14:33:51,592 [INFO] 测速成功 185.199.110.153：1118 ms
+2026-11-05 14:33:51,592 [INFO] 测速成功 185.199.110.215：124 ms
+2026-11-05 14:33:51,639 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 14:33:51,640 [INFO] 测速成功 192.0.66.2：200 ms
+2026-11-05 14:33:51,640 [INFO] 测速成功 199.232.69.194：231 ms
+2026-11-05 14:33:51,640 [INFO] 测速成功 20.205.243.165：131 ms
+2026-11-05 14:33:51,748 [INFO] 测速失败 20.205.243.166：TimeoutError: timed out
+2026-11-05 14:33:51,749 [INFO] 测速成功 20.205.243.168：1149 ms
+2026-11-05 14:33:51,811 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 14:33:51,843 [INFO] 测速失败 52.216.62.154：TimeoutError: timed out
+2026-11-05 14:33:51,920 [INFO] 测速失败 78.16.49.15：TimeoutError: timed out
+2026-11-05 14:33:51,921 [INFO] 优选结果：github.com -> 140.82.114.3（241 ms）
+2026-11-05 14:33:51,922 [INFO] 优选结果：api.github.com -> 140.82.113.6（265 ms）
+2026-11-05 14:33:51,922 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（131 ms）
+2026-11-05 14:33:51,922 [INFO] 优选结果：gist.github.com -> 140.82.112.9（268 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（93 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：alive.github.com -> 140.82.113.26（259 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.114.22（258 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：central.github.com -> 140.82.114.22（258 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：collector.github.com -> 140.82.113.22（279 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.173.240（237 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.244.19（238 ms）
+2026-11-05 14:33:51,923 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.173.240（237 ms）
+2026-11-05 14:33:51,924 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 16.15.253.3（264 ms）
+2026-11-05 14:33:51,924 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.15.207.216（254 ms）
+2026-11-05 14:33:51,924 [INFO] 优选结果：github.blog -> 192.0.66.2（200 ms）
+2026-11-05 14:33:51,924 [INFO] 优选结果：github.community -> 140.82.114.18（265 ms）
+2026-11-05 14:33:51,925 [INFO] 优选结果：github.githubassets.com -> 185.199.109.215（108 ms）
+2026-11-05 14:33:51,925 [INFO] 优选结果：live.github.com -> 140.82.113.25（253 ms）
+2026-11-05 14:33:51,925 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（117 ms）
+2026-11-05 14:33:51,925 [INFO] 优选结果：vscode.dev -> 150.171.110.104（86 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：education.github.com -> 140.82.112.21（233 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：github.io -> 185.199.109.153（108 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：githubstatus.com -> 185.199.109.153（108 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,926 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,927 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：github.map.fastly.net -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：media.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.110.133（1118 ms）
+2026-11-05 14:33:51,928 [WARNING] 以下域名无可用 IP，已跳过：gist.githubusercontent.com
+2026-11-05 14:33:51,930 [INFO] 写入 hosts 条目：140.82.114.3 github.com
+2026-11-05 14:33:51,930 [INFO] 写入 hosts 条目：140.82.113.6 api.github.com
+2026-11-05 14:33:51,930 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 14:33:51,930 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：140.82.113.26 alive.github.com
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：140.82.114.22 api.individual.githubcopilot.com
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：140.82.114.22 central.github.com
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：140.82.113.22 collector.github.com
+2026-11-05 14:33:51,931 [INFO] 写入 hosts 条目：16.15.173.240 github-cloud.s3.amazonaws.com
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：16.15.244.19 github-com.s3.amazonaws.com
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：16.15.173.240 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：16.15.253.3 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：16.15.207.216 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：192.0.66.2 github.blog
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：140.82.114.18 github.community
+2026-11-05 14:33:51,932 [INFO] 写入 hosts 条目：185.199.109.215 github.githubassets.com
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：140.82.113.25 live.github.com
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：150.171.110.104 vscode.dev
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：140.82.112.21 education.github.com
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：185.199.109.153 github.io
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：185.199.109.153 githubstatus.com
+2026-11-05 14:33:51,933 [INFO] 写入 hosts 条目：185.199.110.133 avatars.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars0.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars1.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars2.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars3.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars4.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 avatars5.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 camo.githubusercontent.com
+2026-11-05 14:33:51,934 [INFO] 写入 hosts 条目：185.199.110.133 cloud.githubusercontent.com
+2026-11-05 14:33:51,935 [INFO] 写入 hosts 条目：185.199.110.133 desktop.githubusercontent.com
+2026-11-05 14:33:51,935 [INFO] 写入 hosts 条目：185.199.110.133 favicons.githubusercontent.com
+2026-11-05 14:33:51,935 [INFO] 写入 hosts 条目：185.199.110.133 github.map.fastly.net
+2026-11-05 14:33:51,936 [INFO] 写入 hosts 条目：185.199.110.133 media.githubusercontent.com
+2026-11-05 14:33:51,936 [INFO] 写入 hosts 条目：185.199.110.133 objects.githubusercontent.com
+2026-11-05 14:33:51,936 [INFO] 写入 hosts 条目：185.199.110.133 raw.githubusercontent.com
+2026-11-05 14:33:51,937 [INFO] 写入 hosts 条目：185.199.110.133 user-images.githubusercontent.com
+2026-11-05 14:33:51,937 [INFO] 写入 hosts 条目：185.199.110.133 private-user-images.githubusercontent.com
+2026-11-05 14:33:51,990 [INFO] DNS 缓存刷新成功
+2026-11-05 14:33:51,999 [INFO] 启用加速完成，共写入 40 个域名的优选映射
+2026-11-05 14:34:14,379 [INFO] 打开下载加速链接生成器
+2026-11-05 14:34:17,380 [INFO] 生成下载加速链接：原始=https://github.com/elie222/rakazo/releases/tag/v0.8.0，类型=file，结果=https://gh-proxy.com/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:34:20,025 [INFO] 加速链接已复制到剪贴板：https://gh-proxy.com/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:02,868 [INFO] 生成下载加速链接：原始=https://github.com/elie222/rakazo/releases/tag/v0.8.0，类型=file，结果=https://ghfast.top/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:04,684 [INFO] 生成下载加速链接：原始=https://github.com/elie222/rakazo/releases/tag/v0.8.0，类型=file，结果=https://ghfast.top/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:05,977 [INFO] 已在浏览器中打开加速链接：https://ghfast.top/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:16,213 [INFO] 生成下载加速链接：原始=https://github.com/elie222/rakazo/releases/tag/v0.8.0，类型=file，结果=https://ghproxy.net/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:18,926 [INFO] 生成下载加速链接：原始=https://github.com/elie222/rakazo/releases/tag/v0.8.0，类型=file，结果=https://ghproxy.net/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:35:19,751 [INFO] 已在浏览器中打开加速链接：https://ghproxy.net/https://github.com/elie222/rakazo/releases/tag/v0.8.0
+2026-11-05 14:36:00,716 [INFO] 主窗口已最小化到托盘
+2026-11-05 14:37:27,085 [WARNING] 连通性测试 github.com（IP=140.82.114.3，来源=hosts）失败：TimeoutError: timed out
+2026-11-05 14:37:30,096 [WARNING] 连通性测试 raw.githubusercontent.com（IP=185.199.110.133，来源=hosts）失败：TimeoutError: timed out
+2026-11-05 14:37:33,134 [WARNING] 连通性测试 github.com 端到端连接失败：TimeoutError: timed out
+2026-11-05 14:37:33,135 [INFO] 连通性测试结果：github.com: 超时 ✗ | raw: 超时 ✗ | 整体: 不可达
+2026-11-05 14:37:39,077 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 14:37:40,999 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 130 条候选
+2026-11-05 14:37:43,470 [INFO] 收到停用加速请求
+2026-11-05 14:37:43,482 [INFO] 已用备份覆盖 hosts：C:\Windows\System32\drivers\etc\hosts.github_backup -> C:\Windows\System32\drivers\etc\hosts
+2026-11-05 14:37:43,519 [INFO] DNS 缓存刷新成功
+2026-11-05 14:39:15,096 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 14:39:15,333 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 130 条候选
+2026-11-05 14:39:28,288 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 14:39:28,524 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 130 条候选
+2026-11-05 14:40:03,901 [INFO] 已修改候选条目：185.199.110.133 media.githubusercontent.com -> 185.199.110.132 media.githubusercontent.com
+2026-11-05 14:40:45,092 [INFO] 已添加候选条目：192.168.1.1 ckasa.com
+2026-11-05 14:50:49,728 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 14:50:49,729 [INFO] 已生成默认配置文件：C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\config.json
+2026-11-05 14:50:49,729 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 14:50:49,730 [WARNING] 未找到 C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\github_hosts.txt，自动生成模板文件
+2026-11-05 14:50:49,730 [INFO] 已生成候选模板：C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\github_hosts.txt
+2026-11-05 14:50:50,909 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 14:50:50,940 [INFO] 收到启用加速请求，开始处理
+2026-11-05 14:50:50,944 [INFO] 在线更新成功：解析 2 条，新增 2 条，合并后共 19 条候选
+2026-11-05 14:50:50,948 [INFO] 已备份原始 hosts -> C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\hosts.github_backup
+2026-11-05 14:50:50,949 [INFO] 优选结果：github.com -> 140.82.112.3（10 ms）
+2026-11-05 14:50:50,949 [INFO] 优选结果：api.github.com -> 140.82.112.6（10 ms）
+2026-11-05 14:50:50,949 [INFO] 优选结果：codeload.github.com -> 140.82.112.10（10 ms）
+2026-11-05 14:50:50,949 [INFO] 优选结果：gist.github.com -> 140.82.112.9（10 ms）
+2026-11-05 14:50:50,950 [INFO] 优选结果：github.global.ssl.fastly.net -> 199.232.69.194（10 ms）
+2026-11-05 14:50:50,950 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:50:50,950 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:50:50,950 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.108.133（10 ms）
+2026-11-05 14:50:50,951 [INFO] 写入 hosts 条目：140.82.112.3 github.com
+2026-11-05 14:50:50,951 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：140.82.112.10 codeload.github.com
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：199.232.69.194 github.global.ssl.fastly.net
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：185.199.108.133 raw.githubusercontent.com
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 14:50:50,952 [INFO] 写入 hosts 条目：185.199.108.133 objects.githubusercontent.com
+2026-11-05 14:50:50,958 [INFO] 启用加速完成，共写入 8 个域名的优选映射
+2026-11-05 14:50:51,001 [INFO] 收到退出请求
+2026-11-05 14:50:51,003 [INFO] 已用备份覆盖 hosts：C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\hosts.github_backup -> C:\Users\89883\AppData\Local\Temp\tmpoqt6a4w5\hosts
+2026-11-05 14:50:51,005 [INFO] 退出前已自动停用加速，hosts 已还原
+2026-11-05 14:50:51,006 [INFO] 已保存主窗口位置尺寸：{'window_width': 800, 'window_height': 600, 'window_x': 10, 'window_y': 20}
+2026-11-05 14:50:51,007 [INFO] ===== 程序退出 =====
+2026-11-05 15:01:16,448 [INFO] 主窗口已最小化到托盘
+2026-11-05 15:01:25,603 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-05 15:01:25,759 [INFO] 管理员实例已启动，当前进程退出
+2026-11-05 15:01:25,950 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 15:01:28,958 [WARNING] 互斥量等待超时，已有实例在运行
+2026-11-05 15:01:28,962 [ERROR] 检测到程序已在运行，本实例退出
+2026-11-05 15:01:32,247 [INFO] 收到退出请求
+2026-11-05 15:01:32,248 [INFO] 已保存主窗口位置尺寸：{'window_width': 720, 'window_height': 560, 'window_x': 615, 'window_y': 128}
+2026-11-05 15:01:32,249 [INFO] ===== 程序退出 =====
+2026-11-05 15:01:34,636 [INFO] 未以管理员身份运行，正在通过 UAC 请求管理员权限并重启自身...
+2026-11-05 15:01:34,786 [INFO] 管理员实例已启动，当前进程退出
+2026-11-05 15:01:34,954 [INFO] ===== 程序启动（管理员权限）=====
+2026-11-05 15:01:34,955 [INFO] 配置加载完成：{'auto_update_on_enable': True, 'refresh_interval_hours': 6, 'window_width': 720, 'window_height': 560, 'window_x': 615, 'window_y': 128}
+2026-11-05 15:01:34,956 [INFO] 启动检测：加速段未写入（未启用）
+2026-11-05 15:01:35,316 [INFO] 定时自动刷新线程已启动，间隔 6 小时
+2026-11-05 15:01:35,386 [INFO] 托盘图标已就绪
+2026-11-05 15:01:44,790 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 15:01:45,066 [INFO] 在线更新成功：解析 40 条，新增 10 条，合并后共 141 条候选
+2026-11-05 15:01:46,327 [INFO] 开始测速全部 141 条候选
+2026-11-05 15:01:46,327 [INFO] 开始对 75 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 15:01:48,331 [INFO] 测速失败 108.160.167.158：TimeoutError: timed out
+2026-11-05 15:01:48,332 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 15:01:48,332 [INFO] 测速成功 13.107.42.16：95 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.248.129.194：245 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.248.165.194：1288 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.82.112.10：247 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.82.112.17：248 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.82.112.21：263 ms
+2026-11-05 15:01:48,332 [INFO] 测速成功 140.82.112.22：277 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.112.25：261 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.112.26：292 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.112.3：276 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.112.6：1302 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.112.9：247 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.113.10：276 ms
+2026-11-05 15:01:48,333 [INFO] 测速成功 140.82.113.17：259 ms
+2026-11-05 15:01:48,334 [INFO] 测速成功 140.82.113.21：290 ms
+2026-11-05 15:01:48,334 [INFO] 测速成功 140.82.113.22：281 ms
+2026-11-05 15:01:48,334 [INFO] 测速成功 140.82.113.25：278 ms
+2026-11-05 15:01:48,335 [INFO] 测速成功 140.82.113.26：246 ms
+2026-11-05 15:01:48,335 [INFO] 测速成功 140.82.113.3：261 ms
+2026-11-05 15:01:48,336 [INFO] 测速成功 140.82.113.6：263 ms
+2026-11-05 15:01:48,336 [INFO] 测速成功 140.82.114.18：263 ms
+2026-11-05 15:01:48,336 [INFO] 测速成功 140.82.114.21：273 ms
+2026-11-05 15:01:48,337 [INFO] 测速成功 140.82.114.22：258 ms
+2026-11-05 15:01:48,337 [INFO] 测速成功 140.82.114.25：264 ms
+2026-11-05 15:01:48,622 [INFO] 测速失败 140.82.114.26：TimeoutError: timed out
+2026-11-05 15:01:48,623 [INFO] 测速成功 140.82.114.3：263 ms
+2026-11-05 15:01:48,623 [INFO] 测速成功 150.171.110.103：109 ms
+2026-11-05 15:01:48,624 [INFO] 测速成功 150.171.110.104：123 ms
+2026-11-05 15:01:48,624 [INFO] 测速成功 150.171.110.108：123 ms
+2026-11-05 15:01:48,624 [INFO] 测速成功 150.171.110.70：1150 ms
+2026-11-05 15:01:48,625 [INFO] 测速成功 151.101.1.194：92 ms
+2026-11-05 15:01:48,857 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 15:01:48,858 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 15:01:48,858 [INFO] 测速成功 16.15.161.169：248 ms
+2026-11-05 15:01:48,858 [INFO] 测速成功 16.15.162.104：253 ms
+2026-11-05 15:01:48,859 [INFO] 测速成功 16.15.173.240：252 ms
+2026-11-05 15:01:48,859 [INFO] 测速成功 16.15.183.65：263 ms
+2026-11-05 15:01:48,859 [INFO] 测速成功 16.15.191.153：262 ms
+2026-11-05 15:01:48,859 [INFO] 测速成功 16.15.199.6：264 ms
+2026-11-05 15:01:48,860 [INFO] 测速成功 16.15.207.216：269 ms
+2026-11-05 15:01:48,860 [INFO] 测速成功 16.15.212.146：264 ms
+2026-11-05 15:01:48,860 [INFO] 测速成功 16.15.212.211：265 ms
+2026-11-05 15:01:48,861 [INFO] 测速成功 16.15.214.138：265 ms
+2026-11-05 15:01:48,861 [INFO] 测速成功 16.15.215.134：265 ms
+2026-11-05 15:01:48,861 [INFO] 测速成功 16.15.215.149：265 ms
+2026-11-05 15:01:48,862 [INFO] 测速成功 16.15.228.186：239 ms
+2026-11-05 15:01:48,862 [INFO] 测速成功 16.15.244.19：281 ms
+2026-11-05 15:01:48,862 [INFO] 测速成功 16.15.244.9：1264 ms
+2026-11-05 15:01:48,862 [INFO] 测速成功 16.15.252.198：277 ms
+2026-11-05 15:01:48,863 [INFO] 测速成功 16.15.252.254：242 ms
+2026-11-05 15:01:48,863 [INFO] 测速成功 16.15.253.29：296 ms
+2026-11-05 15:01:48,863 [INFO] 测速成功 16.15.253.3：281 ms
+2026-11-05 15:01:48,864 [INFO] 测速成功 16.15.255.108：277 ms
+2026-11-05 15:01:48,864 [INFO] 测速成功 16.182.41.82：250 ms
+2026-11-05 15:01:48,864 [INFO] 测速成功 185.199.108.133：94 ms
+2026-11-05 15:01:48,864 [INFO] 测速成功 185.199.109.133：93 ms
+2026-11-05 15:01:48,865 [INFO] 测速成功 185.199.109.153：98 ms
+2026-11-05 15:01:48,865 [INFO] 测速成功 185.199.109.215：124 ms
+2026-11-05 15:01:48,865 [INFO] 测速成功 185.199.110.132：119 ms
+2026-11-05 15:01:48,866 [INFO] 测速成功 185.199.110.133：113 ms
+2026-11-05 15:01:48,866 [INFO] 测速成功 185.199.110.153：94 ms
+2026-11-05 15:01:48,866 [INFO] 测速成功 185.199.110.215：124 ms
+2026-11-05 15:01:49,668 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 15:01:49,669 [INFO] 测速成功 192.0.66.2：181 ms
+2026-11-05 15:01:49,684 [INFO] 测速失败 192.168.1.1：TimeoutError: timed out
+2026-11-05 15:01:49,685 [INFO] 测速成功 199.232.69.194：259 ms
+2026-11-05 15:01:49,686 [INFO] 测速成功 20.205.243.165：148 ms
+2026-11-05 15:01:49,686 [INFO] 测速成功 20.205.243.166：163 ms
+2026-11-05 15:01:49,688 [INFO] 测速成功 20.205.243.168：167 ms
+2026-11-05 15:01:49,744 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 15:01:49,746 [INFO] 测速成功 52.216.62.154：263 ms
+2026-11-05 15:01:49,746 [INFO] 测速成功 52.217.76.80：268 ms
+2026-11-05 15:01:49,869 [INFO] 测速失败 78.16.49.15：TimeoutError: timed out
+2026-11-05 15:02:02,204 [INFO] 已修改候选条目：140.82.112.3 github.com -> 140.82.112.2 github.com
+2026-11-05 15:02:05,408 [INFO] 开始测速选中的 1 个 IP
+2026-11-05 15:02:05,409 [INFO] 开始对 1 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 15:02:05,655 [INFO] 测速成功 140.82.112.2：245 ms
+2026-11-05 15:02:19,357 [INFO] 收到启用加速请求，开始处理
+2026-11-05 15:02:19,358 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 15:02:19,583 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 141 条候选
+2026-11-05 15:02:19,586 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 15:02:19,594 [INFO] 开始对 75 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 15:02:21,600 [INFO] 测速失败 108.160.167.158：TimeoutError: timed out
+2026-11-05 15:02:21,601 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 15:02:21,601 [INFO] 测速成功 13.107.42.16：94 ms
+2026-11-05 15:02:21,602 [INFO] 测速成功 140.248.129.194：257 ms
+2026-11-05 15:02:21,602 [INFO] 测速成功 140.248.165.194：272 ms
+2026-11-05 15:02:21,603 [INFO] 测速成功 140.82.112.10：264 ms
+2026-11-05 15:02:21,603 [INFO] 测速成功 140.82.112.17：256 ms
+2026-11-05 15:02:21,603 [INFO] 测速成功 140.82.112.2：241 ms
+2026-11-05 15:02:21,604 [INFO] 测速成功 140.82.112.21：255 ms
+2026-11-05 15:02:21,604 [INFO] 测速成功 140.82.112.22：1241 ms
+2026-11-05 15:02:21,604 [INFO] 测速成功 140.82.112.25：255 ms
+2026-11-05 15:02:21,604 [INFO] 测速成功 140.82.112.26：1278 ms
+2026-11-05 15:02:21,605 [INFO] 测速成功 140.82.112.6：271 ms
+2026-11-05 15:02:21,605 [INFO] 测速成功 140.82.112.9：286 ms
+2026-11-05 15:02:21,605 [INFO] 测速成功 140.82.113.10：270 ms
+2026-11-05 15:02:21,606 [INFO] 测速成功 140.82.113.17：301 ms
+2026-11-05 15:02:21,606 [INFO] 测速成功 140.82.113.21：1263 ms
+2026-11-05 15:02:21,606 [INFO] 测速成功 140.82.113.22：280 ms
+2026-11-05 15:02:21,606 [INFO] 测速成功 140.82.113.25：265 ms
+2026-11-05 15:02:21,607 [INFO] 测速成功 140.82.113.26：249 ms
+2026-11-05 15:02:21,607 [INFO] 测速成功 140.82.113.3：249 ms
+2026-11-05 15:02:21,607 [INFO] 测速成功 140.82.113.6：265 ms
+2026-11-05 15:02:21,607 [INFO] 测速成功 140.82.114.18：235 ms
+2026-11-05 15:02:21,608 [INFO] 测速成功 140.82.114.21：273 ms
+2026-11-05 15:02:21,608 [INFO] 测速成功 140.82.114.22：236 ms
+2026-11-05 15:02:21,608 [INFO] 测速成功 140.82.114.25：253 ms
+2026-11-05 15:02:21,608 [INFO] 测速成功 140.82.114.26：249 ms
+2026-11-05 15:02:21,608 [INFO] 测速成功 140.82.114.3：243 ms
+2026-11-05 15:02:21,609 [INFO] 测速成功 150.171.110.103：1134 ms
+2026-11-05 15:02:21,609 [INFO] 测速成功 150.171.110.104：94 ms
+2026-11-05 15:02:21,609 [INFO] 测速成功 150.171.110.108：138 ms
+2026-11-05 15:02:21,609 [INFO] 测速成功 150.171.110.70：135 ms
+2026-11-05 15:02:21,610 [INFO] 测速成功 151.101.1.194：108 ms
+2026-11-05 15:02:22,124 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 15:02:22,126 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 15:02:22,126 [INFO] 测速成功 16.15.161.169：233 ms
+2026-11-05 15:02:22,126 [INFO] 测速成功 16.15.162.104：249 ms
+2026-11-05 15:02:22,127 [INFO] 测速成功 16.15.173.240：238 ms
+2026-11-05 15:02:22,127 [INFO] 测速成功 16.15.183.65：254 ms
+2026-11-05 15:02:22,127 [INFO] 测速成功 16.15.191.153：1263 ms
+2026-11-05 15:02:22,128 [INFO] 测速成功 16.15.199.6：279 ms
+2026-11-05 15:02:22,128 [INFO] 测速成功 16.15.207.216：280 ms
+2026-11-05 15:02:22,129 [INFO] 测速成功 16.15.212.146：264 ms
+2026-11-05 15:02:22,129 [INFO] 测速成功 16.15.212.211：252 ms
+2026-11-05 15:02:22,130 [INFO] 测速成功 16.15.214.138：249 ms
+2026-11-05 15:02:22,130 [INFO] 测速成功 16.15.215.134：261 ms
+2026-11-05 15:02:22,130 [INFO] 测速成功 16.15.215.149：247 ms
+2026-11-05 15:02:22,130 [INFO] 测速成功 16.15.228.186：260 ms
+2026-11-05 15:02:22,132 [INFO] 测速成功 16.15.244.19：260 ms
+2026-11-05 15:02:22,132 [INFO] 测速成功 16.15.244.9：242 ms
+2026-11-05 15:02:22,132 [INFO] 测速成功 16.15.252.198：241 ms
+2026-11-05 15:02:22,132 [INFO] 测速成功 16.15.252.254：260 ms
+2026-11-05 15:02:22,133 [INFO] 测速成功 16.15.253.29：257 ms
+2026-11-05 15:02:22,133 [INFO] 测速成功 16.15.253.3：244 ms
+2026-11-05 15:02:22,133 [INFO] 测速成功 16.15.255.108：235 ms
+2026-11-05 15:02:22,133 [INFO] 测速成功 16.182.41.82：247 ms
+2026-11-05 15:02:22,134 [INFO] 测速成功 185.199.108.133：105 ms
+2026-11-05 15:02:22,134 [INFO] 测速成功 185.199.109.133：129 ms
+2026-11-05 15:02:22,134 [INFO] 测速成功 185.199.109.153：117 ms
+2026-11-05 15:02:22,135 [INFO] 测速成功 185.199.109.215：101 ms
+2026-11-05 15:02:22,135 [INFO] 测速成功 185.199.110.132：122 ms
+2026-11-05 15:02:22,135 [INFO] 测速成功 185.199.110.133：103 ms
+2026-11-05 15:02:22,135 [INFO] 测速成功 185.199.110.153：101 ms
+2026-11-05 15:02:22,136 [INFO] 测速成功 185.199.110.215：98 ms
+2026-11-05 15:02:22,965 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 15:02:22,966 [INFO] 测速成功 192.0.66.2：200 ms
+2026-11-05 15:02:22,979 [INFO] 测速失败 192.168.1.1：TimeoutError: timed out
+2026-11-05 15:02:22,981 [INFO] 测速成功 199.232.69.194：272 ms
+2026-11-05 15:02:22,982 [INFO] 测速成功 20.205.243.165：136 ms
+2026-11-05 15:02:22,982 [INFO] 测速成功 20.205.243.166：137 ms
+2026-11-05 15:02:22,983 [INFO] 测速成功 20.205.243.168：154 ms
+2026-11-05 15:02:23,011 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 15:02:23,013 [INFO] 测速成功 52.216.62.154：252 ms
+2026-11-05 15:02:23,014 [INFO] 测速成功 52.217.76.80：279 ms
+2026-11-05 15:02:23,136 [INFO] 测速失败 78.16.49.15：TimeoutError: timed out
+2026-11-05 15:02:23,139 [INFO] 优选结果：github.com -> 20.205.243.166（137 ms）
+2026-11-05 15:02:23,140 [INFO] 优选结果：api.github.com -> 20.205.243.168（154 ms）
+2026-11-05 15:02:23,141 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（136 ms）
+2026-11-05 15:02:23,142 [INFO] 优选结果：gist.github.com -> 20.205.243.166（137 ms）
+2026-11-05 15:02:23,143 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（108 ms）
+2026-11-05 15:02:23,143 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,144 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.108.133（105 ms）
+2026-11-05 15:02:23,144 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,144 [INFO] 优选结果：alive.github.com -> 140.82.114.26（249 ms）
+2026-11-05 15:02:23,144 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.114.22（236 ms）
+2026-11-05 15:02:23,145 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,145 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,146 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,146 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,146 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,147 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,147 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,147 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,147 [INFO] 优选结果：central.github.com -> 140.82.114.22（236 ms）
+2026-11-05 15:02:23,147 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,148 [INFO] 优选结果：collector.github.com -> 140.82.114.21（273 ms）
+2026-11-05 15:02:23,148 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,148 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,148 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.173.240（238 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.255.108（235 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.173.240（238 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 16.15.161.169（233 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.182.41.82（247 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github.blog -> 192.0.66.2（200 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github.community -> 140.82.114.18（235 ms）
+2026-11-05 15:02:23,149 [INFO] 优选结果：github.githubassets.com -> 185.199.110.215（98 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：github.map.fastly.net -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：live.github.com -> 140.82.114.26（249 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：media.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（94 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：vscode.dev -> 150.171.110.104（94 ms）
+2026-11-05 15:02:23,150 [INFO] 优选结果：education.github.com -> 140.82.114.22（236 ms）
+2026-11-05 15:02:23,151 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.110.133（103 ms）
+2026-11-05 15:02:23,151 [INFO] 优选结果：github.io -> 185.199.110.153（101 ms）
+2026-11-05 15:02:23,151 [INFO] 优选结果：githubstatus.com -> 185.199.110.153（101 ms）
+2026-11-05 15:02:23,151 [WARNING] 以下域名无可用 IP，已跳过：ckasa.com
+2026-11-05 15:02:23,152 [INFO] 写入 hosts 条目：20.205.243.166 github.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：20.205.243.168 api.github.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：20.205.243.166 gist.github.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：185.199.110.133 raw.githubusercontent.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：185.199.108.133 gist.githubusercontent.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：185.199.110.133 objects.githubusercontent.com
+2026-11-05 15:02:23,153 [INFO] 写入 hosts 条目：140.82.114.26 alive.github.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：140.82.114.22 api.individual.githubcopilot.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars0.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars1.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars2.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars3.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars4.githubusercontent.com
+2026-11-05 15:02:23,154 [INFO] 写入 hosts 条目：185.199.110.133 avatars5.githubusercontent.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：185.199.110.133 camo.githubusercontent.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：140.82.114.22 central.github.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：185.199.110.133 cloud.githubusercontent.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：140.82.114.21 collector.github.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：185.199.110.133 desktop.githubusercontent.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：185.199.110.133 favicons.githubusercontent.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：16.15.173.240 github-cloud.s3.amazonaws.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：16.15.255.108 github-com.s3.amazonaws.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：16.15.173.240 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 15:02:23,155 [INFO] 写入 hosts 条目：16.15.161.169 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：16.182.41.82 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：192.0.66.2 github.blog
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：140.82.114.18 github.community
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：185.199.110.215 github.githubassets.com
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：185.199.110.133 github.map.fastly.net
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：140.82.114.26 live.github.com
+2026-11-05 15:02:23,157 [INFO] 写入 hosts 条目：185.199.110.133 media.githubusercontent.com
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：185.199.110.133 user-images.githubusercontent.com
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：150.171.110.104 vscode.dev
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：140.82.114.22 education.github.com
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：185.199.110.133 private-user-images.githubusercontent.com
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：185.199.110.153 github.io
+2026-11-05 15:02:23,158 [INFO] 写入 hosts 条目：185.199.110.153 githubstatus.com
+2026-11-05 15:02:23,215 [INFO] DNS 缓存刷新成功
+2026-11-05 15:02:23,223 [INFO] 启用加速完成，共写入 41 个域名的优选映射
+2026-11-05 15:02:26,383 [INFO] 连通性测试 github.com（IP=20.205.243.166，来源=hosts）：165 ms
+2026-11-05 15:02:26,491 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.110.133，来源=hosts）：107 ms
+2026-11-05 15:02:26,691 [INFO] 连通性测试 github.com 端到端连接成功：199 ms
+2026-11-05 15:02:26,693 [INFO] 连通性测试结果：github.com: 165ms ✓ | raw: 107ms ✓ | 整体: 可达
+2026-11-05 15:24:34,019 [INFO] 主窗口已最小化到托盘
+2026-11-05 15:25:47,888 [WARNING] 连通性测试 github.com（IP=20.205.243.166，来源=hosts）失败：TimeoutError: timed out
+2026-11-05 15:25:47,972 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.110.133，来源=hosts）：82 ms
+2026-11-05 15:25:50,992 [WARNING] 连通性测试 github.com 端到端连接失败：TimeoutError: timed out
+2026-11-05 15:25:50,993 [INFO] 连通性测试结果：github.com: 超时 ✗ | raw: 82ms ✓ | 整体: 不可达
+2026-11-05 15:25:54,280 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 15:25:54,520 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 141 条候选
+2026-11-05 15:25:57,472 [INFO] 收到启用加速请求，开始处理
+2026-11-05 15:25:57,473 [INFO] 开始在线拉取 IP 列表：https://raw.hellogithub.com/hosts
+2026-11-05 15:25:57,808 [INFO] 在线更新成功：解析 40 条，新增 0 条，合并后共 141 条候选
+2026-11-05 15:25:57,810 [INFO] 已存在原始 hosts 备份，跳过备份：C:\Windows\System32\drivers\etc\hosts.github_backup
+2026-11-05 15:25:57,821 [INFO] 开始对 75 个 IP 测速（TCP 443，超时 2.0 秒，并发）
+2026-11-05 15:25:59,826 [INFO] 测速失败 108.160.167.158：TimeoutError: timed out
+2026-11-05 15:25:59,828 [INFO] 测速失败 128.242.245.43：TimeoutError: timed out
+2026-11-05 15:25:59,828 [INFO] 测速成功 13.107.42.16：93 ms
+2026-11-05 15:25:59,829 [INFO] 测速成功 140.248.129.194：250 ms
+2026-11-05 15:25:59,829 [INFO] 测速成功 140.248.165.194：1270 ms
+2026-11-05 15:25:59,830 [INFO] 测速成功 140.82.112.10：276 ms
+2026-11-05 15:25:59,830 [INFO] 测速成功 140.82.112.17：249 ms
+2026-11-05 15:25:59,831 [INFO] 测速成功 140.82.112.2：280 ms
+2026-11-05 15:25:59,831 [INFO] 测速成功 140.82.112.21：250 ms
+2026-11-05 15:25:59,831 [INFO] 测速成功 140.82.112.22：275 ms
+2026-11-05 15:25:59,832 [INFO] 测速成功 140.82.112.25：279 ms
+2026-11-05 15:25:59,832 [INFO] 测速成功 140.82.112.26：248 ms
+2026-11-05 15:25:59,832 [INFO] 测速成功 140.82.112.6：263 ms
+2026-11-05 15:25:59,833 [INFO] 测速成功 140.82.112.9：278 ms
+2026-11-05 15:25:59,833 [INFO] 测速成功 140.82.113.10：278 ms
+2026-11-05 15:25:59,833 [INFO] 测速成功 140.82.113.17：293 ms
+2026-11-05 15:25:59,834 [INFO] 测速成功 140.82.113.21：245 ms
+2026-11-05 15:25:59,834 [INFO] 测速成功 140.82.113.22：247 ms
+2026-11-05 15:25:59,834 [INFO] 测速成功 140.82.113.25：247 ms
+2026-11-05 15:25:59,834 [INFO] 测速成功 140.82.113.26：242 ms
+2026-11-05 15:25:59,834 [INFO] 测速成功 140.82.113.3：262 ms
+2026-11-05 15:25:59,835 [INFO] 测速成功 140.82.113.6：293 ms
+2026-11-05 15:25:59,835 [INFO] 测速成功 140.82.114.18：267 ms
+2026-11-05 15:25:59,835 [INFO] 测速成功 140.82.114.21：267 ms
+2026-11-05 15:25:59,836 [INFO] 测速成功 140.82.114.22：272 ms
+2026-11-05 15:25:59,836 [INFO] 测速成功 140.82.114.25：263 ms
+2026-11-05 15:25:59,836 [INFO] 测速成功 140.82.114.26：263 ms
+2026-11-05 15:25:59,836 [INFO] 测速成功 140.82.114.3：277 ms
+2026-11-05 15:25:59,837 [INFO] 测速成功 150.171.110.103：109 ms
+2026-11-05 15:25:59,837 [INFO] 测速成功 150.171.110.104：129 ms
+2026-11-05 15:25:59,837 [INFO] 测速成功 150.171.110.108：119 ms
+2026-11-05 15:25:59,837 [INFO] 测速成功 150.171.110.70：138 ms
+2026-11-05 15:25:59,838 [INFO] 测速成功 151.101.1.194：112 ms
+2026-11-05 15:26:00,336 [INFO] 测速失败 157.240.1.50：TimeoutError: timed out
+2026-11-05 15:26:00,337 [INFO] 测速失败 159.24.3.173：TimeoutError: timed out
+2026-11-05 15:26:00,338 [INFO] 测速成功 16.15.161.169：240 ms
+2026-11-05 15:26:00,338 [INFO] 测速成功 16.15.162.104：241 ms
+2026-11-05 15:26:00,338 [INFO] 测速成功 16.15.173.240：261 ms
+2026-11-05 15:26:00,339 [INFO] 测速成功 16.15.183.65：276 ms
+2026-11-05 15:26:00,339 [INFO] 测速成功 16.15.191.153：261 ms
+2026-11-05 15:26:00,340 [INFO] 测速成功 16.15.199.6：258 ms
+2026-11-05 15:26:00,340 [INFO] 测速成功 16.15.207.216：254 ms
+2026-11-05 15:26:00,340 [INFO] 测速成功 16.15.212.146：262 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.212.211：262 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.214.138：278 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.215.134：1269 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.215.149：257 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.228.186：256 ms
+2026-11-05 15:26:00,341 [INFO] 测速成功 16.15.244.19：238 ms
+2026-11-05 15:26:00,342 [INFO] 测速成功 16.15.244.9：261 ms
+2026-11-05 15:26:00,342 [INFO] 测速成功 16.15.252.198：257 ms
+2026-11-05 15:26:00,342 [INFO] 测速成功 16.15.252.254：278 ms
+2026-11-05 15:26:00,343 [INFO] 测速成功 16.15.253.29：278 ms
+2026-11-05 15:26:00,343 [INFO] 测速成功 16.15.253.3：263 ms
+2026-11-05 15:26:00,343 [INFO] 测速成功 16.15.255.108：263 ms
+2026-11-05 15:26:00,343 [INFO] 测速成功 16.182.41.82：245 ms
+2026-11-05 15:26:00,344 [INFO] 测速成功 185.199.108.133：104 ms
+2026-11-05 15:26:00,344 [INFO] 测速成功 185.199.109.133：85 ms
+2026-11-05 15:26:00,344 [INFO] 测速成功 185.199.109.153：119 ms
+2026-11-05 15:26:00,344 [INFO] 测速成功 185.199.109.215：113 ms
+2026-11-05 15:26:00,345 [INFO] 测速成功 185.199.110.132：126 ms
+2026-11-05 15:26:00,345 [INFO] 测速成功 185.199.110.133：91 ms
+2026-11-05 15:26:00,345 [INFO] 测速成功 185.199.110.153：123 ms
+2026-11-05 15:26:00,345 [INFO] 测速成功 185.199.110.215：123 ms
+2026-11-05 15:26:00,933 [INFO] 测速失败 185.199.111.153：TimeoutError: timed out
+2026-11-05 15:26:00,949 [INFO] 测速失败 192.0.66.2：TimeoutError: timed out
+2026-11-05 15:26:00,949 [INFO] 测速失败 192.168.1.1：TimeoutError: timed out
+2026-11-05 15:26:00,950 [INFO] 测速成功 199.232.69.194：249 ms
+2026-11-05 15:26:00,950 [INFO] 测速成功 20.205.243.165：151 ms
+2026-11-05 15:26:01,010 [INFO] 测速失败 20.205.243.166：TimeoutError: timed out
+2026-11-05 15:26:01,011 [INFO] 测速成功 20.205.243.168：1161 ms
+2026-11-05 15:26:01,026 [INFO] 测速失败 203.98.7.65：TimeoutError: timed out
+2026-11-05 15:26:01,027 [INFO] 测速成功 52.216.62.154：238 ms
+2026-11-05 15:26:01,027 [INFO] 测速成功 52.217.76.80：1250 ms
+2026-11-05 15:26:01,105 [INFO] 测速失败 78.16.49.15：TimeoutError: timed out
+2026-11-05 15:26:01,107 [INFO] 优选结果：github.com -> 140.82.113.3（262 ms）
+2026-11-05 15:26:01,107 [INFO] 优选结果：api.github.com -> 140.82.112.6（263 ms）
+2026-11-05 15:26:01,107 [INFO] 优选结果：codeload.github.com -> 20.205.243.165（151 ms）
+2026-11-05 15:26:01,108 [INFO] 优选结果：gist.github.com -> 140.82.112.9（278 ms）
+2026-11-05 15:26:01,108 [INFO] 优选结果：github.global.ssl.fastly.net -> 151.101.1.194（112 ms）
+2026-11-05 15:26:01,108 [INFO] 优选结果：raw.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,108 [INFO] 优选结果：gist.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：objects.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：alive.github.com -> 140.82.113.26（242 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：api.individual.githubcopilot.com -> 140.82.113.21（245 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：avatars.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：avatars0.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,109 [INFO] 优选结果：avatars1.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,110 [INFO] 优选结果：avatars2.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,110 [INFO] 优选结果：avatars3.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,110 [INFO] 优选结果：avatars4.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,110 [INFO] 优选结果：avatars5.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,111 [INFO] 优选结果：camo.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,111 [INFO] 优选结果：central.github.com -> 140.82.113.21（245 ms）
+2026-11-05 15:26:01,111 [INFO] 优选结果：cloud.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,111 [INFO] 优选结果：collector.github.com -> 140.82.113.21（245 ms）
+2026-11-05 15:26:01,112 [INFO] 优选结果：desktop.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,112 [INFO] 优选结果：favicons.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,112 [INFO] 优选结果：github-cloud.s3.amazonaws.com -> 16.15.215.149（257 ms）
+2026-11-05 15:26:01,112 [INFO] 优选结果：github-com.s3.amazonaws.com -> 16.15.244.19（238 ms）
+2026-11-05 15:26:01,113 [INFO] 优选结果：github-production-release-asset-2e65be.s3.amazonaws.com -> 16.15.162.104（241 ms）
+2026-11-05 15:26:01,113 [INFO] 优选结果：github-production-repository-file-5c1aeb.s3.amazonaws.com -> 52.216.62.154（238 ms）
+2026-11-05 15:26:01,113 [INFO] 优选结果：github-production-user-asset-6210df.s3.amazonaws.com -> 16.182.41.82（245 ms）
+2026-11-05 15:26:01,113 [INFO] 优选结果：github.community -> 140.82.112.17（249 ms）
+2026-11-05 15:26:01,114 [INFO] 优选结果：github.githubassets.com -> 185.199.109.215（113 ms）
+2026-11-05 15:26:01,114 [INFO] 优选结果：github.map.fastly.net -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,114 [INFO] 优选结果：live.github.com -> 140.82.113.26（242 ms）
+2026-11-05 15:26:01,114 [INFO] 优选结果：media.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,114 [INFO] 优选结果：pipelines.actions.githubusercontent.com -> 13.107.42.16（93 ms）
+2026-11-05 15:26:01,115 [INFO] 优选结果：user-images.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,115 [INFO] 优选结果：vscode.dev -> 150.171.110.103（109 ms）
+2026-11-05 15:26:01,115 [INFO] 优选结果：education.github.com -> 140.82.113.21（245 ms）
+2026-11-05 15:26:01,115 [INFO] 优选结果：private-user-images.githubusercontent.com -> 185.199.109.133（85 ms）
+2026-11-05 15:26:01,115 [INFO] 优选结果：github.io -> 185.199.109.153（119 ms）
+2026-11-05 15:26:01,116 [INFO] 优选结果：githubstatus.com -> 185.199.109.153（119 ms）
+2026-11-05 15:26:01,116 [WARNING] 以下域名无可用 IP，已跳过：ckasa.com, github.blog
+2026-11-05 15:26:01,118 [INFO] 写入 hosts 条目：140.82.113.3 github.com
+2026-11-05 15:26:01,118 [INFO] 写入 hosts 条目：140.82.112.6 api.github.com
+2026-11-05 15:26:01,119 [INFO] 写入 hosts 条目：20.205.243.165 codeload.github.com
+2026-11-05 15:26:01,119 [INFO] 写入 hosts 条目：140.82.112.9 gist.github.com
+2026-11-05 15:26:01,119 [INFO] 写入 hosts 条目：151.101.1.194 github.global.ssl.fastly.net
+2026-11-05 15:26:01,119 [INFO] 写入 hosts 条目：185.199.109.133 raw.githubusercontent.com
+2026-11-05 15:26:01,119 [INFO] 写入 hosts 条目：185.199.109.133 gist.githubusercontent.com
+2026-11-05 15:26:01,120 [INFO] 写入 hosts 条目：185.199.109.133 objects.githubusercontent.com
+2026-11-05 15:26:01,120 [INFO] 写入 hosts 条目：140.82.113.26 alive.github.com
+2026-11-05 15:26:01,120 [INFO] 写入 hosts 条目：140.82.113.21 api.individual.githubcopilot.com
+2026-11-05 15:26:01,120 [INFO] 写入 hosts 条目：185.199.109.133 avatars.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars0.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars1.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars2.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars3.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars4.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 avatars5.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 camo.githubusercontent.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：140.82.113.21 central.github.com
+2026-11-05 15:26:01,121 [INFO] 写入 hosts 条目：185.199.109.133 cloud.githubusercontent.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：140.82.113.21 collector.github.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：185.199.109.133 desktop.githubusercontent.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：185.199.109.133 favicons.githubusercontent.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：16.15.215.149 github-cloud.s3.amazonaws.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：16.15.244.19 github-com.s3.amazonaws.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：16.15.162.104 github-production-release-asset-2e65be.s3.amazonaws.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：52.216.62.154 github-production-repository-file-5c1aeb.s3.amazonaws.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：16.182.41.82 github-production-user-asset-6210df.s3.amazonaws.com
+2026-11-05 15:26:01,122 [INFO] 写入 hosts 条目：140.82.112.17 github.community
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.215 github.githubassets.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.133 github.map.fastly.net
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：140.82.113.26 live.github.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.133 media.githubusercontent.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：13.107.42.16 pipelines.actions.githubusercontent.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.133 user-images.githubusercontent.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：150.171.110.103 vscode.dev
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：140.82.113.21 education.github.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.133 private-user-images.githubusercontent.com
+2026-11-05 15:26:01,123 [INFO] 写入 hosts 条目：185.199.109.153 github.io
+2026-11-05 15:26:01,124 [INFO] 写入 hosts 条目：185.199.109.153 githubstatus.com
+2026-11-05 15:26:01,188 [INFO] DNS 缓存刷新成功
+2026-11-05 15:26:01,202 [INFO] 启用加速完成，共写入 40 个域名的优选映射
+2026-11-05 15:26:03,650 [INFO] 连通性测试 github.com（IP=140.82.113.3，来源=hosts）：248 ms
+2026-11-05 15:26:03,736 [INFO] 连通性测试 raw.githubusercontent.com（IP=185.199.109.133，来源=hosts）：84 ms
+2026-11-05 15:26:04,009 [INFO] 连通性测试 github.com 端到端连接成功：272 ms
+2026-11-05 15:26:04,010 [INFO] 连通性测试结果：github.com: 248ms ✓ | raw: 84ms ✓ | 整体: 可达

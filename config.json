@@ -1,0 +1,8 @@
+{
+  "auto_update_on_enable": true,
+  "refresh_interval_hours": 6,
+  "window_width": 720,
+  "window_height": 560,
+  "window_x": 615,
+  "window_y": 128
+}
