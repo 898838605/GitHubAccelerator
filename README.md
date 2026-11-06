@@ -348,3 +348,7 @@ pyinstaller -F -w --name GitHubHostsAccelerator --icon=icon.ico main.py
 3. 为什么定时刷新前要检查备份存在？不检查会发生什么？
 4. 子线程想更新表格，正确路径是什么？为什么不能直接调 `tree.insert`？
 5. 用户在操作进行中点了「退出」，程序会怎么表现？
+
+## License
+
+本项目基于 [MIT License](LICENSE) 开源。
