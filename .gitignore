@@ -21,6 +21,9 @@ icon.png
 # Windows 组件缓存误落到仓库时的兜底（非项目文件）
 %SystemDrive%/
 
+# 单元测试仅在本地保留，不随仓库发布
+tests/
+
 # 工具缓存
 .pytest_cache/
 .ruff_cache/

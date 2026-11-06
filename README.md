@@ -18,7 +18,6 @@ Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图�
 | 更新 IP 列表 | 从 GitHub520 稳定地址（`https://raw.hellogithub.com/hosts`）拉取最新 IP，与本地合并去重 |
 | 全部 / 选中测速 | TCP 443 并发测速，延迟显示在表格中，可按列排序 |
 | 连通性测试 | 检测 `github.com` / `raw.githubusercontent.com` 当前生效 IP 是否可达 |
-| 代理检测 | 识别系统代理（环境变量 / WinINET / PAC），提示 hosts 加速在代理网络下可能不适用 |
 | IPv6 支持 | 候选清单与 hosts 加速段支持公网 IPv6 地址（`IP 域名` 行），标题排序 v4/v6 混排正确 |
 | 定时自动刷新 | 每 N 小时（可配置）静默执行一次完整刷新（仅加速启用时） |
 | 托盘常驻 | 关闭窗口只是隐藏到托盘；托盘菜单可完成全部操作；退出前自动还原 hosts |
@@ -162,24 +161,16 @@ https://gh-proxy.com/https://github.com/owner/repo/releases/download/v1.0/setup.
 - **表格增量刷新**：按 `(IP, 域名)` 做稳定主键，只插入 / 删除 / 更新变化的行，刷新不再丢失选中项与滚动位置，候选上百条时也不卡。
 - **日志预览增量**：按文件大小 + mtime 判断日志是否变化，没变化就不重读 512KB 的 app.log。
 
-### 2.10 代理检测与 IPv6（v5.1）
+### 2.10 IPv6 支持（v5.1）
 
-**代理检测**：hosts 加速只改域名解析、不转发流量。如果用户所在网络必须经过代理上网（公司网络、本地代理软件的系统代理模式），直连 GitHub 的 IP 往往不可达，hosts 加速也就无从生效。程序启动与「测试连通性」时会检测：
-
-- 环境变量 `HTTPS_PROXY` / `HTTP_PROXY` / `ALL_PROXY`（大小写都查）；
-- 系统代理（WinINET 注册表 `ProxyEnable` + `ProxyServer`，支持 `http=...;https=...` 写法）；
-- 自动配置脚本（PAC，`AutoConfigURL`）。
-
-检测到代理时：启动日志与状态栏给出提示；连通性结果区新增「代理：」一行；若「启用加速」全部候选测速失败，错误信息会说明可能是代理网络导致，并建议改用「下载加速链接」的镜像方案。检测只读，不修改任何系统设置。
-
-**IPv6 支持**：候选清单的每一行仍是 `IP 域名`，第一列现在同时接受 IPv4 与标准写法的 IPv6（不需要方括号），例如：
+候选清单的每一行仍是 `IP 域名`，第一列同时接受 IPv4 与标准写法的 IPv6（不需要方括号），例如：
 
 ```
 140.82.113.3 github.com
 2606:50c0:8000::153 github.com
 ```
 
-写入 hosts 时按原样输出 IPv6 地址；测速对 IPv6 目标使用 `AF_INET6` socket；TLS 校验同样适用；IP 列排序在 v4 / v6 混排时也正确（IPv4 在前、数值升序）。只接受公网地址，链路本地 / ULA / 回环等地址会被过滤。
+写入 hosts 时按原样输出 IPv6 地址；测速对 IPv6 目标使用 `AF_INET6` socket；TLS 严格校验同样适用；IP 列排序在 v4 / v6 混排时也正确（IPv4 在前、数值升序）。只接受公网地址，链路本地 / ULA / 回环等地址会被过滤。
 
 ## 3. 模块架构说明
 
@@ -207,9 +198,8 @@ GitHubAccelerator/
 │   ├── fileio.py            原子文件写入（临时文件 + fsync + os.replace）
 │   ├── dpi.py               高 DPI 感知声明与 Tk 缩放调整
 │   └── app_icon.py          代码绘制应用图标 / 生成 icon.png+ico / 任务栏 AppUserModelID
-├── tests/                   pytest 单元测试（hosts / 配置 / 目录 / 链接 / 测速 / 提权约定）
-├── .github/workflows/ci.yml GitHub Actions：ruff + pytest + 打包
-├── pyproject.toml           依赖、pytest 与 ruff 配置
+├── .github/workflows/ci.yml GitHub Actions：ruff + 打包
+├── pyproject.toml           依赖与 ruff 配置
 ├── GitHubHostsAccelerator.spec PyInstaller 打包配置（排除未用库 + 版本资源）
 ├── version_info.txt         exe 版本信息（产品名 / 版本 / 版权）
 └── README.md                本文档
@@ -272,7 +262,7 @@ spec 里已经配好：单文件、无控制台、`icon.ico`、版本资源（`v
 
 ### 4.4 日常操作
 
-- **主窗口**：顶部徽标显示启用状态（绿=已启用）与 hosts 生效条目数；连通性结果区会显示「代理：」检测结果；按钮区完成启停 / 更新 / 测速；长任务执行时按钮区下方出现**进度条**，「取消」按钮可随时中断（测速 / TLS 校验 / 在线更新）；表格支持表头点击排序（再点一次切换升降序）、双击编辑 IP、右键菜单（仅测速此项 / 复制 IP / 删除此项）、多选删除；底部是连通性结果与日志预览；
+- **主窗口**：顶部徽标显示启用状态（绿=已启用）与 hosts 生效条目数；按钮区完成启停 / 更新 / 测速；长任务执行时按钮区下方出现**进度条**，「取消」按钮可随时中断（测速 / TLS 校验 / 在线更新）；表格支持表头点击排序（再点一次切换升降序）、双击编辑 IP、右键菜单（仅测速此项 / 复制 IP / 删除此项）、多选删除；底部是连通性结果与日志预览；
 - **下载加速链接生成**（按钮区右上角「🔗 下载加速链接生成」）：粘贴 GitHub 文件链接（如 `https://github.com/owner/repo/releases/download/v1.0/setup.zip`），选一个加速节点后点「生成链接」，再「一键复制」到下载工具或「在浏览器中打开」直接下载；窗口为**非模态**，打开期间主窗口操作不受影响；切换节点 / 分支会自动重新生成（原理见 2.6 节）；粘贴 `.git` 克隆地址或仓库主页链接时自动转为源码包直链（分支默认 main，可切换 master）；窗口底部「项目主页：GitHubAccelerator」可直接打开本项目仓库；
 - **关闭窗口** = 隐藏到托盘（进程不退出）；**双击托盘图标**重新打开；
 - **托盘右键菜单**：全部操作均可从托盘完成；

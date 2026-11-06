@@ -55,7 +55,6 @@ class AppState:
         self.progress = None            # 进行中任务的进度 {text, done, total}；None=空闲
         self.window_geometry = None     # (宽, 高, x, y) 供退出时保存窗口位置
         self.ui_scale = 1.0             # 记录窗口几何时的 DPI 缩放系数（高 DPI 换算用）
-        self.proxy = None               # 最近一次检测到的系统代理信息（dict）
         self._subscribers = []          # 事件订阅者列表：fn(event, payload)
 
     # ------------------------------------------------------------------
