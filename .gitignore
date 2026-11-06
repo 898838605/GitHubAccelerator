@@ -15,7 +15,7 @@ config.json
 config.json.bad
 github_hosts.txt
 
-# 运行时生成的图标（icon.ico 作为构建输入保留在仓库中）
+# 运行时生成的图标（构建时如需图标，可把 icon.ico 放本地项目根）
 icon.png
 
 # Windows 组件缓存误落到仓库时的兜底（非项目文件）
@@ -31,3 +31,9 @@ tests/
 
 # 本地审查报告（不发布到公开仓库）
 docs/优化方案.md
+
+# 打包与 CI 配置：仅本地保留，不随仓库发布
+GitHubHostsAccelerator.spec
+version_info.txt
+icon.ico
+.github/

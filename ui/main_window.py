@@ -183,7 +183,7 @@ class AppWindow:
                 if attempts > 0:
                     self.root.after(150, lambda: self._set_initial_sashes(attempts - 1))
                 return
-            conn_min = int(120 * self._scale)   # 连通性区（两行结果 + 标题）最小高度
+            conn_min = int(150 * self._scale)   # 连通性区（两行结果 + 代理行 + 标题）最小高度
             log_min = int(140 * self._scale)    # 日志预览区最小高度
             first = max(int(160 * self._scale),
                         min(int(total * 0.45), total - conn_min - log_min))
@@ -340,7 +340,7 @@ class AppWindow:
             font=fonts.ui_font(self.root, 12, bold=True), fg=CONN_IDLE_COLOR)
         self.conn_summary_label.pack(fill='x', pady=(2, 0))
         self.conn_vars = {key: tk.StringVar(value='—')
-                          for key in ('github', 'raw', 'overall', 'time')}
+                          for key in ('github', 'raw', 'overall', 'time', 'proxy')}
         grid = ttk.Frame(conn_frame)
         grid.pack(fill='x')
         layout = (('github', 'github.com'), ('raw', 'raw'),
@@ -351,6 +351,11 @@ class AppWindow:
                 row=row, column=col * 2, sticky='e', padx=4, pady=1)
             ttk.Label(grid, textvariable=self.conn_vars[key]).grid(
                 row=row, column=col * 2 + 1, sticky='w', padx=4, pady=1)
+        # 代理检测结果（hosts 加速在代理网络下可能不适用，单独一行提示）
+        ttk.Label(grid, text='代理：').grid(
+            row=2, column=0, sticky='e', padx=4, pady=1)
+        ttk.Label(grid, textvariable=self.conn_vars['proxy']).grid(
+            row=2, column=1, columnspan=3, sticky='w', padx=4, pady=1)
 
         # E. 日志预览区（浅灰底 + 等宽字体 + 分级着色）
         log_frame = ttk.Labelframe(paned, text='日志预览（最近 200 行）', padding=4)
@@ -855,6 +860,7 @@ class AppWindow:
         self.conn_vars['raw'].set(data.get('raw', '—'))
         self.conn_vars['overall'].set(data.get('overall', '—'))
         self.conn_vars['time'].set(data.get('time', '—'))
+        self.conn_vars['proxy'].set(data.get('proxy', '—'))
         summary = data.get('summary_line', '')
         # 汇总行以 ✅ / ❌ 开头 —— 用首字符选颜色，规则与 core 层文案约定一致
         if summary.startswith('✅'):

@@ -39,6 +39,7 @@ from core.app_state import op_lock, state
 from ui import actions
 from ui import main_window, tray_icon
 from utils import admin, app_icon, dpi
+from utils import proxy as proxy_detector
 from utils.logger import fatal_popup, setup_logging
 from utils.version import __version__
 
@@ -224,6 +225,13 @@ def main():
     if state.enabled and not state.is_admin:
         logger.warning('hosts 处于加速状态但当前为受限模式：停用/还原需要提权')
         state.set_message('加速处于启用状态，停用需要管理员权限')
+    proxy_info = proxy_detector.detect_proxy()
+    state.proxy = proxy_info
+    if proxy_info['enabled']:
+        description = proxy_detector.describe_proxy(proxy_info)
+        logger.warning('检测到系统代理（%s）：hosts 加速可能不适用，'
+                       '必要时可改用「下载加速链接」的镜像方案', description)
+        state.set_message(f'检测到系统代理：{description}，hosts 加速可能不适用')
 
     # --- 应用图标：任务栏分组 ID + 生成 icon.png / icon.ico（缺失时） ---
     app_icon.set_app_user_model_id()

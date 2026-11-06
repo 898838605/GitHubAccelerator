@@ -24,6 +24,7 @@ from core import config_manager
 from core import hosts_manager
 from core import network_tester
 from core.app_state import op_cancel, op_lock, state
+from utils import proxy as proxy_detector
 
 logger = logging.getLogger(__name__)
 
@@ -270,6 +271,10 @@ def enable(silent=False):
     best = network_tester.pick_best_from_results(usable_pairs, results)
     if not best:
         message = '所有候选 IP 均不可用，请更新 github_hosts.txt'
+        proxy_info = proxy_detector.detect_proxy()
+        if proxy_info['enabled']:
+            message += (f'（检测到系统代理：{proxy_detector.describe_proxy(proxy_info)}，'
+                        'hosts 加速在代理网络下可能不适用，可改用「下载加速链接」）')
         logger.error(message)
         notify_user(message)
         return False, message
@@ -506,6 +511,15 @@ def test_connectivity():
     返回值：dict —— network_tester.run_connectivity_test() 的详情。
     """
     details = network_tester.run_connectivity_test()
+    # 代理检测：hosts 加速不改变流量走向，代理网络下直连 IP 可能不可达，
+    # 把结果一并展示，避免用户误以为"加速没生效"。
+    proxy_info = proxy_detector.detect_proxy()
+    details['proxy'] = proxy_detector.describe_proxy(proxy_info)
+    details['proxy_enabled'] = proxy_info['enabled']
+    if proxy_info['enabled']:
+        logger.warning('检测到系统代理：%s',
+                       proxy_detector.describe_proxy(proxy_info))
+        details['summary'] += ' | 代理: 已启用'
     state.last_connectivity = details
     state.publish('connectivity', details)
     notify_user(details['summary'])
