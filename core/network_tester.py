@@ -392,11 +392,13 @@ def run_connectivity_test():
     """
     details = {'time': time.strftime('%Y-%m-%d %H:%M:%S')}
     results = []
+    hosts_missing = []
     for domain, label, key in (('github.com', 'github.com', 'github'),
                                ('raw.githubusercontent.com', 'raw', 'raw')):
         ip = hosts_manager.find_hosts_ip(domain)
         source = 'hosts'
         if ip is None:  # hosts 中未配置时回退系统 DNS 解析
+            hosts_missing.append(domain)
             try:
                 ip = socket.gethostbyname(domain)
                 source = 'DNS'
@@ -437,5 +439,12 @@ def run_connectivity_test():
         details['summary_line'] = '❌ 整体不可达'
 
     details['summary'] = ' | '.join(results)
+    if hosts_missing:
+        # 说明加速段里根本没写这些域名（通常是本轮启用时无可用 IP），
+        # 与"写了但 IP 不通"是两种不同的故障，界面要能区分。
+        details['hosts_missing'] = hosts_missing
+        details['summary'] += ' | hosts 未写入: ' + ', '.join(hosts_missing)
+        details['summary_line'] += f"（hosts 未写入：{'、'.join(hosts_missing)}）"
+        logger.warning('hosts 加速段中未找到这些域名：%s', '、'.join(hosts_missing))
     logger.info('连通性测试结果：%s', details['summary'])
     return details

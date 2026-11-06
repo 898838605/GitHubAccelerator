@@ -246,6 +246,14 @@ def enable(silent=False):
 
     # 2.5 白名单 / 公网 IP 过滤：只有 GitHub 相关域名才能进入系统 hosts
     usable_pairs = _filter_pairs_with_notice(pairs, '候选列表')
+    if usable_pairs:
+        # 远端列表可能缺少核心域名或只剩不可达 IP：补充少量内置兜底候选，
+        # 仍然要经过测速 / TLS 校验才会写入 hosts。
+        supplemented = hosts_manager.with_builtin_fallbacks(usable_pairs)
+        if len(supplemented) > len(usable_pairs):
+            logger.info('已补充 %d 条内置兜底候选参与本次测速',
+                        len(supplemented) - len(usable_pairs))
+            usable_pairs = supplemented
     if not usable_pairs:
         message = '候选列表中没有可用的 GitHub 域名（已过滤不合规条目），请更新后重试'
         logger.error(message)
@@ -278,6 +286,15 @@ def enable(silent=False):
         logger.error(message)
         notify_user(message)
         return False, message
+
+    # 核心域名缺失提示（例如本轮 github.com 全部候选不可达）：
+    # 不阻断启用，但要让用户知道 hosts 里没有写入它，避免"显示已启用却没加速"的困惑。
+    present_domains = {domain for _ip, domain in usable_pairs}
+    missing_core = [domain for domain in ('github.com', 'api.github.com',
+                                          'raw.githubusercontent.com')
+                    if domain in present_domains and domain not in best]
+    if missing_core:
+        logger.warning('核心域名没有可用 IP，未写入 hosts：%s', '、'.join(missing_core))
 
     # 4. 严格 TLS 校验：剔除"能建连但证书不对"的 IP（劫持 / 代理接管）
     if _config.get('strict_tls_verify', True):
@@ -331,6 +348,8 @@ def enable(silent=False):
     state.publish('accel_changed')  # 生效条目数刷新
     state.set_progress('')
     message = f'加速已启用，优选写入 {len(best)} 个域名'
+    if missing_core:
+        message += f'；未写入：{"、".join(missing_core)}（无可用 IP）'
     logging.info('启用加速完成，共写入 %d 个域名的优选映射', len(best))
     if not silent:
         notify_user(message)

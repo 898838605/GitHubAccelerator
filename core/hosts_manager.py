@@ -78,6 +78,19 @@ ALLOWED_DOMAIN_SUFFIXES = (
     'vscode.dev',             # GitHub520 列表附带的 VS Code 在线版域名
 )
 
+# 内置兜底候选：GitHub 官方常见入口 IP。
+# 远端列表（GitHub520）偶尔会缺少某些核心域名、或只剩极少 IP（例如 github.com
+# 只剩一个不可达的 IP），导致"启用后 github.com 没写进 hosts"。
+# 这里为常见核心域名提供少量兜底候选；只在候选列表中已经出现对应域名时补充，
+# 且所有兜底 IP 仍然要经过测速与 TLS 校验才会真正写入 hosts。
+BUILTIN_FALLBACK_CANDIDATES = {
+    'github.com': ('140.82.112.3', '140.82.113.3', '140.82.114.3', '20.27.177.113'),
+    'api.github.com': ('140.82.112.6', '140.82.113.6', '140.82.114.6'),
+    'gist.github.com': ('140.82.112.9', '140.82.113.9', '140.82.114.9'),
+    'github.io': ('185.199.108.153', '185.199.109.153', '185.199.110.153'),
+    'githubstatus.com': ('185.199.108.153', '185.199.109.153'),
+}
+
 # 远端合并进候选文件时打的来源标记（行尾注释，不影响「IP 域名」解析）。
 # 只有带标记的行才会在后续更新中被自动淘汰，用户手工写的行永远不动。
 REMOTE_LINE_MARK = '  # gha:remote'
@@ -610,6 +623,26 @@ def filter_allowed_entries(pairs):
         else:
             rejected.append((ip, domain))
     return allowed, rejected
+
+
+def with_builtin_fallbacks(pairs):
+    """在候选列表中补充内置兜底候选（仅限已出现的核心域名）。
+
+    入参：pairs —— [(IP, 域名), ...]。
+    返回值：list[(IP, 域名)] —— 原条目 + 新增兜底条目（已去重）。
+    """
+    known = set(pairs)
+    domains = {domain for _ip, domain in pairs}
+    extra = []
+    for domain, ips in BUILTIN_FALLBACK_CANDIDATES.items():
+        if domain not in domains:
+            continue
+        for ip in ips:
+            pair = (ip, domain)
+            if pair not in known:
+                known.add(pair)
+                extra.append(pair)
+    return list(pairs) + extra
 
 
 def looks_like_ipv4(text):
