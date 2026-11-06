@@ -328,15 +328,30 @@ def fetch_remote_hosts():
     所以数据源放在第三方稳定地址 raw.hellogithub.com。
     为什么失败返回元组而不是抛异常？网络失败是"正常业务分支"而非程序错误，
     用返回值表达可预期失败，用异常表达意外错误 —— 调用方不会漏处理。
+
+    v5.1.4：先按系统代理设置请求；如果代理不可用（例如本机代理软件已退出，
+    出现 WinError 10061 连接被拒绝），自动改用直连重试一次。
+    hosts 加速本身走的是直连，所以代理挂掉时直连往往反而可用。
     """
+    request = urllib.request.Request(
+        REMOTE_HOSTS_URL, headers={'User-Agent': USER_AGENT})
     logger.info('开始在线拉取 IP 列表：%s', REMOTE_HOSTS_URL)
+
+    # 1) 默认方式：urllib 会使用 Windows 系统代理设置
     try:
-        request = urllib.request.Request(
-            REMOTE_HOSTS_URL, headers={'User-Agent': USER_AGENT})
         with urllib.request.urlopen(request, timeout=FETCH_TIMEOUT) as response:
             return True, response.read().decode('utf-8', errors='replace')
     except Exception as error:
-        logger.warning('在线拉取失败：%s', error)
+        logger.warning('在线拉取失败（系统代理方式）：%s', error)
+
+    # 2) 兜底：绕过系统代理直连再试一次
+    try:
+        direct = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        with direct.open(request, timeout=FETCH_TIMEOUT) as response:
+            logger.info('系统代理不可用，已改用直连拉取成功')
+            return True, response.read().decode('utf-8', errors='replace')
+    except Exception as error:
+        logger.warning('在线拉取失败（直连重试）：%s', error)
         return False, f'拉取失败：{error}'
 
 
