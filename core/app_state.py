@@ -56,6 +56,13 @@ class AppState:
         self.window_geometry = None     # (宽, 高, x, y) 供退出时保存窗口位置
         self.ui_scale = 1.0             # 记录窗口几何时的 DPI 缩放系数（高 DPI 换算用）
         self.proxy = None               # 最近一次检测到的系统代理信息（dict）
+        self.proxy_status = {           # 代理可用性（检测 + 探活）
+            'detected': False, 'server': None, 'verified': False,
+            'detail': '未检测到',
+        }
+        self.git_mirror = {             # Git 镜像加速状态
+            'enabled': False, 'prefix': '', 'detail': '未启用',
+        }
         self._subscribers = []          # 事件订阅者列表：fn(event, payload)
 
     # ------------------------------------------------------------------

@@ -36,6 +36,12 @@ DEFAULT_CONFIG = {
     'refresh_interval_hours': 6,     # 定时自动刷新间隔（小时）
     'test_timeout_seconds': 2.0,     # 单次 TCP 测速超时（秒）
     'strict_tls_verify': True,       # 是否对核心域名做严格 TLS 证书校验
+    'git_mirror_enabled': False,     # 是否已启用 Git 镜像加速
+    'preferred_mirror': '',          # 首选下载镜像（空=自动测速选择）
+    'preferred_git_mirror': '',      # 首选 Git 镜像（空=自动测速选择）
+    'git_mirror_scope': 'global',    # Git 镜像作用域（预留 local）
+    'proxy_auto_detect': True,       # 是否自动检测系统代理
+    'diagnose_on_startup': False,    # 启动时是否自动做网络诊断
 }
 
 # 窗口相关的可选键（缺失或非法时记为 None，界面层按默认值处理）
@@ -147,6 +153,36 @@ def load_config(config_path=None):
                 logger.warning('配置项 ui_scale 超出合理范围（%r），忽略', data['ui_scale'])
         except Exception:
             logger.warning('配置项 ui_scale 非法（%r），忽略', data['ui_scale'])
+
+    # Git 镜像 / 代理相关配置（宽松解析）
+    raw = data.get('git_mirror_enabled', False)
+    if isinstance(raw, bool):
+        config['git_mirror_enabled'] = raw
+    elif isinstance(raw, str):
+        config['git_mirror_enabled'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
+    elif isinstance(raw, (int, float)):
+        config['git_mirror_enabled'] = bool(raw)
+
+    for key in ('preferred_mirror', 'preferred_git_mirror'):
+        raw = data.get(key, '')
+        if isinstance(raw, str):
+            config[key] = raw.strip()
+        else:
+            logger.warning('配置项 %s 类型非法（%r），使用自动选择', key, raw)
+
+    raw = data.get('git_mirror_scope', 'global')
+    config['git_mirror_scope'] = raw if raw in ('global', 'local') else 'global'
+
+    raw = data.get('proxy_auto_detect', True)
+    if isinstance(raw, bool):
+        config['proxy_auto_detect'] = raw
+    elif isinstance(raw, str):
+        config['proxy_auto_detect'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
+    else:
+        config['proxy_auto_detect'] = bool(raw)
+
+    raw = data.get('diagnose_on_startup', False)
+    config['diagnose_on_startup'] = bool(raw) if isinstance(raw, bool) else False
 
     # window_*：可选，能转 int 就用，否则保持 None
     for key in _WINDOW_KEYS:

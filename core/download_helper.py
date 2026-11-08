@@ -19,9 +19,19 @@ core 层规则：纯函数——输入前缀与链接、返回结果，不碰界
 """
 
 import logging
+import time
 import urllib.parse
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from utils.version import __version__
 
 logger = logging.getLogger(__name__)
+
+# 镜像健康检查目标：一个体积很小、稳定的 GitHub 仓库源码包
+MIRROR_PROBE_URL = 'https://github.com/octocat/Hello-World/archive/refs/heads/master.zip'
+MIRROR_PROBE_TIMEOUT = 6
+USER_AGENT = f'GitHubHostsAccelerator/{__version__}'
 
 # 常用镜像代理前缀（界面下拉框的候选，按需自行增删）。
 # 调用格式是「前缀 + 完整原始链接」：
@@ -99,6 +109,58 @@ def build_accel_url(prefix, url):
     accel_url = normalize_prefix(prefix) + url
     logger.info('下载加速：已生成加速链接：%s', accel_url)
     return True, accel_url
+
+
+def probe_mirror(prefix, timeout=MIRROR_PROBE_TIMEOUT):
+    """测试单个镜像节点是否可用，返回可用性与延迟。
+
+    入参：prefix —— 镜像前缀；timeout —— 超时秒数。
+    返回值：dict —— {'prefix','ok','ms','status','error'}。
+    只读取前 1KB 内容后关闭连接，避免真的下载整个包。
+    """
+    started = time.perf_counter()
+    url = normalize_prefix(prefix) + MIRROR_PROBE_URL
+    request = urllib.request.Request(url, headers={
+        'User-Agent': USER_AGENT, 'Range': 'bytes=0-1023'})
+    last_error = ''
+    # 先直连（镜像站通常无需系统代理），失败再按系统代理重试
+    for use_direct in (True, False):
+        try:
+            opener = (urllib.request.build_opener(urllib.request.ProxyHandler({}))
+                      if use_direct else urllib.request.build_opener())
+            with opener.open(request, timeout=timeout) as response:
+                response.read(1024)
+                elapsed = round((time.perf_counter() - started) * 1000)
+                return {'prefix': normalize_prefix(prefix), 'ok': True,
+                        'ms': elapsed, 'status': getattr(response, 'status', 0),
+                        'error': None}
+        except Exception as error:
+            last_error = str(error)[:120]
+    return {'prefix': normalize_prefix(prefix), 'ok': False,
+            'ms': round((time.perf_counter() - started) * 1000), 'status': None,
+            'error': last_error}
+
+
+def probe_mirrors(prefixes=None, timeout=MIRROR_PROBE_TIMEOUT):
+    """并发探测多个镜像节点，返回按延迟升序的结果列表。"""
+    targets = list(prefixes or MIRROR_PREFIXES)
+    results = []
+    with ThreadPoolExecutor(max_workers=min(4, len(targets))) as pool:
+        futures = {pool.submit(probe_mirror, prefix, timeout): prefix
+                   for prefix in targets}
+        for future in as_completed(futures):
+            results.append(future.result())
+    usable = sorted((item for item in results if item['ok']), key=lambda x: x['ms'])
+    failed = [item for item in results if not item['ok']]
+    return usable + failed
+
+
+def pick_fastest_mirror(results):
+    """从 probe_mirrors 结果中选最快可用镜像；没有可用返回 None。"""
+    for item in results:
+        if item['ok']:
+            return item
+    return None
 
 
 def resolve_github_url(url, branch=DEFAULT_BRANCH):

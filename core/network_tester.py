@@ -318,6 +318,56 @@ def verify_tls_batch(targets, timeout=TLS_VERIFY_TIMEOUT,
     return results
 
 
+def probe_https(domain, ip, path='/', max_bytes=131072, timeout=6):
+    """对指定 IP 做 TLS + HTTP GET 小探测，验证真实 HTTPS 是否可用。
+
+    入参：domain —— SNI/证书域名；ip —— 目标 IP；path —— 请求路径；
+          max_bytes —— 最多读取字节数（防止真的下载整页）；timeout —— 超时秒数。
+    返回值：dict —— {'ok','status','ttfb_ms','elapsed_ms','bytes','reason'}。
+    用途：hosts 写入后判断"域名是否真的能用"，区分 DNS 层成功与 HTTPS 层受限。
+    """
+    started = time.perf_counter()
+    try:
+        context = ssl.create_default_context()
+        with socket.create_connection((ip, TEST_PORT), timeout=timeout) as raw:
+            raw.settimeout(timeout)
+            with context.wrap_socket(raw, server_hostname=domain) as tls:
+                tls.settimeout(timeout)
+                request = (f'GET {path} HTTP/1.1\r\n'
+                           f'Host: {domain}\r\n'
+                           f'User-Agent: {USER_AGENT}\r\n'
+                           f'Range: bytes=0-{max(0, max_bytes - 1)}\r\n'
+                           'Accept-Encoding: identity\r\n'
+                           'Connection: close\r\n\r\n')
+                tls.sendall(request.encode('ascii', errors='ignore'))
+                data = b''
+                ttfb = None
+                while len(data) < max_bytes:
+                    chunk = tls.recv(min(8192, max_bytes - len(data)))
+                    if not chunk:
+                        break
+                    if ttfb is None:
+                        ttfb = round((time.perf_counter() - started) * 1000)
+                    data += chunk
+        elapsed = round((time.perf_counter() - started) * 1000)
+        status = None
+        if data.startswith(b'HTTP/'):
+            try:
+                status = int(data.split(b' ', 2)[1])
+            except (IndexError, ValueError):
+                status = None
+        header_end = data.find(b'\r\n\r\n')
+        body = data[header_end + 4:] if header_end >= 0 else b''
+        ok = status in (200, 206, 301, 302, 304, 404) and len(body) > 0
+        return {'ok': ok, 'status': status, 'ttfb_ms': ttfb,
+                'elapsed_ms': elapsed, 'bytes': len(body),
+                'reason': None if ok else 'HTTPS 传输受限或连接中断'}
+    except Exception as error:
+        return {'ok': False, 'status': None, 'ttfb_ms': None,
+                'elapsed_ms': round((time.perf_counter() - started) * 1000),
+                'bytes': 0, 'reason': _classify_error(error)}
+
+
 def fetch_remote_hosts():
     """从 GitHub520 稳定地址拉取最新 hosts 数据。
 

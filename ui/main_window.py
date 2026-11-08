@@ -127,6 +127,7 @@ class AppWindow:
         self.refresh_tree()
         self.refresh_connectivity_view()
         self.refresh_log()
+        self.refresh_mode_view()
         self.tick()  # 启动每秒一次的倒计时刷新
         # 按 DPI 重新分配三个区域的初始高度（见 _set_initial_sashes 的注释）
         self.root.after(150, self._set_initial_sashes)
@@ -250,6 +251,29 @@ class AppWindow:
         # 状态栏第二行：上次刷新时间 / 下次定时刷新倒计时（每秒更新）
         self.info_var = tk.StringVar(value='')
         ttk.Label(self.root, textvariable=self.info_var, padding=(12, 0)).pack(fill='x')
+
+        # A2. 加速方式（v5.2：Git 镜像 / hosts / 代理，三种引擎独立开关）
+        mode_bar = ttk.Frame(self.root, padding=(10, 0, 10, 6))
+        mode_bar.pack(fill='x')
+        ttk.Label(mode_bar, text='加速方式：').pack(side='left')
+        self.git_mirror_btn = ttk.Button(mode_bar, text='Git 镜像加速',
+                                         command=self.toggle_git_mirror)
+        self.git_mirror_btn.pack(side='left', padx=(0, 6))
+        self._op_buttons.append((self.git_mirror_btn, 'Git 镜像加速'))
+        self.git_mirror_var = tk.StringVar(value='未启用')
+        ttk.Label(mode_bar, textvariable=self.git_mirror_var).pack(
+            side='left', padx=(0, 12))
+        self.mirror_test_btn = ttk.Button(mode_bar, text='下载节点测速',
+                                          command=self.test_download_mirrors)
+        self.mirror_test_btn.pack(side='left', padx=(0, 6))
+        self._op_buttons.append((self.mirror_test_btn, '下载节点测速'))
+        ttk.Label(mode_bar, text='代理：').pack(side='left', padx=(8, 0))
+        self.proxy_status_var = tk.StringVar(value='检测中…')
+        ttk.Label(mode_bar, textvariable=self.proxy_status_var).pack(side='left')
+        self.git_proxy_btn = ttk.Button(mode_bar, text='Git 代理',
+                                        command=self.toggle_git_proxy)
+        self.git_proxy_btn.pack(side='left', padx=(6, 0))
+        self._op_buttons.append((self.git_proxy_btn, 'Git 代理'))
 
         # B. 操作按钮区（水平排列；全部经统一调度器执行）
         bar = ttk.Frame(self.root, padding=(10, 8))
@@ -427,10 +451,43 @@ class AppWindow:
                 self.refresh_connectivity_view()
             if refresh_all or 'connectivity' in events:
                 self.refresh_log()
+            if refresh_all or events & {'git_mirror', 'proxy_status'}:
+                self.refresh_mode_view()
             if refresh_all or events & {'enabled', 'message', 'refresh_time'}:
                 self.update_info_line()
         except Exception:
             logger.exception('处理状态事件失败：%s', sorted(events))
+
+    # ---------- 加速方式（v5.2） ----------
+
+    def toggle_git_mirror(self, button=None):
+        """Git 镜像加速开关（后台线程执行，完成后广播状态）。"""
+        actions.run_action(service.git_mirror_toggle, button)
+
+    def test_download_mirrors(self, button=None):
+        """测试下载镜像节点并选择最快节点。"""
+        actions.run_action(service.test_download_mirrors, button)
+
+    def toggle_git_proxy(self, button=None):
+        """Git 代理开关：已有则清除，没有则用检测到的系统代理。"""
+        actions.run_action(service.git_proxy_toggle, button)
+
+    def refresh_mode_view(self):
+        """刷新加速方式区：Git 镜像状态与代理检测结果。"""
+        mirror = state.git_mirror or {}
+        if mirror.get('enabled'):
+            detail = mirror.get('detail') or '已启用'
+            self.git_mirror_var.set(detail)
+            self.git_mirror_btn.configure(text='关闭 Git 镜像')
+        else:
+            self.git_mirror_var.set(mirror.get('detail') or '未启用')
+            self.git_mirror_btn.configure(text='Git 镜像加速')
+
+        proxy = state.proxy_status or {}
+        if proxy.get('detected'):
+            self.proxy_status_var.set(proxy.get('detail') or '已检测到')
+        else:
+            self.proxy_status_var.set(proxy.get('detail') or '未检测到')
 
     def cancel_current(self):
         """「取消」按钮回调：请求取消当前后台操作（真正的停止点由 core 检查）。

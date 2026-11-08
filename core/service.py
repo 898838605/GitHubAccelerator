@@ -21,8 +21,11 @@ import os
 import time
 
 from core import config_manager
+from core import download_helper
+from core import git_accelerator
 from core import hosts_manager
 from core import network_tester
+from core import proxy_helper
 from core.app_state import op_cancel, op_lock, state
 from utils import proxy as proxy_detector
 
@@ -86,6 +89,181 @@ def notify_user(message, popup=True):
 # ---------------------------------------------------------------------------
 # 内部工具
 # ---------------------------------------------------------------------------
+
+def _save_config_values(values):
+    """把少量配置变更合并写回 config.json，并同步内存配置。"""
+    global _config
+    _config.update(values)
+    try:
+        config_manager.merge_config_values(values)
+    except Exception:
+        logger.warning('保存配置失败（本次运行仍生效）', exc_info=True)
+
+
+# ---------------------------------------------------------------------------
+# Git 镜像加速（v5.2 核心：不依赖管理员/代理，跨系统可用）
+# ---------------------------------------------------------------------------
+
+def _publish_git_mirror(status):
+    """写入全局状态并广播 git_mirror 事件。"""
+    state.git_mirror = {
+        'enabled': bool(status.get('enabled')),
+        'prefix': status.get('prefix') or '',
+        'detail': status.get('detail') or '未启用',
+    }
+    state.publish('git_mirror')
+
+
+def refresh_git_mirror_status():
+    """重新读取 Git 镜像状态（启动时调用）。返回值：status dict。"""
+    try:
+        status = git_accelerator.status()
+    except Exception:
+        logger.exception('读取 Git 镜像状态失败')
+        status = {'git_found': False, 'enabled': False, 'prefix': '',
+                  'detail': '读取失败'}
+    _publish_git_mirror(status)
+    return status
+
+
+def git_mirror_toggle():
+    """Git 镜像加速开关（供按钮/托盘调用）。
+
+    入参：无。返回值：(ok, message)。
+    """
+    status = git_accelerator.status()
+    if not status.get('git_found'):
+        message = '未检测到 Git，请先安装 Git for Windows'
+        notify_user(message)
+        return False, message
+    if status.get('enabled'):
+        return git_mirror_disable()
+    return git_mirror_enable()
+
+
+def git_mirror_enable(preferred=None):
+    """启用 Git 镜像加速。返回值：(ok, message)。"""
+    preferred = preferred or _config.get('preferred_git_mirror') or None
+    state.set_progress('正在测速 Git 镜像…', 0, 0)
+    try:
+        ok, message, prefix = git_accelerator.enable(preferred)
+    except Exception as error:
+        logger.exception('启用 Git 镜像失败')
+        ok, message, prefix = False, f'启用 Git 镜像失败：{error}', None
+    state.set_progress('')
+    if ok:
+        _save_config_values({'git_mirror_enabled': True,
+                             'preferred_git_mirror': prefix or ''})
+    notify_user(message)
+    _publish_git_mirror(git_accelerator.status())
+    return ok, message
+
+
+def git_mirror_disable():
+    """关闭 Git 镜像加速。返回值：(ok, message)。"""
+    state.set_progress('正在还原 Git 配置…', 0, 0)
+    try:
+        ok, message = git_accelerator.disable()
+    except Exception as error:
+        logger.exception('关闭 Git 镜像失败')
+        ok, message = False, f'关闭 Git 镜像失败：{error}'
+    state.set_progress('')
+    if ok:
+        _save_config_values({'git_mirror_enabled': False})
+    notify_user(message)
+    _publish_git_mirror(git_accelerator.status())
+    return ok, message
+
+
+def test_download_mirrors():
+    """测试下载镜像节点并记录最快节点。返回值：(ok, message)。"""
+    state.set_progress('正在测试下载镜像节点…', 0, 0)
+    try:
+        results = download_helper.probe_mirrors()
+    except Exception as error:
+        logger.exception('测试下载镜像失败')
+        state.set_progress('')
+        message = f'测试下载镜像失败：{error}'
+        notify_user(message)
+        return False, message
+    state.set_progress('')
+    best = download_helper.pick_fastest_mirror(results)
+    detail = '、'.join(
+        f"{item['prefix'].rstrip('/').replace('https://', '')}={item['ms']}ms"
+        for item in results[:3
+        ] if item['ok'])
+    if best is None:
+        message = '所有下载镜像都不可用，请检查网络'
+        notify_user(message)
+        return False, message
+    _save_config_values({'preferred_mirror': best['prefix']})
+    message = f"下载镜像测速完成，已选最快节点：{best['prefix']}（{best['ms']} ms）"
+    if detail:
+        message += f'；{detail}'
+    notify_user(message)
+    return True, message
+
+
+# ---------------------------------------------------------------------------
+# 代理检测 / Git 代理（网页加速必须依赖代理）
+# ---------------------------------------------------------------------------
+
+def refresh_proxy_status():
+    """检测并验证系统代理，写入状态并广播。返回值：status dict。"""
+    try:
+        status = proxy_helper.detect_and_verify()
+    except Exception:
+        logger.exception('检测代理失败')
+        status = {'detected': False, 'server': None, 'verified': False,
+                  'detail': '检测失败'}
+    state.proxy_status = status
+    state.proxy = status.get('info')
+    state.publish('proxy_status')
+    return status
+
+
+def git_proxy_toggle():
+    """Git 代理开关：已有则清除，没有则使用检测到的系统代理。"""
+    applied = proxy_helper.get_git_proxy()
+    if applied.get('http.proxy') or applied.get('https.proxy'):
+        ok, message = proxy_helper.clear_git_proxy()
+        notify_user(message)
+        return ok, message
+    status = refresh_proxy_status()
+    if not status.get('detected'):
+        message = '未检测到系统代理；网页/浏览器加速需要先开启代理软件'
+        notify_user(message)
+        return False, message
+    server = status.get('server')
+    if not server:
+        message = '检测到的是 PAC 自动配置脚本，暂不支持自动写入 Git 代理'
+        notify_user(message)
+        return False, message
+    ok, message = proxy_helper.set_git_proxy(server)
+    notify_user(message)
+    return ok, message
+
+
+def _detect_hosts_limitation(best):
+    """hosts 写入后检查 github.com 的真实 HTTPS 是否可用。
+
+    入参：best —— {域名: IP} 映射。返回值：str|None —— 需要提示的说明。
+    """
+    ip = best.get('github.com')
+    if not ip:
+        return None
+    try:
+        result = network_tester.probe_https(
+            'github.com', ip, path='/', max_bytes=196608, timeout=6)
+    except Exception:
+        logger.debug('hosts 有效性探测失败（忽略）', exc_info=True)
+        return None
+    if result.get('ok'):
+        return None
+    logger.warning('hosts 已写入，但 github.com HTTPS 传输受限：%s', result)
+    return ('github.com HTTPS 传输受限（hosts 只能改 DNS，无法绕过网络限速）；'
+            '建议开启「Git 镜像加速」或使用代理')
+
 
 def _record_test_results(results):
     """把并发测速结果写入全局状态并广播（表格的延迟 / 状态列数据源）。
@@ -350,6 +528,10 @@ def enable(silent=False):
     message = f'加速已启用，优选写入 {len(best)} 个域名'
     if missing_core:
         message += f'；未写入：{"、".join(missing_core)}（无可用 IP）'
+    if not silent:
+        limitation = _detect_hosts_limitation(best)
+        if limitation:
+            message += f'；注意：{limitation}'
     logging.info('启用加速完成，共写入 %d 个域名的优选映射', len(best))
     if not silent:
         notify_user(message)

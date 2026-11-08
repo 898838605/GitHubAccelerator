@@ -217,6 +217,7 @@ def main():
     # --- 配置：只读一次，注入 service（各模块不重复 IO） ---
     config = config_manager.load_config()
     service.init(config)
+    service.refresh_git_mirror_status()  # 快速读取 Git 镜像配置状态
 
     # --- 启动状态检测：以 hosts 磁盘内容为准（程序可能上次没正常退出）---
     # 此时还没有任何订阅者，直接赋值即可；窗口 / 托盘构造时会读它作为初始状态
@@ -260,6 +261,10 @@ def main():
     threading.Thread(target=service.refresh_scheduler_loop,
                      args=(stop_event,), name='auto-refresh',
                      daemon=True).start()
+
+    # --- 后台检测系统代理（需要 CONNECT 探活，可能几百毫秒，不阻塞启动）---
+    threading.Thread(target=service.refresh_proxy_status,
+                     name='proxy-check', daemon=True).start()
 
     # --- 提权重启携带的动作：主循环起来后自动执行 ---
     if pending is not None:

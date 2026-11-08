@@ -76,6 +76,11 @@ class TrayIcon:
             pystray.MenuItem('更新 IP 列表', self._guarded(service.update_ip_list_online)),
             pystray.MenuItem('测试 GitHub 连通性', self._guarded(service.test_connectivity)),
             pystray.Menu.SEPARATOR,
+            # v5.2：跨系统加速引擎（Git 镜像 / 下载镜像 / Git 代理）
+            pystray.MenuItem('Git 镜像加速开关', self._guarded(service.git_mirror_toggle)),
+            pystray.MenuItem('下载镜像节点测速', self._guarded(service.test_download_mirrors)),
+            pystray.MenuItem('Git 代理开关', self._guarded(service.git_proxy_toggle)),
+            pystray.Menu.SEPARATOR,
             # 窗口与退出（default=True：左键 / 双击托盘图标即触发此项）
             pystray.MenuItem('打开主窗口', self._on_menu_show_window, default=True),
             pystray.MenuItem('打开日志', self._guarded(service.open_log_file)),
