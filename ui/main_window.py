@@ -453,7 +453,7 @@ class AppWindow:
                 self.refresh_log()
             if refresh_all or events & {'git_mirror', 'proxy_status'}:
                 self.refresh_mode_view()
-            if refresh_all or events & {'enabled', 'message', 'refresh_time'}:
+            if refresh_all or events & {'enabled', 'message', 'refresh_time', 'selection'}:
                 self.update_info_line()
         except Exception:
             logger.exception('处理状态事件失败：%s', sorted(events))
@@ -585,6 +585,9 @@ class AppWindow:
         text = f'上次刷新：{last}    下次定时刷新：{nxt}'
         if not getattr(state, 'is_admin', False):
             text += '    [受限模式：启用/停用需管理员权限]'
+        profiles = getattr(state, 'acceleration_profiles', None)
+        if profiles:
+            text += f'    加速配置：{len(profiles)} 个'
         if state.last_message:
             text += f'    [{state.last_message}]'
         self.info_var.set(text)

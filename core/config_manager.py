@@ -37,6 +37,11 @@ DEFAULT_CONFIG = {
     'test_timeout_seconds': 2.0,     # 单次 TCP 测速超时（秒）
     'strict_tls_verify': True,       # 是否对核心域名做严格 TLS 证书校验
     'tls_failure_fallback': True,    # TLS 被网络干扰（重置/超时）时是否仍按 TCP 可用写入
+    'tls_candidate_limit': 3,        # 每个域名最多验证几个 TLS 候选
+    'profiles_path': '',             # acceleration profiles 文件路径（空=数据目录/profiles.json）
+    'selection_probe_https': False,  # 是否用 HTTPS 首字节延迟做精确选优
+    'selection_https_max_candidates': 2,  # 精确选优时每域名最多探测几个 IP
+    'selection_https_timeout': 4.0,  # 精确选优单 IP 超时（秒）
     'git_mirror_enabled': False,     # 是否已启用 Git 镜像加速
     'preferred_mirror': '',          # 首选下载镜像（空=自动测速选择）
     'preferred_git_mirror': '',      # 首选 Git 镜像（空=自动测速选择）
@@ -189,6 +194,38 @@ def load_config(config_path=None):
         config['tls_failure_fallback'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
     else:
         config['tls_failure_fallback'] = bool(raw)
+
+    raw = data.get('tls_candidate_limit', 3)
+    try:
+        config['tls_candidate_limit'] = max(1, min(10, int(raw)))
+    except (TypeError, ValueError):
+        logger.warning('配置项 tls_candidate_limit 非法（%r），使用 3', raw)
+
+    raw = data.get('profiles_path', '')
+    if isinstance(raw, str):
+        config['profiles_path'] = raw.strip()
+    else:
+        logger.warning('配置项 profiles_path 类型非法（%r），使用默认路径', raw)
+
+    raw = data.get('selection_probe_https', False)
+    if isinstance(raw, bool):
+        config['selection_probe_https'] = raw
+    elif isinstance(raw, str):
+        config['selection_probe_https'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
+    else:
+        config['selection_probe_https'] = bool(raw)
+
+    raw = data.get('selection_https_max_candidates', 2)
+    try:
+        config['selection_https_max_candidates'] = max(1, min(10, int(raw)))
+    except (TypeError, ValueError):
+        logger.warning('配置项 selection_https_max_candidates 非法（%r），使用 2', raw)
+
+    raw = data.get('selection_https_timeout', 4.0)
+    try:
+        config['selection_https_timeout'] = max(1.0, min(15.0, float(raw)))
+    except (TypeError, ValueError):
+        logger.warning('配置项 selection_https_timeout 非法（%r），使用 4.0', raw)
 
     raw = data.get('diagnose_on_startup', False)
     config['diagnose_on_startup'] = bool(raw) if isinstance(raw, bool) else False

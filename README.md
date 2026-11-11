@@ -2,7 +2,7 @@
 
 Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图形主窗口。
 
-**当前版本：** 5.2.2（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
+**当前版本：** 5.3.0（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
 
 ## 1. 项目简介
 
@@ -45,6 +45,40 @@ Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图�
 > TLS 首选被重置/超时会自动换备选；若全部都是网络层干扰（不是证书错误），
 > 仍会按 TCP 可用 IP 写入并在结果里提示，证书错误则跳过。
 > hosts 每个域名只能生效一条映射，写入多个 IP 没有意义（系统按第一条匹配）。
+
+### 高级：profiles.json 自定义多上游（v5.3）
+
+可以在数据目录（默认 `%LOCALAPPDATA%\GitHubAccelerator`）放置 `profiles.json`，
+为已有候选域名追加多个上游 IP，并控制顺序：
+
+~~~json
+{
+  "version": 1,
+  "profiles": [
+    {
+      "id": "github-core",
+      "name": "GitHub 核心",
+      "enabled": true,
+      "mode": "hosts",
+      "order": 0,
+      "match_domains": ["github.com", "api.github.com"],
+      "listen_domains": ["github.com", "api.github.com"],
+      "upstreams": [
+        {"type": "ip", "value": "20.207.73.82", "port": 443}
+      ]
+    }
+  ]
+}
+~~~
+
+- 只对候选列表（github_hosts.txt）里已经出现的域名补充 IP；
+- 非法域名 / 非公网 IP / 不支持的 mode 会跳过并记日志；
+- 文件损坏时回退内置 profiles，不影响启动；
+- 这些 IP 仍要经过测速、TLS 校验和可选的 HTTPS 选优才会写入 hosts。
+
+可选配置：`selection_probe_https`（默认 false）、
+`selection_https_max_candidates`（2）、`selection_https_timeout`（4.0 秒）。
+开启后启用流程会多花几秒，但会按 HTTPS 首字节延迟而不是仅 TCP 延迟选 IP。
 
 > **适用边界：** hosts 与镜像都无法绕过网络层限速。若 `github.com` 直连大流量受限，
 > 网页浏览必须使用代理；程序会在 hosts 启用后实际探测 HTTPS 传输，

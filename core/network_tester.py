@@ -428,6 +428,63 @@ def probe_https(domain, ip, path='/', max_bytes=131072, timeout=6):
                 'bytes': 0, 'reason': _classify_error(error)}
 
 
+def probe_https_candidates(domain, ips, timeout=4.0, max_candidates=2,
+                           cancel_event=None):
+    """并发比较同一域名下多个 IP 的 HTTPS 首字节延迟。
+
+    入参：domain —— 域名；ips —— IP 列表（按优先级排序）；
+          timeout —— 单次探测超时；max_candidates —— 最多探测几个 IP；
+          cancel_event —— 可选取消信号。
+    返回值：dict —— {'best_ip': IP 或 None, 'results': {IP: probe_https 结果}}。
+    仅在配置开启精确选优时调用；全部失败时由调用方保留 TCP/TLS 结果。
+    """
+    candidates = []
+    for ip in ips:
+        if ip not in candidates:
+            candidates.append(ip)
+    limit = max(1, int(max_candidates or 1))
+    candidates = candidates[:limit]
+    results = {}
+    if not candidates:
+        return {'best_ip': None, 'results': results}
+
+    workers = min(4, len(candidates))
+    executor = ThreadPoolExecutor(max_workers=workers)
+    futures = {executor.submit(probe_https, domain, ip, '/robots.txt',
+                               4096, timeout): ip
+               for ip in candidates}
+    cancelled = False
+    try:
+        for future in as_completed(futures):
+            if cancel_event is not None and cancel_event.is_set():
+                cancelled = True
+                break
+            ip = futures[future]
+            try:
+                results[ip] = future.result()
+            except Exception:
+                logger.exception('HTTPS 选优任务异常：%s -> %s', domain, ip)
+                results[ip] = {'ok': False, 'reason': REASON_FAILED}
+    finally:
+        for future in futures:
+            future.cancel()
+        executor.shutdown(wait=not cancelled, cancel_futures=True)
+
+    usable = []
+    for ip, result in results.items():
+        if result.get('ok'):
+            latency = result.get('ttfb_ms')
+            if latency is None:
+                latency = result.get('elapsed_ms')
+            usable.append((latency if latency is not None else 10 ** 9, ip))
+    best_ip = min(usable)[1] if usable else None
+    if best_ip:
+        logger.info('HTTPS 选优：%s -> %s', domain, best_ip)
+    else:
+        logger.warning('HTTPS 选优全部失败：%s（候选：%s）', domain, '、'.join(candidates))
+    return {'best_ip': best_ip, 'results': results}
+
+
 def fetch_remote_hosts():
     """从 GitHub520 稳定地址拉取最新 hosts 数据。
 

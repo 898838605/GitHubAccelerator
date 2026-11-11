@@ -1,5 +1,23 @@
 # 更新记录
 
+## 5.3.0（2026-11-11）— 可配置 acceleration profiles 与 HTTPS 精确选优
+
+- 新增可选的 profiles.json：按域名声明多组上游 IP、order、match/listen 域名；
+  缺省使用内置 profiles（由原 BUILTIN_FALLBACK_CANDIDATES 迁移），不存在文件时
+  行为与 5.2.2 完全一致。
+- profiles 只对候选列表中已有的域名补充上游，不主动新增域名；非法域名/IP/
+  mode/upstream 类型会跳过并写日志，损坏文件回退内置配置。
+- service 启用流程会记录每个域名的候选、TLS/HTTPS 结果、最终选择和来源，
+  写入 state.last_selection_report 并输出 [Profile]/[Selection] 日志。
+- 新增可选 HTTPS 精确选优（selection_probe_https，默认关闭）：
+  对 TLS 通过的域名最多取 N 个候选做 HTTPS 首字节探测，选延迟最低者；
+  全部失败时保留 TCP/TLS 结果，不阻断启用。
+- 新增配置：profiles_path、selection_probe_https、
+  selection_https_max_candidates、selection_https_timeout、tls_candidate_limit。
+- 主窗口信息行显示本次加载的加速配置数量。
+- 仍然不引入根证书、系统代理修改、WinDivert 或第三方反代节点。
+- 版本号 5.3.0。
+
 ## 5.2.2（2026-11-11）— 修复 Git 镜像测速全部超时、启用过程写日志
 
 - 现象：下载节点测速正常（能选中 gh-proxy），但点「Git 镜像加速」提示

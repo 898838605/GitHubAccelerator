@@ -637,24 +637,25 @@ def filter_allowed_entries(pairs):
     return allowed, rejected
 
 
+def with_profile_fallbacks(pairs, profiles=None):
+    """按 acceleration profile 补充上游候选（仅限候选列表中已有的域名）。
+
+    入参：pairs —— [(IP, 域名), ...]；profiles —— 可选配置列表。
+    返回值：list[(IP, 域名)] —— 原条目 + 新增条目（去重）。
+    """
+    from core import acceleration_profile
+    return acceleration_profile.merge_profile_upstreams(pairs, profiles)
+
+
 def with_builtin_fallbacks(pairs):
     """在候选列表中补充内置兜底候选（仅限已出现的核心域名）。
 
     入参：pairs —— [(IP, 域名), ...]。
     返回值：list[(IP, 域名)] —— 原条目 + 新增兜底条目（已去重）。
     """
-    known = set(pairs)
-    domains = {domain for _ip, domain in pairs}
-    extra = []
-    for domain, ips in BUILTIN_FALLBACK_CANDIDATES.items():
-        if domain not in domains:
-            continue
-        for ip in ips:
-            pair = (ip, domain)
-            if pair not in known:
-                known.add(pair)
-                extra.append(pair)
-    return list(pairs) + extra
+    from core import acceleration_profile
+    return acceleration_profile.merge_profile_upstreams(
+        pairs, acceleration_profile.DEFAULT_PROFILES)
 
 
 def looks_like_ipv4(text):

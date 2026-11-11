@@ -20,6 +20,7 @@ import logging
 import os
 import time
 
+from core import acceleration_profile
 from core import config_manager
 from core import download_helper
 from core import git_accelerator
@@ -471,14 +472,24 @@ def enable(silent=False):
         return False, message
     state.set_candidates(pairs)  # 同步主窗口表格（含被过滤条目，便于用户查看/清理）
 
+    # 2.1 加载可配置的 acceleration profiles（缺失/损坏都不阻断）
+    try:
+        profiles = acceleration_profile.load_profiles(
+            _config.get('profiles_path') or None)
+    except Exception:
+        logger.exception('[Profile] 加载失败，使用内置兜底配置')
+        profiles = list(acceleration_profile.DEFAULT_PROFILES)
+    state.acceleration_profiles = acceleration_profile.summaries(profiles)
+    logger.info('[Profile] 本次加载 %d 个加速配置', len(profiles))
+
     # 2.5 白名单 / 公网 IP 过滤：只有 GitHub 相关域名才能进入系统 hosts
     usable_pairs = _filter_pairs_with_notice(pairs, '候选列表')
     if usable_pairs:
-        # 远端列表可能缺少核心域名或只剩不可达 IP：补充少量内置兜底候选，
-        # 仍然要经过测速 / TLS 校验才会写入 hosts。
-        supplemented = hosts_manager.with_builtin_fallbacks(usable_pairs)
+        # 远端列表可能缺少核心域名或只剩不可达 IP：补充 profile 中的兜底候选，
+        # 仍然要经过测速 / TLS / HTTPS 校验才会写入 hosts。
+        supplemented = hosts_manager.with_profile_fallbacks(usable_pairs, profiles)
         if len(supplemented) > len(usable_pairs):
-            logger.info('已补充 %d 条内置兜底候选参与本次测速',
+            logger.info('[Profile] 已补充 %d 条候选参与本次测速',
                         len(supplemented) - len(usable_pairs))
             usable_pairs = supplemented
     if not usable_pairs:
@@ -514,6 +525,15 @@ def enable(silent=False):
         notify_user(message)
         return False, message
 
+    # 每个域名的全部 TCP 可用候选（用于 TLS 回退与 HTTPS 精确选优）
+    candidates_by_domain = {}
+    for ip, domain in usable_pairs:
+        ms = results.get(ip, (None, None))[0]
+        if ms is not None:
+            candidates_by_domain.setdefault(domain, []).append((ms, ip))
+    for domain, items in candidates_by_domain.items():
+        items.sort()
+
     # 核心域名缺失提示（例如本轮 github.com 全部候选不可达）：
     # 不阻断启用，但要让用户知道 hosts 里没有写入它，避免"显示已启用却没加速"的困惑。
     present_domains = {domain for _ip, domain in usable_pairs}
@@ -527,19 +547,12 @@ def enable(silent=False):
     #    避免"TCP 可用但单个 IP 的 TLS 偶发超时"导致整个域名被跳过。
     tls_dropped = {}
     tls_fallback = {}
+    tls_verified_ok = set()
     if _config.get('strict_tls_verify', True):
         try:
             candidate_limit = max(1, int(_config.get('tls_candidate_limit', 3) or 3))
         except (TypeError, ValueError):
             candidate_limit = 3
-
-        candidates_by_domain = {}
-        for ip, domain in usable_pairs:
-            if domain not in network_tester.TLS_VERIFY_DOMAINS:
-                continue
-            ms = results.get(ip, (None, None))[0]
-            if ms is not None:
-                candidates_by_domain.setdefault(domain, []).append((ms, ip))
 
         domain_candidates = {}
         checks = []
@@ -582,9 +595,11 @@ def enable(silent=False):
                     ok, reason = verified.get((domain, ip),
                                               (False, network_tester.REASON_TLS))
                     if ok:
-                        chosen = ip
-                        break
-                    reasons.append(reason or network_tester.REASON_TLS)
+                        tls_verified_ok.add((domain, ip))
+                        if chosen is None:
+                            chosen = ip
+                    else:
+                        reasons.append(reason or network_tester.REASON_TLS)
                 if chosen:
                     selected[domain] = chosen
                     if chosen != best[domain]:
@@ -622,6 +637,81 @@ def enable(silent=False):
                                           'raw.githubusercontent.com')
                     if domain in present_domains and domain not in best]
 
+    # 4.5 生成选路报告；可选 HTTPS 精确选优（默认关闭）
+    selection_report = {}
+    for domain, ip in best.items():
+        candidates = [candidate_ip for _ms, candidate_ip
+                      in candidates_by_domain.get(domain, [])]
+        if ip not in candidates:
+            candidates.insert(0, ip)
+        selection_report[domain] = {
+            'selected': ip,
+            'source': 'tcp',
+            'candidates': candidates,
+        }
+
+    https_selected_count = 0
+    if _config.get('selection_probe_https', False):
+        try:
+            https_limit = max(1, min(10, int(
+                _config.get('selection_https_max_candidates', 2) or 2)))
+            https_timeout = max(1.0, min(15.0, float(
+                _config.get('selection_https_timeout', 4.0) or 4.0)))
+        except (TypeError, ValueError):
+            https_limit, https_timeout = 2, 4.0
+
+        strict_tls = _config.get('strict_tls_verify', True)
+        targets = []
+        for domain in best:
+            if domain not in network_tester.TLS_VERIFY_DOMAINS:
+                continue
+            if len(candidates_by_domain.get(domain, [])) <= 1:
+                continue
+            targets.append(domain)
+
+        if targets:
+            state.set_progress('正在 HTTPS 精确选优…', 0, len(targets))
+            for index, domain in enumerate(targets, start=1):
+                if _cancelled():
+                    return _cancelled_result()
+                ordered = [best[domain]]
+                for _ms, candidate_ip in candidates_by_domain.get(domain, []):
+                    if candidate_ip in ordered:
+                        continue
+                    if strict_tls and (domain, candidate_ip) not in tls_verified_ok:
+                        continue
+                    ordered.append(candidate_ip)
+                ordered = ordered[:https_limit]
+                if len(ordered) > 1:
+                    outcome = network_tester.probe_https_candidates(
+                        domain, ordered, timeout=https_timeout,
+                        max_candidates=https_limit, cancel_event=op_cancel)
+                    if _cancelled():
+                        return _cancelled_result()
+                    report = selection_report.setdefault(domain, {
+                        'selected': best[domain], 'source': 'tcp',
+                        'candidates': ordered})
+                    report['https'] = outcome.get('results', {})
+                    best_ip = outcome.get('best_ip')
+                    if best_ip:
+                        if best_ip != best[domain]:
+                            logger.info('[Selection] HTTPS 选优：%s %s -> %s',
+                                        domain, best[domain], best_ip)
+                        best[domain] = best_ip
+                        report['selected'] = best_ip
+                        report['source'] = 'https'
+                        https_selected_count += 1
+                state.set_progress('正在 HTTPS 精确选优…', index, len(targets))
+            state.set_progress('')
+
+    state.last_selection_report = selection_report
+    state.publish('selection')
+    logger.info('[Selection] 完成：%d 个域名，HTTPS 精确选优 %d 个',
+                len(selection_report), https_selected_count)
+    for domain, report in selection_report.items():
+        logger.debug('[Selection] %s -> %s（来源=%s）',
+                     domain, report.get('selected'), report.get('source'))
+
     # 5. 写入 hosts 加速段（先移除旧段，再把新段置顶，保证"先匹配先赢"命中）
     if _cancelled():
         return _cancelled_result()
@@ -656,6 +746,8 @@ def enable(silent=False):
         message += f'；未写入：{"、".join(missing_core)}（{"，".join(reasons)}）'
     if tls_fallback:
         message += f'；TLS 被网络干扰，已按 TCP 可用写入：{"、".join(sorted(tls_fallback))}'
+    if https_selected_count:
+        message += f'；HTTPS 精确选优 {https_selected_count} 个域名'
     if not silent:
         limitation = _detect_hosts_limitation(best)
         if limitation:

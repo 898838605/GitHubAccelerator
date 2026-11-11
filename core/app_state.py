@@ -63,6 +63,8 @@ class AppState:
         self.git_mirror = {             # Git 镜像加速状态
             'enabled': False, 'prefix': '', 'detail': '未启用',
         }
+        self.acceleration_profiles = []  # acceleration profile 摘要（load_profiles 后）
+        self.last_selection_report = {}  # {域名: {candidates, selected, source, ...}}
         self._subscribers = []          # 事件订阅者列表：fn(event, payload)
 
     # ------------------------------------------------------------------
