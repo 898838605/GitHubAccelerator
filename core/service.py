@@ -122,6 +122,12 @@ def refresh_git_mirror_status():
         logger.exception('读取 Git 镜像状态失败')
         status = {'git_found': False, 'enabled': False, 'prefix': '',
                   'detail': '读取失败'}
+    if status.get('enabled'):
+        try:
+            if git_accelerator.ensure_safe_push():
+                logger.info('已修复旧版 Git 镜像配置：push 仍走 github.com')
+        except Exception:
+            logger.exception('检查 Git push 重写规则失败')
     _publish_git_mirror(status)
     return status
 
@@ -132,6 +138,9 @@ def git_mirror_toggle():
     入参：无。返回值：(ok, message)。
     """
     status = git_accelerator.status()
+    logger.info('收到 Git 镜像开关请求：当前状态=%s，节点=%s',
+                '已启用' if status.get('enabled') else '未启用',
+                status.get('prefix') or '无')
     if not status.get('git_found'):
         message = '未检测到 Git，请先安装 Git for Windows'
         notify_user(message)
@@ -142,18 +151,54 @@ def git_mirror_toggle():
 
 
 def git_mirror_enable(preferred=None):
-    """启用 Git 镜像加速。返回值：(ok, message)。"""
+    """启用 Git 镜像加速。返回值：(ok, message)。
+
+    先做 Git 协议探测；如果镜像的 Git 端点响应慢/超时（例如 8 秒内返回不了
+    refs），再退回用下载节点测速选出的节点直接配置，避免"下载测速正常、
+    Git 镜像却全部不可用"。
+    """
     preferred = preferred or _config.get('preferred_git_mirror') or None
+    logger.info('开始启用 Git 镜像加速（指定节点=%s）', preferred or '自动')
     state.set_progress('正在测速 Git 镜像…', 0, 0)
     try:
         ok, message, prefix = git_accelerator.enable(preferred)
     except Exception as error:
         logger.exception('启用 Git 镜像失败')
         ok, message, prefix = False, f'启用 Git 镜像失败：{error}', None
+
+    if not ok and '所有 Git 镜像都不可用' in message:
+        logger.warning('Git 协议探测全部失败，改用下载节点测速结果选择镜像')
+        state.set_message('Git 协议探测超时，改用下载节点测速选择镜像…')
+        try:
+            dl_results = download_helper.probe_mirrors()
+            for item in dl_results:
+                logger.info('下载节点测速：%s ok=%s %dms',
+                            item['prefix'], item['ok'], item['ms'])
+            dl_best = download_helper.pick_fastest_mirror(dl_results)
+        except Exception:
+            logger.exception('下载节点测速失败')
+            dl_best = None
+        if dl_best:
+            logger.info('使用下载测速节点配置 Git 镜像：%s', dl_best['prefix'])
+            try:
+                ok, fallback_message, prefix = git_accelerator.enable(
+                    dl_best['prefix'], probe=False)
+                if ok:
+                    message = (fallback_message +
+                               '（Git 协议探测超时，已按下载测速节点配置）')
+                else:
+                    message = fallback_message
+            except Exception as error:
+                logger.exception('按下载节点配置 Git 镜像失败')
+                ok, message = False, f'按下载节点配置 Git 镜像失败：{error}'
+
     state.set_progress('')
     if ok:
+        logger.info('Git 镜像加速启用成功：%s', prefix)
         _save_config_values({'git_mirror_enabled': True,
                              'preferred_git_mirror': prefix or ''})
+    else:
+        logger.error('Git 镜像加速启用失败：%s', message)
     notify_user(message)
     _publish_git_mirror(git_accelerator.status())
     return ok, message
@@ -161,6 +206,7 @@ def git_mirror_enable(preferred=None):
 
 def git_mirror_disable():
     """关闭 Git 镜像加速。返回值：(ok, message)。"""
+    logger.info('收到关闭 Git 镜像加速请求')
     state.set_progress('正在还原 Git 配置…', 0, 0)
     try:
         ok, message = git_accelerator.disable()
@@ -169,7 +215,10 @@ def git_mirror_disable():
         ok, message = False, f'关闭 Git 镜像失败：{error}'
     state.set_progress('')
     if ok:
+        logger.info('Git 镜像加速已关闭，Git 配置已还原')
         _save_config_values({'git_mirror_enabled': False})
+    else:
+        logger.error('关闭 Git 镜像失败：%s', message)
     notify_user(message)
     _publish_git_mirror(git_accelerator.status())
     return ok, message

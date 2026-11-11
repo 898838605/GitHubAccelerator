@@ -2,7 +2,7 @@
 
 Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图形主窗口。
 
-**当前版本：** 5.2.1（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
+**当前版本：** 5.2.2（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
 
 ## 1. 项目简介
 

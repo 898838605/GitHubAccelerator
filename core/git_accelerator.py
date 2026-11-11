@@ -22,7 +22,6 @@ import os
 import shutil
 import subprocess
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from utils import fileio
 from utils import paths
@@ -40,7 +39,11 @@ MIRRORS = (
 )
 
 BACKUP_FILENAME = 'git_mirror_backup.json'
-MIRROR_TEST_TIMEOUT = 8
+
+# 仅拉取走镜像、push 仍走 github.com 的兜底规则（否则 push 会被重写到只读镜像）
+PUSH_REWRITE_KEY = 'url.https://github.com/.pushInsteadOf'
+MIRROR_TEST_TIMEOUT = 25
+MIRROR_VERIFY_TIMEOUT = 30
 CREATE_NO_WINDOW = 0x08000000
 
 
@@ -129,25 +132,42 @@ def test_mirror(prefix, timeout=MIRROR_TEST_TIMEOUT):
         elapsed = round((time.perf_counter() - started) * 1000)
         ok = completed.returncode == 0 and 'HEAD' in (completed.stdout or '')
         error = None if ok else (completed.stderr or completed.stdout or '').strip()[:120]
-        return {'prefix': normalize_prefix(prefix), 'ok': ok, 'ms': elapsed,
-                'error': error}
+        result = {'prefix': normalize_prefix(prefix), 'ok': ok, 'ms': elapsed,
+                  'error': error}
     except Exception as error:
-        return {'prefix': normalize_prefix(prefix), 'ok': False,
-                'ms': round((time.perf_counter() - started) * 1000),
-                'error': str(error)[:120]}
+        result = {'prefix': normalize_prefix(prefix), 'ok': False,
+                  'ms': round((time.perf_counter() - started) * 1000),
+                  'error': str(error)[:120]}
+    if result['ok']:
+        logger.info('Git 镜像探测：%s 可用（%d ms）', result['prefix'], result['ms'])
+    else:
+        logger.warning('Git 镜像探测：%s 不可用（%d ms）：%s',
+                       result['prefix'], result['ms'], result['error'])
+    return result
 
 
 def probe_mirrors(mirrors=None, timeout=MIRROR_TEST_TIMEOUT):
-    """并发测试多个镜像，返回按延迟升序排列的结果列表。"""
+    """按顺序逐个测试镜像，命中第一个可用镜像就停止。
+
+    为什么不再并发？三个镜像各开一条 Git HTTPS 连接会互相抢带宽，
+    镜像单次 ls-remote 本身就要 10~20 秒，并发后很容易全部超时；
+    顺序探测虽然总耗时略长，但第一个常用节点成功就能立即返回，反而更快更稳。
+    """
     targets = list(mirrors or MIRRORS)
     results = []
-    with ThreadPoolExecutor(max_workers=min(4, len(targets))) as pool:
-        futures = {pool.submit(test_mirror, prefix, timeout): prefix
-                   for prefix in targets}
-        for future in as_completed(futures):
-            results.append(future.result())
-    usable = sorted((item for item in results if item['ok']), key=lambda x: x['ms'])
+    for index, prefix in enumerate(targets, start=1):
+        logger.info('Git 镜像探测（%d/%d）：%s', index, len(targets), prefix)
+        result = test_mirror(prefix, timeout)
+        results.append(result)
+        if result['ok']:
+            logger.info('Git 镜像探测命中：%s（%d ms）',
+                        result['prefix'], result['ms'])
+            break
+    usable = [item for item in results if item['ok']]
     failed = [item for item in results if not item['ok']]
+    if not usable:
+        logger.warning('Git 镜像探测完成：已尝试 %d 个镜像，全部不可用',
+                       len(results))
     return usable + failed
 
 
@@ -189,6 +209,40 @@ def _is_our_rule(rule):
     if GITHUB_URL.lower() not in key:
         return False
     return any(normalize_prefix(mirror).lower() in key for mirror in MIRRORS)
+
+
+def _push_rule_exists(rules):
+    """是否存在 pushInsteadOf 规则。"""
+    return any(rule['key'].lower() == PUSH_REWRITE_KEY.lower() for rule in rules)
+
+
+def _remove_push_rule():
+    """移除本程序写入的 pushInsteadOf 规则。"""
+    try:
+        run_git(['config', '--global', '--unset-all', PUSH_REWRITE_KEY], timeout=5)
+    except Exception:
+        logger.debug('移除 pushInsteadOf 规则时未找到或失败（忽略）')
+
+
+def ensure_safe_push():
+    """已有镜像规则时补上 pushInsteadOf，保证 push 仍直连 github.com。
+
+    旧版本只写了 insteadOf，导致 push 也被重写到只读镜像而失败；
+    启动时发现旧配置会自动补一条 no-op 的 push 重写规则并记日志。
+    返回值：bool —— 本次是否补写了规则。
+    """
+    rules = _read_url_rules()
+    if not any(_is_our_rule(rule) for rule in rules):
+        return False
+    if _push_rule_exists(rules):
+        return False
+    try:
+        run_git(['config', '--global', PUSH_REWRITE_KEY, GITHUB_URL], timeout=5)
+        logger.info('已为已有 Git 镜像配置补充 pushInsteadOf：push 仍走 github.com')
+        return True
+    except Exception:
+        logger.warning('补充 pushInsteadOf 失败（push 可能仍被镜像重写）', exc_info=True)
+        return False
 
 
 def _prefix_from_key(key):
@@ -240,7 +294,7 @@ def _unset_rules(rules):
             logger.warning('删除 Git 镜像规则失败：%s', rule['key'], exc_info=True)
 
 
-def _verify_rewrite(timeout=15, attempts=1):
+def _verify_rewrite(timeout=MIRROR_VERIFY_TIMEOUT, attempts=1):
     """验证 insteadOf 规则确实生效：用 github.com 原始地址执行 ls-remote。
 
     网络抖动时一次失败不代表配置错误，最多重试两次再判定失败。
@@ -258,27 +312,41 @@ def _verify_rewrite(timeout=15, attempts=1):
     return False
 
 
-def enable(preferred_mirror=None):
+def enable(preferred_mirror=None, probe=True):
     """启用 Git 镜像加速。
 
-    入参：preferred_mirror —— 指定镜像前缀（None/空=自动选最快）。
+    入参：preferred_mirror —— 指定镜像前缀（None/空=自动选最快）；
+          probe —— True 时先做 Git 协议探测；False 表示调用方已用其他方式
+          （如下载节点测速）选定镜像，直接配置并验证。
     返回值：(ok, message, prefix)。
     步骤：测速选镜像 -> 备份原始规则 -> 清理旧规则 -> 写入 insteadOf -> 验证。
     """
     if not find_git():
         return False, '未检测到 Git，请先安装 Git for Windows', None
 
-    results = probe_mirrors()
+    logger.info('开始启用 Git 镜像加速（preferred=%s, probe=%s）',
+                preferred_mirror or '自动', probe)
     best = None
-    if preferred_mirror:
-        for item in results:
-            if item['ok'] and item['prefix'] == normalize_prefix(preferred_mirror):
-                best = item
-                break
-    if best is None:
-        best = pick_best_mirror(results)
-    if best is None:
-        return False, '所有 Git 镜像都不可用，请检查网络后重试', None
+    probe_verified = False
+    if probe:
+        results = probe_mirrors()
+        if preferred_mirror:
+            for item in results:
+                if item['ok'] and item['prefix'] == normalize_prefix(preferred_mirror):
+                    best = item
+                    break
+        if best is None:
+            best = pick_best_mirror(results)
+        if best is None:
+            logger.warning('Git 镜像探测全部失败，无法自动选择节点')
+            return False, '所有 Git 镜像都不可用，请检查网络后重试', None
+        probe_verified = True
+    else:
+        if not preferred_mirror:
+            return False, '未指定 Git 镜像节点', None
+        best = {'prefix': normalize_prefix(preferred_mirror), 'ms': 0, 'ok': True}
+        logger.info('跳过 Git 协议探测，直接使用指定镜像：%s', best['prefix'])
+    logger.info('选定 Git 镜像：%s（探测 %d ms）', best['prefix'], best['ms'])
 
     rules = _read_url_rules()
     ours = [rule for rule in rules if _is_our_rule(rule)]
@@ -288,6 +356,10 @@ def enable(preferred_mirror=None):
         return (False,
                 '检测到已有的自定义 Git 镜像规则，为避免破坏你的配置已取消。'
                 '请先手动清理 url.* 规则后重试', None)
+    if _push_rule_exists(rules):
+        return (False,
+                '检测到已有的 pushInsteadOf 规则，为避免破坏你的配置已取消。'
+                '请先手动清理 url.* 规则后重试', None)
 
     if _load_backup() is None or not ours:
         _save_backup(rules)
@@ -296,6 +368,8 @@ def enable(preferred_mirror=None):
     key = 'url.' + normalize_prefix(best['prefix']) + GITHUB_URL + '.insteadOf'
     try:
         run_git(['config', '--global', key, GITHUB_URL], timeout=5)
+        run_git(['config', '--global', PUSH_REWRITE_KEY, GITHUB_URL], timeout=5)
+        logger.info('Git 镜像规则已写入：%s（fetch 走镜像，push 保持 github.com）', key)
     except Exception as error:
         _restore_after_failure()
         return False, f'写入 Git 配置失败：{error}', None
@@ -304,9 +378,17 @@ def enable(preferred_mirror=None):
     if not applied:
         _restore_after_failure()
         return False, 'Git 配置写入后回读校验失败，已还原', None
-    if not _verify_rewrite():
-        # 镜像探测已通过，但立刻再请求可能遇到限流/抖动；此时配置本身是对的，
-        # 不轻易回滚（回滚会让用户觉得"点了没反应"），保留并提示稍后重试。
+    if probe_verified:
+        # 探测阶段已经用 git ls-remote 走了一遍镜像的 Git 协议；配置只是把
+        # github.com 重写到同一路径，再做一次 30 秒级验证只会让用户白等。
+        logger.info('Git 协议探测已通过，跳过重复验证：%s', best['prefix'])
+        logger.info('Git 镜像加速已启用：%s（探测 %d ms）', best['prefix'], best['ms'])
+        return True, f'Git 镜像已启用：{best["prefix"]}（探测 {best["ms"]} ms）', best['prefix']
+
+    logger.info('Git 镜像规则已写入，开始验证实际请求：%s', best['prefix'])
+    if not _verify_rewrite(timeout=MIRROR_VERIFY_TIMEOUT):
+        # 这里通常是从下载节点回退配置的情况；验证失败也保留配置，
+        # 避免"点了没反应"，由用户决定是否关闭。
         logger.warning('Git 镜像已写入，但即时验证失败（保留配置，可能是网络抖动）')
         return (True,
                 f'Git 镜像已启用：{best["prefix"]}'
@@ -321,6 +403,7 @@ def _restore_after_failure():
     """启用失败时清理本程序写入的规则并恢复备份。"""
     rules = _read_url_rules()
     _unset_rules([rule for rule in rules if _is_our_rule(rule)])
+    _remove_push_rule()
     backup = _load_backup()
     if backup:
         for rule in backup.get('url_rules', []):
@@ -345,11 +428,12 @@ def disable():
         _remove_backup()
         return True, 'Git 镜像未启用'
     _unset_rules(ours)
+    _remove_push_rule()
     remaining = [rule for rule in _read_url_rules() if _is_our_rule(rule)]
     if remaining:
         return False, '删除 Git 镜像规则失败，请检查 git 配置权限'
     _remove_backup()
-    logger.info('Git 镜像加速已关闭')
+    logger.info('Git 镜像加速已关闭，已删除本程序写入的 url.* 规则')
     return True, 'Git 镜像已关闭，Git 配置已恢复'
 
 
