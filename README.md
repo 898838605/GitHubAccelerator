@@ -2,7 +2,7 @@
 
 Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图形主窗口。
 
-**当前版本：** 5.3.0（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
+**当前版本：** 5.4.0（更新记录见 [CHANGELOG.md](CHANGELOG.md)）
 
 ## 1. 项目简介
 
@@ -48,7 +48,7 @@ Windows 桌面小工具：一键加速 GitHub 访问，常驻系统托盘 + 图�
 
 ### 高级：profiles.json 自定义多上游（v5.3）
 
-可以在数据目录（默认 `%LOCALAPPDATA%\GitHubAccelerator`）放置 `profiles.json`，
+可以在程序目录（exe / 项目根同目录）放置 `profiles.json`，
 为已有候选域名追加多个上游 IP，并控制顺序：
 
 ~~~json
@@ -205,16 +205,20 @@ https://gh-proxy.com/https://github.com/owner/repo/releases/download/v1.0/setup.
 
 被过滤的候选会在主窗口状态栏提示，并记录到 app.log；手动添加候选时对话框会直接给出原因。
 
-### 2.8 数据目录与按需提权（v5.0）
+### 2.8 数据目录与按需提权（v5.4）
 
-**数据目录**：配置、日志、候选清单、运行时图标统一放在数据目录，与安装位置解耦：
+**数据目录**：配置、日志、候选清单、运行时图标默认放在**程序所在目录**
+（exe 同目录 / 源码根目录），复制整个目录即可迁移：
 
 | 场景 | 数据目录 |
 |---|---|
-| 默认（安装版 / 绿色版） | `%LOCALAPPDATA%\GitHubAccelerator`（当前用户可写，无需管理员） |
-| 便携模式 | 程序目录（在 exe / 项目根放一个空的 `portable.flag` 即启用） |
+| 默认（推荐） | 程序目录（exe / 项目根） |
+| 程序目录不可写（如 Program Files） | 自动回退 `%LOCALAPPDATA%\GitHubAccelerator`，并在 app.log 记录 |
 
-旧版放在程序目录的 `config.json` / `github_hosts.txt` 会在首次运行时自动复制到新目录（只复制、不删除，方便回退旧版本）。把程序放进 Program Files、只读共享盘或 U 盘也能正常工作。
+v5.4 起不再需要 `portable.flag`。首次使用新位置时，会把旧
+`%LOCALAPPDATA%\GitHubAccelerator` 里的 `config.json` / `github_hosts.txt` /
+`app.log` / 图标 / profiles / 备份复制到程序目录（只复制、不删除，已存在的文件不覆盖）。
+把程序放进只读目录时仍能运行（会回退到用户数据目录）。
 
 **按需提权**：启动不再要求管理员权限，普通用户即可打开界面、查看状态、管理候选、生成下载链接；只有点「启用加速 / 停用加速 / 强制还原」时才弹出 UAC 提示，并携带 `--do <动作>` 重启自身、自动继续刚才的操作。受限模式（非管理员）下状态栏会显示提示；若加速仍处于启用状态而用户以受限模式退出，程序会明确告警（无法还原 hosts），而不是静默失败。
 
@@ -263,7 +267,7 @@ GitHubAccelerator/
 │   ├── main_window.py       主窗口：状态栏 / 按钮 / 排序表格 / 连通性 / 日志预览
 │   └── tray_icon.py         托盘：右键菜单 / 状态换图标 / 气泡通知
 ├── utils/                   基础设施层：仅标准库（app_icon 另需 PIL）
-│   ├── paths.py             程序目录 / 数据目录定位（便携模式 + 旧数据迁移）
+│   ├── paths.py             程序目录 / 数据目录定位（exe 同目录 + 旧数据迁移）
 │   ├── logger.py            日志初始化（根记录器统一配置，各模块 getLogger 即用）
 │   ├── admin.py             管理员检测 / UAC 提权重启（可携带动作）/ 单实例互斥量
 │   ├── proxy.py             系统代理检测（只读，不修改系统设置）
@@ -278,7 +282,7 @@ GitHubAccelerator/
 > 不随仓库发布（已在 .gitignore 中排除）。
 
 > 运行时数据（`config.json` / `github_hosts.txt` / `app.log` / `icon.png`+`icon.ico`）不在仓库里，
-> 而是放在 **数据目录**（见 2.8）：默认 `%LOCALAPPDATA%\GitHubAccelerator`；便携模式下为程序目录。
+> 而是放在 **程序目录**（见 2.8）：默认与 exe 同目录；程序目录不可写时回退到 `%LOCALAPPDATA%\GitHubAccelerator`。
 
 **分层依赖（严格单向，禁止反向）：**
 
@@ -309,7 +313,7 @@ main.py  →  ui  →  core  →  utils
 - Windows 10 / 11（修改系统 hosts 需要管理员权限，程序在需要时按需请求提权）；
 - Python 3.9+（Pillow 11 的最低要求）；
 - 第三方依赖只有两个：`pillow`、`pystray`（版本范围见 `pyproject.toml`）
-- 数据目录：默认 `%LOCALAPPDATA%\GitHubAccelerator`（便携模式见 2.8）
+- 数据目录：默认与 exe 同目录（见 2.8）
 
 ### 4.2 运行
 
@@ -320,7 +324,7 @@ python main.py
 
 启动默认以普通用户运行：浏览状态、管理候选、生成下载链接都不需要提权；点「启用 / 停用 / 强制还原」时才会弹出 UAC 并以管理员身份重启自身（脚本模式用 `pythonw.exe` 重启，不弹黑窗），重启后自动继续刚才的操作。
 
-首次运行会在数据目录生成 `config.json` / `github_hosts.txt` / `app.log` 与图标；在程序目录放一个空的 `portable.flag` 可切换为便携模式（数据跟着程序走）。
+首次运行会在 exe 同目录生成 `config.json` / `github_hosts.txt` / `app.log` 与图标；不需要 `portable.flag`。
 
 ### 4.3 打包为 exe
 
@@ -345,7 +349,7 @@ pyinstaller -F -w --name GitHubHostsAccelerator --icon=icon.ico main.py
 
 ### 5.1 config.json（自动生成，可手动编辑）
 
-> 文件位于**数据目录**：默认 `%LOCALAPPDATA%\GitHubAccelerator\config.json`（便携模式下在程序目录）。
+> 文件位于**程序目录**：默认 `GitHubHostsAccelerator.exe` 同目录的 `config.json`；程序目录不可写时在 `%LOCALAPPDATA%\GitHubAccelerator\config.json`。
 
 | 字段 | 类型 | 默认 | 说明 |
 |---|---|---|---|

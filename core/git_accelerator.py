@@ -211,9 +211,14 @@ def _is_our_rule(rule):
     return any(normalize_prefix(mirror).lower() in key for mirror in MIRRORS)
 
 
+def _is_push_rule(rule):
+    """判断一条规则是否为本程序的 pushInsteadOf 保护规则。"""
+    return rule['key'].lower() == PUSH_REWRITE_KEY.lower()
+
+
 def _push_rule_exists(rules):
     """是否存在 pushInsteadOf 规则。"""
-    return any(rule['key'].lower() == PUSH_REWRITE_KEY.lower() for rule in rules)
+    return any(_is_push_rule(rule) for rule in rules)
 
 
 def _remove_push_rule():
@@ -269,9 +274,11 @@ def _load_backup():
 
 
 def _save_backup(rules):
+    # pushInsteadOf 是本程序自己的保护规则，不算用户原始配置，不写进备份
+    original_rules = [rule for rule in rules if not _is_push_rule(rule)]
     payload = json.dumps({
         'created_at': time.strftime('%Y-%m-%d %H:%M:%S'),
-        'url_rules': rules,
+        'url_rules': original_rules,
     }, ensure_ascii=False, indent=2)
     try:
         fileio.atomic_write_text(_backup_path(), payload, encoding='utf-8')
@@ -351,14 +358,17 @@ def enable(preferred_mirror=None, probe=True):
     rules = _read_url_rules()
     ours = [rule for rule in rules if _is_our_rule(rule)]
     user_rules = [rule for rule in rules
-                  if rule['value'] == GITHUB_URL and not _is_our_rule(rule)]
+                  if rule['value'] == GITHUB_URL
+                  and not _is_our_rule(rule)
+                  and not _is_push_rule(rule)]
     if user_rules:
         return (False,
                 '检测到已有的自定义 Git 镜像规则，为避免破坏你的配置已取消。'
                 '请先手动清理 url.* 规则后重试', None)
-    if _push_rule_exists(rules):
+    push_rules = [rule for rule in rules if _is_push_rule(rule)]
+    if any(rule['value'] != GITHUB_URL for rule in push_rules):
         return (False,
-                '检测到已有的 pushInsteadOf 规则，为避免破坏你的配置已取消。'
+                '检测到已有的自定义 pushInsteadOf 规则，为避免破坏你的配置已取消。'
                 '请先手动清理 url.* 规则后重试', None)
 
     if _load_backup() is None or not ours:

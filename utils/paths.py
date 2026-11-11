@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
-r"""路径工具：统一解析「程序目录」与「数据目录」。
+r"""路径工具：程序目录与数据目录。
 
-两个目录要分开（v4.3 / P1-9）：
-  - 程序目录（get_app_dir）：exe / 源码所在位置，只读也无所谓（Program Files 也行）；
-  - 数据目录（get_data_dir）：配置 / 日志 / 候选清单 / 运行时图标放这里。
-      默认 %LOCALAPPDATA%\GitHubAccelerator（当前用户可写，无需管理员）；
-      如果程序目录下存在 portable.flag，则使用程序目录本身（便携模式）。
+v5.4 起：配置、日志、候选清单、图标等运行时数据默认放在程序所在目录
+（exe 同目录 / 源码根目录），不再默认写 %LOCALAPPDATA%。
 
-为什么不再把数据放 exe 旁边？
-  exe 放在 Program Files、只读共享盘或 U 盘时，config.json / app.log / 候选清单
-  都写不进去（旧版本会静默丢配置）。数据目录与安装位置解耦后，放哪都能正常运行。
+原因：用户希望绿色版/单文件 exe 的所有自动生成文件都跟着 exe 走，
+复制整个目录即可迁移，不需要去 %LOCALAPPDATA% 找配置。
 
-旧数据迁移：
-  首次使用新数据目录时，会把程序目录下的 config.json / github_hosts.txt 复制过去
-  （只复制不删除，保留原文件以防用户回退旧版本）。
+兼容与兜底：
+  - 如果程序目录不可写（例如放在 Program Files），自动退回
+    %LOCALAPPDATA%\GitHubAccelerator，并写日志说明；
+  - 首次使用新位置时，会把旧版数据目录里的 config.json / github_hosts.txt /
+    app.log / 图标 / 备份等复制到程序目录（只复制不删除，不覆盖已有文件）；
+  - portable.flag 保留为兼容常量：现在数据始终跟随程序目录，该文件不再必需。
 
-本模块属于项目最底层（utils 层）：只依赖标准库，不依赖项目内任何其他模块，
-也不引入任何界面库 —— 这样上层（core / ui / main）都可以放心导入它。
+本模块属于项目最底层（utils 层）：只依赖标准库，不依赖项目内其他模块。
 """
 
 import logging
@@ -26,97 +24,131 @@ import sys
 
 logger = logging.getLogger(__name__)
 
-# 数据目录名（位于 %LOCALAPPDATA% 下）
+# 旧版数据目录名（位于 %LOCALAPPDATA% 下）；现在仅作为不可写时的兜底
 DATA_DIR_NAME = 'GitHubAccelerator'
 
-# 便携模式开关文件名：放在程序目录下即启用（数据随程序目录走）
+# 兼容旧版本的便携开关文件名；v5.4 起数据始终在程序目录，不再依赖该文件
 PORTABLE_FLAG = 'portable.flag'
 
-# 需要从旧位置（程序目录）迁移的数据文件
-MIGRATE_FILES = ('config.json', 'github_hosts.txt')
+# 从旧数据目录复制到程序目录的文件（只复制不删除，已存在则跳过）
+MIGRATE_FILES = (
+    'config.json',
+    'github_hosts.txt',
+    'app.log',
+    'app.log.1',
+    'app.log.2',
+    'icon.png',
+    'icon.ico',
+    'profiles.json',
+    'git_mirror_backup.json',
+    'git_proxy_backup.json',
+)
 
-# 迁移只做一次（进程内标记；目录内容存在时也不会重复复制）
 _migrated = False
 
 
 def get_app_dir():
     """获取程序所在目录（exe / 源码根目录）。
 
-    功能：返回程序运行时应读写数据文件的目录。
-
-    入参：无。
     返回值：str —— 绝对路径目录。
-
-    为什么区分两种情况：
-      - 直接运行 .py：返回项目根目录（本文件位于 项目根/utils/ 下，向上两级）；
-      - PyInstaller 打包成 exe：返回 exe 所在目录。注意绝不能用 sys._MEIPASS
-        （那是 exe 运行时解包出来的临时目录，每次运行都不同）。
+    PyInstaller 打包后返回 exe 所在目录（绝不能用 sys._MEIPASS，那是临时解包目录）。
     """
     if getattr(sys, 'frozen', False):
-        # PyInstaller 打包后：sys.executable 指向 exe 本身
         return os.path.dirname(os.path.abspath(sys.executable))
-    # 脚本模式：__file__ 是 utils/paths.py，向上两级才是项目根
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def is_portable():
-    """是否处于便携模式（程序目录下存在 portable.flag）。
-
-    入参：无。返回值：bool。
-    """
-    return os.path.exists(os.path.join(get_app_dir(), PORTABLE_FLAG))
+    """兼容旧接口：数据现在始终跟随程序目录，因此恒为 True。"""
+    return True
 
 
-def get_data_dir():
-    r"""获取数据目录（配置 / 日志 / 候选清单的存放位置），并确保它存在。
-
-    入参：无。
-    返回值：str —— 绝对路径目录。
-
-    默认 %LOCALAPPDATA%\GitHubAccelerator；便携模式（portable.flag）下
-    退回程序目录。首次调用会把旧版留在程序目录的数据文件迁移过来。
-    """
-    path = _data_dir_path()
-    try:
-        os.makedirs(path, exist_ok=True)
-    except OSError:
-        # 极端情况（LOCALAPPDATA 不可写）：退回程序目录，至少还能运行
-        logger.exception('无法创建数据目录 %s，退回程序目录', path)
-        path = get_app_dir()
-    _migrate_legacy_data(path)
-    return path
-
-
-def _data_dir_path():
-    """计算数据目录路径（不创建、不迁移）。"""
-    if is_portable():
-        return get_app_dir()
+def _fallback_data_dir():
+    """旧版数据目录 / 程序目录不可写时的兜底目录。"""
     base = os.environ.get('LOCALAPPDATA')
     if not base:
         base = os.path.join(os.path.expanduser('~'), 'AppData', 'Local')
     return os.path.join(base, DATA_DIR_NAME)
 
 
-def _migrate_legacy_data(target_dir):
-    """把旧版放在程序目录的数据文件复制到数据目录（只复制不删除）。
+def _is_writable_dir(path):
+    """用创建一个临时文件的方式判断目录是否真的可写。"""
+    probe = os.path.join(path, '.gha_write_test')
+    try:
+        with open(probe, 'w', encoding='utf-8') as file:
+            file.write('')
+        os.remove(probe)
+        return True
+    except OSError:
+        try:
+            if os.path.exists(probe):
+                os.remove(probe)
+        except OSError:
+            pass
+        return False
 
-    入参：target_dir —— 数据目录。返回值：无。
-    仅当目标文件不存在时复制，避免覆盖用户在新位置改过的配置。
+
+def get_data_dir():
+    r"""获取数据目录并确保可写。
+
+    默认返回程序目录；程序目录不可写时退回 %LOCALAPPDATA%\GitHubAccelerator。
+    首次使用程序目录时，会从旧 %LOCALAPPDATA% 目录复制数据文件。
+    """
+    preferred = get_app_dir()
+    path = preferred
+    try:
+        os.makedirs(path, exist_ok=True)
+    except OSError:
+        logger.warning('无法创建程序目录 %s，退回旧数据目录', path, exc_info=True)
+        path = _fallback_data_dir()
+
+    if path == preferred and not _is_writable_dir(path):
+        fallback = _fallback_data_dir()
+        logger.warning('程序目录不可写：%s；退回 %s', path, fallback)
+        try:
+            os.makedirs(fallback, exist_ok=True)
+            path = fallback
+        except OSError:
+            logger.exception('兜底数据目录也不可写：%s', fallback)
+
+    _migrate_legacy_data(path)
+    return path
+
+
+def _data_dir_path():
+    """兼容旧测试/调用：返回首选数据目录（不创建、不迁移）。"""
+    return get_app_dir()
+
+
+def _migrate_legacy_data(target_dir):
+    """把旧 %LOCALAPPDATA% 数据复制到程序目录（只复制不删除）。
+
+    规则：
+      - 目标不存在：复制；
+      - 目标已存在且比源文件新：保留目标（用户已在新位置改过）；
+      - 目标已存在但比源文件旧：用源文件覆盖（把当前配置带到 exe 旁边）。
     """
     global _migrated
     if _migrated:
         return
     _migrated = True
-    source_dir = get_app_dir()
+
+    source_dir = _fallback_data_dir()
     if os.path.abspath(source_dir) == os.path.abspath(target_dir):
-        return  # 便携模式 / 数据目录就是程序目录，无需迁移
+        return
+    if not os.path.isdir(source_dir):
+        return
+
     for name in MIGRATE_FILES:
         source = os.path.join(source_dir, name)
         target = os.path.join(target_dir, name)
-        if not os.path.exists(source) or os.path.exists(target):
+        if not os.path.isfile(source):
             continue
         try:
+            if os.path.exists(target):
+                if os.path.getmtime(source) <= os.path.getmtime(target):
+                    continue
+                logger.info('旧数据文件较新，覆盖目标：%s -> %s', source, target)
             shutil.copy2(source, target)
-            logger.info('已迁移旧数据文件：%s -> %s', source, target)
         except OSError:
             logger.warning('迁移旧数据文件失败（忽略）：%s', source, exc_info=True)

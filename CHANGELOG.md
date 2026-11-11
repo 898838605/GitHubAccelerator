@@ -1,5 +1,30 @@
 # 更新记录
 
+## 5.4.0（2026-11-11）— 数据文件默认跟随 exe 目录
+
+- 配置、日志、候选清单、图标、profiles、Git 备份等运行时数据默认放到
+  程序所在目录（exe 同目录 / 源码根目录），不再默认写 %LOCALAPPDATA%。
+- 首次启动会把旧 %LOCALAPPDATA%\GitHubAccelerator 里的 config.json、
+  github_hosts.txt、app.log、app.log.1/2、icon.png/ico、profiles.json、
+  git_mirror_backup.json、git_proxy_backup.json 复制到程序目录；
+  只复制不删除，目标已存在则跳过。
+- 程序目录不可写（如 Program Files）时自动回退到
+  %LOCALAPPDATA%\GitHubAccelerator，并在 app.log 记录。
+- portable.flag 保留为兼容常量，但不再需要：数据始终跟随程序目录。
+- 版本号 5.4.0。
+
+## 5.3.1（2026-11-11）— 修复自身 pushInsteadOf 被误判为用户自定义规则
+
+- 现象：启用 Git 镜像时提示「检测到已有的自定义 Git 镜像规则」，但实际只剩下
+  程序自己写入的 url.https://github.com/.pushInsteadOf 规则。
+- 根因：v5.3.0 检测自定义规则时没有排除自身的 pushInsteadOf 保护规则，
+  同时把任何 pushInsteadOf 都当成冲突，导致无法重新启用。
+- 修复：
+  - 自定义规则检测排除本程序的 pushInsteadOf；
+  - 只有 pushInsteadOf 的值不是 https://github.com/ 时才视为用户自定义冲突；
+  - pushInsteadOf 不再写入备份（它只是本程序的保护规则）。
+- 版本号 5.3.1。
+
 ## 5.3.0（2026-11-11）— 可配置 acceleration profiles 与 HTTPS 精确选优
 
 - 新增可选的 profiles.json：按域名声明多组上游 IP、order、match/listen 域名；
