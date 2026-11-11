@@ -327,7 +327,7 @@ class AppWindow:
             btn.configure(command=lambda c=cmd, b=btn: c(b))
             btn.pack(side='left', padx=(0, 8))
             self._op_buttons.append((btn, text))
-        self.count_var = tk.StringVar(value='共 0 条候选，0 条可用')
+        self.count_var = tk.StringVar(value='共 0 条候选，0 条 TCP 可用')
         ttk.Label(ip_frame, textvariable=self.count_var).pack(side='bottom', fill='x')
         tree_box = ttk.Frame(ip_frame)
         tree_box.pack(fill='both', expand=True)
@@ -343,7 +343,7 @@ class AppWindow:
         self.tree.column('ip', width=int(150 * scale), anchor='w')
         self.tree.column('domain', width=int(240 * scale), anchor='w')
         self.tree.column('latency', width=int(120 * scale), anchor='center')
-        self.tree.column('status', width=int(80 * scale), anchor='center')
+        self.tree.column('status', width=int(100 * scale), anchor='center')
         vsb = ttk.Scrollbar(tree_box, orient='vertical', command=self.tree.yview)
         self.tree.configure(yscrollcommand=vsb.set)
         self.tree.pack(side='left', fill='both', expand=True)
@@ -607,7 +607,7 @@ class AppWindow:
             if ip in state.ip_latency:
                 ms, err = state.ip_latency[ip]
                 if ms is not None:
-                    latency, status = str(ms), '可用'
+                    latency, status = str(ms), 'TCP可用'
                     available += 1
                 else:
                     latency = '—'
@@ -636,7 +636,7 @@ class AppWindow:
             if current != wanted:
                 self.tree.item(item_id, values=values)
 
-        self.count_var.set(f'共 {len(state.candidates)} 条候选，{available} 条可用')
+        self.count_var.set(f'共 {len(state.candidates)} 条候选，{available} 条 TCP 可用（启用时再做 TLS 校验）')
         if self._sort_column:
             self._apply_sort()  # 数据刷新后保持当前排序
         if yview:

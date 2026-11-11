@@ -474,10 +474,41 @@ def enable(silent=False):
     if missing_core:
         logger.warning('核心域名没有可用 IP，未写入 hosts：%s', '、'.join(missing_core))
 
-    # 4. 严格 TLS 校验：剔除"能建连但证书不对"的 IP（劫持 / 代理接管）
+    # 4. 严格 TLS 校验：同一域名有多个候选时，首选 IP 握手失败自动换备选，
+    #    避免"TCP 可用但单个 IP 的 TLS 偶发超时"导致整个域名被跳过。
+    tls_dropped = {}
+    tls_fallback = {}
     if _config.get('strict_tls_verify', True):
-        checks = [(domain, ip) for domain, ip in best.items()
-                  if domain in network_tester.TLS_VERIFY_DOMAINS]
+        try:
+            candidate_limit = max(1, int(_config.get('tls_candidate_limit', 3) or 3))
+        except (TypeError, ValueError):
+            candidate_limit = 3
+
+        candidates_by_domain = {}
+        for ip, domain in usable_pairs:
+            if domain not in network_tester.TLS_VERIFY_DOMAINS:
+                continue
+            ms = results.get(ip, (None, None))[0]
+            if ms is not None:
+                candidates_by_domain.setdefault(domain, []).append((ms, ip))
+
+        domain_candidates = {}
+        checks = []
+        for domain, best_ip in best.items():
+            if domain not in network_tester.TLS_VERIFY_DOMAINS:
+                continue
+            ordered = [(results.get(best_ip, (None, None))[0] or 0, best_ip)]
+            for ms, ip in sorted(candidates_by_domain.get(domain, [])):
+                if ip != best_ip:
+                    ordered.append((ms, ip))
+            chosen = []
+            for _ms, ip in ordered:
+                if ip not in chosen:
+                    chosen.append(ip)
+            chosen = chosen[:candidate_limit]
+            domain_candidates[domain] = chosen
+            checks.extend((domain, ip) for ip in chosen)
+
         if checks:
             state.set_progress(_test_progress_text('正在校验 TLS 证书', 0, len(checks)),
                                0, len(checks))
@@ -486,11 +517,45 @@ def enable(silent=False):
                 state.set_progress(
                     _test_progress_text('正在校验 TLS 证书', done, total), done, total)
 
-            verified = network_tester.verify_tls_batch(
-                checks, progress_cb=_on_tls_progress, cancel_event=op_cancel)
+            verified = network_tester.verify_tls_candidates(
+                checks, progress_cb=_on_tls_progress, cancel_event=op_cancel,
+                attempts=2)
             if _cancelled():
                 return _cancelled_result()
-            best, dropped = _apply_tls_results(best, verified)
+
+            selected = {domain: ip for domain, ip in best.items()
+                        if domain not in domain_candidates}
+            fallback_enabled = _config.get('tls_failure_fallback', True)
+            for domain, ips in domain_candidates.items():
+                chosen = None
+                reasons = []
+                for ip in ips:
+                    ok, reason = verified.get((domain, ip),
+                                              (False, network_tester.REASON_TLS))
+                    if ok:
+                        chosen = ip
+                        break
+                    reasons.append(reason or network_tester.REASON_TLS)
+                if chosen:
+                    selected[domain] = chosen
+                    if chosen != best[domain]:
+                        logger.info('TLS 首选失败，改用备选 IP：%s -> %s（原 %s）',
+                                    domain, chosen, best[domain])
+                elif fallback_enabled and network_tester.REASON_TLS not in reasons:
+                    # 握手被重置 / 超时属于网络干扰，不是证书错误：
+                    # 仍按 TCP 可用写入，避免因为一次握手被 reset 就整个域名不加速。
+                    selected[domain] = best[domain]
+                    tls_fallback[domain] = best[domain]
+                    logger.warning(
+                        'TLS 校验受网络干扰（%s），仍按 TCP 可用写入：%s -> %s',
+                        '、'.join(str(item) for item in reasons),
+                        domain, best[domain])
+                else:
+                    tls_dropped[domain] = reasons[-1] if reasons else network_tester.REASON_TLS
+                    logger.warning('TLS 校验全部失败，未写入：%s（候选：%s，原因：%s）',
+                                   domain, '、'.join(ips),
+                                   '、'.join(str(item) for item in reasons))
+            best = selected
             if not best:
                 message = ('核心域名的 TLS 校验全部未通过，已取消写入 hosts。'
                            '若你处在代理 / 特殊网络环境，可在 config.json 中把 '
@@ -498,9 +563,15 @@ def enable(silent=False):
                 logger.error(message)
                 notify_user(message)
                 return False, message
-            if dropped and not silent:
+            if tls_dropped and not silent:
                 state.set_message(
-                    f'已跳过 {len(dropped)} 个 TLS 校验未通过的域名')
+                    f'已跳过 TLS 校验未通过的域名：{"、".join(sorted(tls_dropped))}')
+
+    # TLS 之后重新计算核心域名缺失：区分"无可用 IP"与"TLS 未通过"，
+    # 让日志/气泡/连通性区都能给出准确原因。
+    missing_core = [domain for domain in ('github.com', 'api.github.com',
+                                          'raw.githubusercontent.com')
+                    if domain in present_domains and domain not in best]
 
     # 5. 写入 hosts 加速段（先移除旧段，再把新段置顶，保证"先匹配先赢"命中）
     if _cancelled():
@@ -527,7 +598,15 @@ def enable(silent=False):
     state.set_progress('')
     message = f'加速已启用，优选写入 {len(best)} 个域名'
     if missing_core:
-        message += f'；未写入：{"、".join(missing_core)}（无可用 IP）'
+        no_ip = [domain for domain in missing_core if domain not in tls_dropped]
+        reasons = []
+        if no_ip:
+            reasons.append('无可用 IP')
+        if len(no_ip) < len(missing_core):
+            reasons.append('TLS 校验未通过')
+        message += f'；未写入：{"、".join(missing_core)}（{"，".join(reasons)}）'
+    if tls_fallback:
+        message += f'；TLS 被网络干扰，已按 TCP 可用写入：{"、".join(sorted(tls_fallback))}'
     if not silent:
         limitation = _detect_hosts_limitation(best)
         if limitation:

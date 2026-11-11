@@ -62,6 +62,7 @@ REASON_REFUSED = '拒绝连接'
 REASON_UNREACHABLE = '不可达'
 REASON_DNS = '解析失败'
 REASON_TLS = 'TLS 校验失败'
+REASON_RESET = '连接被重置'
 REASON_FAILED = '失败'
 
 # 需要做严格 TLS 校验的"核心域名"：这些域名有稳定的证书，校验失败说明
@@ -120,6 +121,8 @@ def _classify_error(error):
             return REASON_TIMEOUT
         if winerror == 10061:
             return REASON_REFUSED
+        if winerror in (10053, 10054):
+            return REASON_RESET
         if winerror in (10051, 10065):
             return REASON_UNREACHABLE
     return REASON_FAILED
@@ -252,21 +255,78 @@ def pick_best_from_results(pairs, results):
     return best
 
 
-def verify_tls(domain, ip, timeout=TLS_VERIFY_TIMEOUT):
-    """对 (域名, IP) 做一次严格 TLS 握手：校验证书链与主机名。
+def verify_tls(domain, ip, timeout=TLS_VERIFY_TIMEOUT, attempts=1):
+    """对 (域名, IP) 做严格 TLS 握手：校验证书链与主机名。
 
     入参：domain —— 用于 SNI 与证书主机名校验的域名；ip —— 目标 IP；
-          timeout —— 握手超时（秒）。
+          timeout —— 单次握手超时（秒）；attempts —— 失败重试次数
+          （网络抖动 / 限流会让单次握手偶发超时，重试可避免误杀）。
     返回值：(ok, reason) —— ok=True 表示证书有效且域名匹配；失败给出原因。
     """
+    last_reason = REASON_TLS
+    for attempt in range(max(1, int(attempts))):
+        try:
+            context = ssl.create_default_context()
+            with socket.create_connection((ip, TEST_PORT), timeout=timeout) as raw:
+                with context.wrap_socket(raw, server_hostname=domain):
+                    return True, None
+        except Exception as error:  # noqa: BLE001 - 统一归一化失败原因
+            logger.debug('TLS 校验失败 %s -> %s（第 %d 次）：%s',
+                         domain, ip, attempt + 1, error)
+            last_reason = _classify_error(error)
+            if attempt + 1 < attempts:
+                time.sleep(0.3)
+    return False, last_reason
+
+
+def verify_tls_candidates(targets, timeout=TLS_VERIFY_TIMEOUT,
+                           progress_cb=None, cancel_event=None, attempts=2):
+    """并发校验同一域名下多个候选 IP 的 TLS，用于"首选 IP 失败时换备选"。
+
+    入参：targets —— [(域名, IP), ...]（同一域名可有多行）；
+          timeout —— 单次握手超时；progress_cb —— fn(done, total)；
+          cancel_event —— 可选取消信号；attempts —— 每个 IP 的尝试次数。
+    返回值：dict —— {(域名, IP): (ok, reason)}。
+    """
+    targets = list(targets)
+    results = {}
+    if not targets:
+        return results
+
+    workers = min(VERIFY_WORKERS, len(targets))
+    logger.info('开始 TLS 严格校验：%d 个候选', len(targets))
+    executor = ThreadPoolExecutor(max_workers=workers)
+    futures = {executor.submit(verify_tls, domain, ip, timeout, attempts):
+               (domain, ip) for domain, ip in targets}
+    cancelled = False
     try:
-        context = ssl.create_default_context()
-        with socket.create_connection((ip, TEST_PORT), timeout=timeout) as raw:
-            with context.wrap_socket(raw, server_hostname=domain):
-                return True, None
-    except Exception as error:  # noqa: BLE001 - 统一归一化失败原因
-        logger.debug('TLS 校验失败 %s -> %s：%s', domain, ip, error)
-        return False, _classify_error(error)
+        for future in as_completed(futures):
+            if cancel_event is not None and cancel_event.is_set():
+                cancelled = True
+                break
+            key = futures[future]
+            try:
+                results[key] = future.result()
+            except Exception:
+                logger.exception('TLS 校验任务异常：%s', (key,))
+                results[key] = (False, REASON_FAILED)
+            if progress_cb is not None:
+                try:
+                    progress_cb(len(results), len(targets))
+                except Exception:
+                    logger.exception('TLS 校验进度回调异常（已忽略）')
+    finally:
+        for future in futures:
+            future.cancel()
+        executor.shutdown(wait=not cancelled, cancel_futures=True)
+
+    failed = [f'{domain} -> {ip}' for (domain, ip), (ok, _reason) in results.items()
+              if not ok]
+    if failed:
+        logger.warning('TLS 校验未通过的候选：%s', '；'.join(sorted(failed)))
+    elif results:
+        logger.info('TLS 严格校验通过：%d 个候选证书有效', len(results))
+    return results
 
 
 def verify_tls_batch(targets, timeout=TLS_VERIFY_TIMEOUT,

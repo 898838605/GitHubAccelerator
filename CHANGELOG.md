@@ -1,5 +1,22 @@
 # 更新记录
 
+## 5.2.1（2026-11-11）— 修复 raw 等域名因单 IP TLS 超时被整体跳过
+
+- 现象：IP 列表里 `raw.githubusercontent.com` 显示"可用"，但 hosts 加速段没有写入，
+  日志提示"hosts 加速段中未找到这些域名：raw.githubusercontent.com"。
+- 根因：表格里的"可用"只是 TCP 443 连通；启用时还要做严格 TLS 校验。
+  该轮对 `185.199.108.133` 的 TLS 握手被网络重置（WinError 10054），
+  旧逻辑只有一个候选 IP，失败就把整个域名丢弃——不是写入环节的 bug，但容错不足。
+- 修复：
+  - 同一域名保留最多 3 个 TCP 可用候选，逐个做 TLS 校验（每个 IP 重试 2 次）；
+    首选失败自动改用备选 IP。
+  - 如果失败原因是**网络重置/超时**而非证书错误，仍按 TCP 可用 IP 写入 hosts，
+    并在结果中明确提示"TLS 被网络干扰，已按 TCP 可用写入"。
+  - 证书错误（可能被劫持）仍然跳过，不写入。
+  - 为 raw / objects / avatars / user-images 等 githubusercontent CDN 域名补充
+    185.199.108-111.133 兜底候选。
+- 新增配置：`tls_failure_fallback`（默认 true）、`tls_candidate_limit`（默认 3）。
+
 ## 5.2.0（2026-11-08）— 多引擎加速：Git 镜像 + 下载镜像 + 代理接入
 
 - 新增 **Git 镜像加速**：自动测速公共镜像（gh-proxy / ghfast / ghproxy），

@@ -83,12 +83,24 @@ ALLOWED_DOMAIN_SUFFIXES = (
 # 只剩一个不可达的 IP），导致"启用后 github.com 没写进 hosts"。
 # 这里为常见核心域名提供少量兜底候选；只在候选列表中已经出现对应域名时补充，
 # 且所有兜底 IP 仍然要经过测速与 TLS 校验才会真正写入 hosts。
+# GitHub 静态资源 CDN（raw / objects / avatars 等）：四个官方节点证书都有效，
+# 当首选节点 TLS 握手偶发失败时，用它们做备选，避免整个域名被跳过。
+GITHUB_CONTENT_IPS = ('185.199.108.133', '185.199.109.133',
+                      '185.199.110.133', '185.199.111.133')
+
 BUILTIN_FALLBACK_CANDIDATES = {
     'github.com': ('140.82.112.3', '140.82.113.3', '140.82.114.3', '20.27.177.113'),
     'api.github.com': ('140.82.112.6', '140.82.113.6', '140.82.114.6'),
     'gist.github.com': ('140.82.112.9', '140.82.113.9', '140.82.114.9'),
     'github.io': ('185.199.108.153', '185.199.109.153', '185.199.110.153'),
     'githubstatus.com': ('185.199.108.153', '185.199.109.153'),
+    'raw.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'objects.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'avatars.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'user-images.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'media.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'private-user-images.githubusercontent.com': GITHUB_CONTENT_IPS,
+    'camo.githubusercontent.com': GITHUB_CONTENT_IPS,
 }
 
 # 远端合并进候选文件时打的来源标记（行尾注释，不影响「IP 域名」解析）。

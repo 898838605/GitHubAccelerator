@@ -36,6 +36,7 @@ DEFAULT_CONFIG = {
     'refresh_interval_hours': 6,     # 定时自动刷新间隔（小时）
     'test_timeout_seconds': 2.0,     # 单次 TCP 测速超时（秒）
     'strict_tls_verify': True,       # 是否对核心域名做严格 TLS 证书校验
+    'tls_failure_fallback': True,    # TLS 被网络干扰（重置/超时）时是否仍按 TCP 可用写入
     'git_mirror_enabled': False,     # 是否已启用 Git 镜像加速
     'preferred_mirror': '',          # 首选下载镜像（空=自动测速选择）
     'preferred_git_mirror': '',      # 首选 Git 镜像（空=自动测速选择）
@@ -180,6 +181,14 @@ def load_config(config_path=None):
         config['proxy_auto_detect'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
     else:
         config['proxy_auto_detect'] = bool(raw)
+
+    raw = data.get('tls_failure_fallback', True)
+    if isinstance(raw, bool):
+        config['tls_failure_fallback'] = raw
+    elif isinstance(raw, str):
+        config['tls_failure_fallback'] = raw.strip().lower() in ('1', 'true', 'yes', 'on')
+    else:
+        config['tls_failure_fallback'] = bool(raw)
 
     raw = data.get('diagnose_on_startup', False)
     config['diagnose_on_startup'] = bool(raw) if isinstance(raw, bool) else False
